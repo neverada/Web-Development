@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Slider</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f5f5f5;
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      padding: 50px 0;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .pokemon-card {
+      flex: 0 0 300px;
+      margin: 0 15px;
+      background: #1c1c1c;
+      border-radius: 15px;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.4s, opacity 0.4s;
+    }
+
+    .pokemon-card img {
+      max-height: 150px;
+      margin-bottom: 15px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .pokemon-card h4 {
+      margin: 0;
+      font-size: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .pokemon-card p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.9;
+      z-index: 2;
+      position: relative;
+    }
+
+    .pokemon-card .bg-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.1);
+      z-index: 1;
+    }
+
+    .pokemon-card.focus {
+      transform: scale(1.1);
+      z-index: 5;
+    }
+
+    /* Buttons */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .slider-btn.left { left: 20px; }
+    .slider-btn.right { right: 20px; }
+
+    /* Types */
+    .type {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      margin-top: 5px;
+      z-index: 2;
+      position: relative;
+    }
+    .fairy { background: #f78aff; color: #000; }
+    .dark { background: #705746; }
+    .electric { background: #fbd100; color: #000; }
+    .ground { background: #e2bf65; color: #000; }
+    .normal { background: #aaa; color: #000; }
+  </style>
+</head>
+<body>
+
+<div class="container text-center">
+  <h2 class="mb-4">Featured Pokémon</h2>
+
+  <div class="slider-container">
+    <button class="slider-btn left" onclick="moveSlide(-1)">&#10094;</button>
+    <div class="slider" id="slider">
+
+      <!-- Card 1 -->
+      <div class="pokemon-card">
+        <div class="bg-number">828</div>
+        <img src="https://archives.bulbagarden.net/media/upload/f/f9/827Thievul.png" alt="Thievul">
+        <h4>Thievul</h4>
+        <span class="type dark">Dark</span>
+        <p>Ability: Run Away</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="pokemon-card">
+        <div class="bg-number">133</div>
+        <img src="https://archives.bulbagarden.net/media/upload/e/e2/133Eevee.png" alt="Eevee">
+        <h4>Eevee</h4>
+        <span class="type normal">Normal</span>
+        <p>Ability: Adaptability</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="pokemon-card focus">
+        <div class="bg-number">927</div>
+        <img src="https://archives.bulbagarden.net/media/upload/7/7f/927Dachsbun.png" alt="Dachsbun">
+        <h4>Dachsbun</h4>
+        <span class="type fairy">Fairy</span>
+        <p>Ability: Well-Baked Body</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="pokemon-card">
+        <div class="bg-number">796</div>
+        <img src="https://archives.bulbagarden.net/media/upload/1/1b/796Xurkitree.png" alt="Xurkitree">
+        <h4>Xurkitree</h4>
+        <span class="type electric">Electric</span>
+        <p>Ability: Beast Boost</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="pokemon-card">
+        <div class="bg-number">645</div>
+        <img src="https://archives.bulbagarden.net/media/upload/4/46/645Landorus.png" alt="Landorus">
+        <h4>Landorus</h4>
+        <span class="type ground">Ground</span>
+        <p>Ability: Sand Force</p>
+      </div>
+    </div>
+    <button class="slider-btn right" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
+  <button class="btn btn-dark mt-4">Explore More Pokémon</button>
+</div>
+
+<script>
+  let currentIndex = 2; // Dachsbun in focus
+  const cards = document.querySelectorAll(".pokemon-card");
+
+  function updateFocus() {
+    cards.forEach((card, i) => {
+      card.classList.remove("focus");
+      if (i === currentIndex) {
+        card.classList.add("focus");
+      }
+    });
+  }
+
+  function moveSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = cards.length - 1;
+    if (currentIndex >= cards.length) currentIndex = 0;
+    document.getElementById("slider").style.transform = `translateX(-${currentIndex * 330}px)`;
+    updateFocus();
+  }
+</script>
+
+</body>
+</html>
+
+
+  <p class="text-white">Search for any Pokémon that exists in the world</p>
+            <div class="searchwrapper bg-white d-flex justify-content-center">
+                <form class="form-inline my-2 my-lg-0 px-2 w-75">
+                    <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search Pokémon"
+                        aria-label="Search">
+                </form>

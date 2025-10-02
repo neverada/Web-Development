@@ -1,0 +1,127 @@
+:root {
+    /* neutrals */
+    --white: #ffffff;
+    --off-white: #f7f9fb;
+    --muted: #8b99a6;
+
+    /* primary blues */
+    --blue-900: #0b2b4a;
+    /* deep (text, dark accents) */
+    --blue-700: #0f5fa8;
+    /* main primary */
+    --blue-500: #2b8ef8;
+    /* bright primary for buttons */
+    --blue-300: #8fc6ff;
+    /* light accent */
+
+    /* UI surfaces */
+    --surface: #081421;
+    /* very dark bg alternative */
+    --card-bg: #0f1721;
+    /* cards / hero panel */
+
+    /* accents */
+    --gold-accent: #ffd166;
+    /* optional warm accent */
+
+    /* feedback */
+    --success: #16a34a;
+    --danger: #ef4444;
+
+    /* shadows (RGBA) */
+    --shadow-strong: 0 10px 30px rgba(13, 40, 74, 0.45);
+    --shadow-soft: 0 6px 18px rgba(11, 47, 90, 0.18);
+}
+
+:root {
+    --heading-font: "Merriweather", serif;
+    --body-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--white);
+    background: var(--surface);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    color: var(--blue-900);
+}
+
+h1 {
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1.02;
+}
+
+h2 {
+    font-size: clamp(1.25rem, 3.2vw, 2rem);
+}
+
+p {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: var(--off-white);
+}
+
+/* hero section */
+:root {
+  --primary-blue: #007bff;   /* main blue */
+  --secondary-blue: #0056b3; /* darker blue */
+  --light-blue: #e3f2fd;     /* soft background blue */
+  --white: #ffffff;
+  --text-dark: #212529;
+  --text-light: #f8f9fa;
+  --accent-blue: #339af0;    /* slightly vibrant */
+  --card-bg: #fefefe;
+  --success-green: #28a745;
+}
+
+
+/* Carousel Container */
+.slide-container {
+  height: 80vh;
+  padding: 2rem;
+  border-radius: 15px;
+}
+.slidec1{
+    background-image: url(images/hero-result.jpg);
+    background-size: cover;
+    isolation: isolate;
+}
+/* Titles */
+.slide-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.slide-title span {
+  color: var(--secondary-blue);
+}
+
+.slide-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  max-width: 600px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--primary-blue);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--secondary-blue);
+}
+
+.btn-success {
+  background: var(--success-green);
+  border: none;
+}
+
+.btn-success:hover {
+  background: #218838;
+}

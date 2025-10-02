@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- mycss link  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- Your content goes here -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container d-flex align-items-center  justify-content-center justify-content-md-strech gap-4">
+            <!-- Left logo and icons -->
+            <div class="d-flex gap-2">
+                <a class="nav-link" href="#"><img
+                        src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png"
+                        alt="Pokemon Logo"></a>
+                <a href="#" class="nav-link"><img
+                        src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemoncenter-79x45.png"
+                        alt="Pokemon Center"></a>
+                <a href="#" class="nav-link">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/corporate-en.png" alt="
+                        Corporate">
+                </a>
+            </div>
+            <div class="d-none d-lg-flex">
+                <ul class="d-flex list-unstyled mb-0 flex-grow-1 gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link"><img
+                                src="https://assets.pokemon.com/assets/cms2/img/misc/gus/promotions/tcg-175-en.png"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><img
+                                src="https://www.pokemon.com/static-assets/content-assets/cms2/img/misc/gus/promotions/pokemon-legends-z-a-176x50-en.png"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><img
+                                src="https://assets.pokemon.com/assets/cms2/img/misc/gus/promotions/community-forums-175x50-en.png"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Toggler for offcanvas -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasMenu">
+                <span class="bi bi-chevron-right fs-2"></span>
+            </button>
+            <div class="offcanvas offcanvas-end d-lg-none bg-light" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <!-- Right logo and icons -->
+                <div class="offcanvas-body">
+                    <ul class="list-unstyled mb-0 d-flex flex-column align-items-center gap-2">
+                        <li class="nav-item"> <a class="nav-link"><img
+                                    src="https://assets.pokemon.com/assets/cms2/img/misc/gus/promotions/tcg-175-en.png"></a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link"><img
+                                    src="https://www.pokemon.com/static-assets/content-assets/cms2/img/misc/gus/promotions/pokemon-legends-z-a-176x50-en.png"></a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link"><img
+                                    src="https://assets.pokemon.com/assets/cms2/img/misc/gus/promotions/community-forums-175x50-en.png"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar1 navbar-expand-lg d-none d-lg-flex mb-0 pb-0" style="background-color: white;">
+        <div class="container justify-content-center">
+            <ul class="navbar-nav ">
+                <div class="contentwrapper greybr">
+                    <li class="nav-item navli">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="fas fa-home icon"></i><br> <span class="icontext">Home</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="contentwrapper redbr">
+                    <li class="nav-item navli">
+                        <a class="nav-link  text-dark" href="#">
+                            <i class="fa-solid fa-bowling-ball icon"></i><br> <span class="icontext">Pokedox</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="contentwrapper orangebr">
+                    <li class="nav-item navli">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="fas fa-gamepad icon"></i><br>
+                            <span class="icontext">Video Games
+                                &amp; Apps</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="contentwrapper yellowbr">
+                    <li class="nav-item navli">
+                        <a class="nav-link text-dark " href="#">
+                            <i class="fa-solid fa-sd-card icon"></i><br> <span class="icontext">Trading Card Game</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="contentwrapper greenbr">
+                    <li class="nav-item navli ">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="fas fa-film icon"></i> <br><span class="icontext">Animation</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="contentwrapper lbluebr">
+                    <li class="nav-item navli ">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="fas fa-calendar-alt icon"></i><br><span class="icontext">Events</span>
+                        </a>
+                    </li>
+                </div>
+
+                <div class="contentwrapper dbluebr">
+                    <li class="nav-item navli ">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="fas fa-newspaper icon"></i><br> <span class="icontext">News</span>
+                        </a>
+                    </li>
+                </div>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar for small screens -->
+    <nav class="navbar navbar-dark bg-dark d-lg-none">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex flex-column m-0 p-0">
+                <a class="navbar-brand  m-0 p-0" href="#"><img class=" m-0 p-0"
+                        src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-signup.png"
+                        alt="Pokemon Logo" style="height: 10vh;">
+                </a>
+            </div>
+
+        </div>
+    </nav>
+    <div class="collapse d-lg-none" id="navbarToggleExternalContent">
+        <div class="bg-light p-4">
+            <div class="container justify-content-start align-items-start">
+                <ul class="navbar-nav ">
+                    <div class="contentwrapper greybr">
+                        <li class="nav-item navli ">
+                            <a class="nav-link text-dark d-flex gap-2" href="#">
+                                <i class="fas fa-home icon"></i> <span class="icontext">Home</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="contentwrapper redbr">
+                        <li class="nav-item navli">
+                            <a class="nav-link  text-dark d-flex gap-2" href="#">
+                                <i class="fa-solid fa-bowling-ball icon"></i> <span class="icontext">Pokedox</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="contentwrapper orangebr">
+                        <li class="nav-item navli">
+                            <a class="nav-link text-dark d-flex gap-2" href="#">
+                                <i class="fas fa-gamepad icon"></i>
+                                <span class="icontext">Video Games
+                                    &amp; Apps</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="contentwrapper yellowbr">
+                        <li class="nav-item navli">
+                            <a class="nav-link text-dark d-flex gap-2" href="#">
+                                <i class="fa-solid fa-sd-card icon"></i> <span class="icontext">Trading Card Game</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="contentwrapper greenbr">
+                        <li class="nav-item navli ">
+                            <a class="nav-link text-dark d-flex gap-2" href="#">
+                                <i class="fas fa-film icon"></i> <span class="icontext">Animation</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="contentwrapper lbluebr">
+                        <li class="nav-item navli ">
+                            <a class="nav-link text-dark d-flex gap-2" href="#">
+                                <i class="fas fa-calendar-alt icon"></i><span class="icontext">Events</span>
+                            </a>
+                        </li>
+                    </div>
+
+                    <div class="contentwrapper dbluebr">
+                        <li class="nav-item navli ">
+                            <a class="nav-link text-dark d-flex gap-2" href="#">
+                                <i class="fas fa-newspaper icon"></i> <span class="icontext">News</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="searchwrapper bg-secondary">
+                        <form class="form-inline my-2 my-lg-0 px-2">
+                            <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search 🔍︎"
+                                aria-label="Search">
+                        </form>
+                    </div>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark">
+        <div class="containerpokemon text-center ">
+            <div class="container text-center">
+                <div class=" d-lg-flex align-items-center py-2" style="background-color: #fff;">
+                    <h1 class="text-secondary display-6 ms-0 ps-1 ">Pokedex</h1>
+                </div>
+            </div>
+            <!-- Search Bar Section -->
+            <div class="bg-dark d-lg-flex py-2">
+                <div class="container d-lg-flex ">
+                    <div class="d-lg-flex flex-column justify-content-start align-items-start d-md-block ">
+                        <form class="ms-0 p-3 pb-0">
+                            <div class="form-group text-start w-100">
+                                <label for="pokename" class="text-light display-6" style="font-size: x-large;">Name Or
+                                    Number</label><br>
+                                <div class="d-flex align-items-center">
+                                    <input type="search" id="pokename"
+                                        class="form-control me-2 py-1 ps-2 rounded-2 border border-3">
+                                    <a class="p-2 px-3 rounded-3" style="background-color: coral;">
+                                        <i class="fas fa-search text-light"></i>
+                                    </a>
+                                </div>
+                                <p class="text-light mt-2">
+                                    Use the advanced search to explore Pokémon by type, weakness, ability and more!
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <!-- Search instruction -->
+                        <p class="text-light mt-3 p-2 rounded-3" style="background-color: #4dad5b; font-size: 1.1rem;">
+                            Search for a Pokémon by name or using its National Pokédex number.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-lg-flex m-0 " style="background-color: #616161; height: 30px; border: none;">
+
+            </div>
+
+            <!-- Advanced Search Toggle Strip -->
+            <div class="advanced-strip">
+                <a class="advanced-toggle" data-bs-toggle="collapse" href="#advancedSearch" role="button"
+                    aria-expanded="false" aria-controls="advancedSearch">
+                    Show Advanced Search
+                    <i class="fa-solid fa-circle-arrow-down"></i>
+                </a>
+            </div>
+            <!-- Advanced Search Form (collapsed by default) -->
+            <div class="collapse" id="advancedSearch">
+                <div class="container my-4">
+                    <div class="advanced-box">
+                        <div class="row">
+                            <!-- Type & Weakness -->
+                            <div class="col-md-6">
+                                <h5>Type & Weakness</h5>
+                                <p class="small">T = Type &nbsp; W = Weakness</p>
+
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#92BC2C;">Bug</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#FD6F57;">Dragon</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#F0A0B0;">Fairy</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#F7D02C;">Fire</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#A8B820;">Grass</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#705898;">Psychic</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#B8A038;">Rock</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-pill" style="background:#A040A0;">Poison</span>
+                                    <button class="tw-btn">T</button>
+                                    <button class="tw-btn">W</button>
+                                </div>
+
+                                <!-- Add other types here... -->
+                            </div>
+
+                            <!-- Right side -->
+                            <div class="col-md-6">
+                                <!-- Ability -->
+                                <h5>Ability</h5>
+                                <select class="form-select ability mb-3">
+                                    <option selected>All</option>
+                                    <option>Overgrow</option>
+                                    <option>Blaze</option>
+                                    <option>Intimidate</option>
+                                </select>
+
+                                <!-- Height -->
+                                <h5>Height</h5>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-4"><button class="hw-btn">🐭</button></div>
+                                    <div class="col-4"><button class="hw-btn">🐍</button></div>
+                                    <div class="col-4"><button class="hw-btn">🐉</button></div>
+                                </div>
+
+                                <!-- Weight -->
+                                <h5>Weight</h5>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-4"><button class="hw-btn">⚫</button></div>
+                                    <div class="col-4"><button class="hw-btn">⚫⚫</button></div>
+                                    <div class="col-4"><button class="hw-btn">⚫⚫⚫</button></div>
+                                </div>
+                            </div>
+                            <div class="col d-flex gap-4 justify-content-around align-items-center ">
+                                <!-- Number Range -->
+                                <div>
+                                    <h5>Number Range</h5>
+                                    <input type="number" class="range-input" value="1"> -
+                                    <input type="number" class="range-input" value="1025">
+
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="btn-adv">
+                                    <button class="btn-reset me-2">Reset</button>
+                                    <button class="btn-search">Search</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center">
+                <div class=" d-flex flex-column align-items-center py-2" style="background-color: #fff;">
+
+                    <div class="controls-pokes d-flex justify-content-between align-items-center gap-3 w-100">
+                        <button class="btn btn-primary">My Blue Button <i class="fa-solid fa-arrows-rotate"></i></button>
+                        <div>
+                            <label for="sort">Sort By:</label>
+                            <select id="sort">
+                                <option value="number">Lowest Number (First)</option>
+                                <option value="name">Name (A-Z)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row gap-4">
+
+                        <div class="card-pokedex col-lg-3 col-md-6 col-sm-12 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+                        <div class="card-pokedex col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div>
+                                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png"
+                                    alt="Bulbasaur" class="img-fluid">
+                            </div>
+                            <div class="number">#001</div>
+                            <div class="name">Bulbasaur</div>
+                            <div class="types d-flex justify-content-center gap-2">
+                                <span class="type Grass">Grass</span>
+                                <span class="type Poison">Poison</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Bootstrap JS Bundle CDN (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

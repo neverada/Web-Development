@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex Advanced Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #2e2e2e;
+      color: white;
+      padding: 20px;
+    }
+
+    .search-section {
+      max-width: 1000px;
+      margin: auto;
+      background: #3a3a3a;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    /* Type grid */
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .type-btn {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Example colors */
+    .bug { background: #92BC2C; }
+    .dragon { background: #0C69C8; color: white; }
+    .fairy { background: #EE90E6; }
+    .fire { background: #FBA54C; }
+    .water { background: #539DDF; color: white; }
+    .grass { background: #5FBD58; }
+    .electric { background: #F9CF30; }
+    .normal { background: #A0A29F; }
+    .psychic { background: #FA8581; }
+    .ghost { background: #5269AD; color: white; }
+    .rock { background: #C9BB8A; }
+    .steel { background: #5A8EA2; color: white; }
+    .flying { background: #89AAE3; }
+    .poison { background: #B567CE; color: white; }
+    .fighting { background: #D3425F; color: white; }
+    .ground { background: #DA7C4D; }
+    .ice { background: #75D0C1; }
+    .dark { background: #595761; color: white; }
+
+    /* Dropdown */
+    select {
+      width: 200px;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Height + weight icons (placeholders for now) */
+    .icon-grid {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .icon-box {
+      background: #222;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Number range */
+    .range-inputs {
+      margin-bottom: 20px;
+    }
+    .range-inputs input {
+      width: 80px;
+      padding: 6px;
+      text-align: center;
+    }
+
+    /* Buttons */
+    .btns {
+      display: flex;
+      gap: 15px;
+    }
+    .reset {
+      background: #999;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .search {
+      background: #F74C06;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="search-section">
+    <h2>Type & Weakness</h2>
+    <div class="type-grid">
+      <button class="type-btn bug">Bug</button>
+      <button class="type-btn dragon">Dragon</button>
+      <button class="type-btn fairy">Fairy</button>
+      <button class="type-btn fire">Fire</button>
+      <button class="type-btn ghost">Ghost</button>
+      <button class="type-btn ground">Ground</button>
+      <button class="type-btn normal">Normal</button>
+      <button class="type-btn psychic">Psychic</button>
+      <button class="type-btn steel">Steel</button>
+      <button class="type-btn flying">Flying</button>
+      <button class="type-btn grass">Grass</button>
+      <button class="type-btn water">Water</button>
+      <button class="type-btn ice">Ice</button>
+      <button class="type-btn poison">Poison</button>
+      <button class="type-btn rock">Rock</button>
+      <button class="type-btn electric">Electric</button>
+      <button class="type-btn fighting">Fighting</button>
+      <button class="type-btn dark">Dark</button>
+    </div>
+
+    <h2>Ability</h2>
+    <select>
+      <option>All</option>
+      <option>Overgrow</option>
+      <option>Blaze</option>
+      <option>Torrent</option>
+    </select>
+
+    <h2>Height</h2>
+    <div class="icon-grid">
+      <div class="icon-box">S</div>
+      <div class="icon-box">M</div>
+      <div class="icon-box">L</div>
+    </div>
+
+    <h2>Weight</h2>
+    <div class="icon-grid">
+      <div class="icon-box">L</div>
+      <div class="icon-box">XL</div>
+      <div class="icon-box">XXL</div>
+    </div>
+
+    <h2>Number Range</h2>
+    <div class="range-inputs">
+      <input type="number" value="1"> -
+      <input type="number" value="1025">
+    </div>
+
+    <div class="btns">
+      <button class="reset">Reset</button>
+      <button class="search">Search</button>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step-2(Personal Info)</title>
+</head>
+<body>
+     <br>
+    <table bgcolor="lightgrey" align="center" width="80%" cellpadding="5">
+        <tr>
+            <td align="center" bgcolor="lightgreen"><a href="step-1(Account).html">Step-1: Account</a></td>
+            <td align="center" bgcolor="lightgreen"><a href="step-2(Personal).html">Step-2: Personal Details</a></td>
+            <td align="center" bgcolor="lightblue"><a href="step-3(Review).html">Step-3: Your Review</a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <form action="thankyou.html">
+        <fieldset style="width: 80%; margin: auto;">
+            <legend>Your Review:</legend>
+            <label for="hear">How  did you hear about us?</label>
+            <select name="hear.about.us" placeholder="Select option" id="hear">
+                <option value="" disabled selected>-- Select One --</option>
+                <option value="Friends">Friends or Family</option>
+                <option value="Google search">Google search</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Linkedin">Linkedin</option>
+                <option value="Advertisment">Advertisment</option>
+
+            </select>
+            <br><p>
+            <label for="visit  again?">Would you visit again?</label><br>
+            <input type="radio" name="visit  again?" value="Yes" id="visit  again?" required>Yes 
+            <input type="radio" name="visit  again?" value="No"  id="visit  again?"  required>No 
+            <input type="radio" name="visit  again?" value="Maybe" id="visit  again?" required>Maybe 
+            <br>
+            </p>
+            <label for="c">Comments:</label><br>
+            <textarea cols="28" rows="5" placeholder="Enter your comments here..." id="c"></textarea>
+            <br><br>
+
+            <label for="file">Documents:</label><br><input type="file" id="file">
+            <br><br>
+            <input type="checkbox" id="esubs" name="subscribe" value="y"><label for="esubs">Sign me up for Email updates</label>
+
+            <br>
+            <br>
+            <a href="step-2(Personal).html">
+                 <img src="images/back.png" height="60px">
+            </a>
+
+            <input type="image" src="images/next.png" height="60px">
+        </fieldset>
+    </form>
+
+    
+</body>
+</html>

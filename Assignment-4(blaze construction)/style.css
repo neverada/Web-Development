@@ -1,0 +1,192 @@
+    @font-face {
+      font-family: "new";
+      src: url('./font/Courgette-Regular.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    * {
+      font-family: "new";
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+      width: 95%;
+    }
+
+    .nav-links {
+      text-decoration: none;
+      color: #333;
+      font-style: initial;
+      padding: 30px;
+
+    }
+
+    .nav-links:hover {
+      color: #ffca02;
+      background-color: #0000000d;
+      height: fit-content;
+
+    }
+
+    .herosection {
+      background-color: #ffca02;
+      display: flex;
+      height: 500px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .heroleft {
+      height: 100%;
+      margin-bottom: -40px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .workers {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .heroright {
+      margin-right: 100px;
+      line-height: 1.5cm;
+    }
+
+    .customlist {
+      display: flex;
+      flex-wrap: wrap;
+      line-height: normal;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .customlist li {
+      width: 50%;
+      margin-bottom: 16px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .customlist li::before {
+      content: "✔︎";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: black;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .members {
+      background-image: url(images/bg.jpg);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .pic {
+      height: 250px;
+    }
+
+    .mpic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding-bottom: 70px;
+    }
+
+    figure {
+      text-align: center;
+      margin: 0;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .minfo {
+      line-height: 2cm;
+    }
+
+    .contact {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .cbox {
+      text-align: center;
+      margin: 0 10px;
+      padding: 40px;
+      width: 300px;
+      line-height: 1cm;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      width: 190px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"],
+    button {
+      background-color: #ffca02;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 190px;
+    }
+
+    .Footer {
+      background-color: #131212;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .glow-btn:hover {
+      background-color: #e6b800;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .glow-btn:active {
+      transform: scale(0.95);
+      background-color: #cc9f00;
+    }
+    .cta-btn:hover{
+      background-color: #0f0f0f;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .cta-btn:active{
+       transform: scale(0.95);
+      background-color: #2b2a27;
+    }

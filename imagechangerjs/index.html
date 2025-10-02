@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Charging</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  
+</head>
+<style>
+    .topimg{
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        position: relative;
+        top : 100px;
+        color: red;
+    }
+</style>
+<body>
+    <h1 class="text-center mt-5">Battery Charging Animation</h1>
+    <p class="text-center">Hover over the image to see the battery charging effect.</p>
+    <p class="topimg" id="changingtext">Battery Dead 🥺</p>
+    <img id="myImage" src="data:image/png;base64,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" 
+    alt="Image Changer" width="40%" height="300px" onmouseover="changeImage()" onmouseout="resetImage()" class="img-fluid shadow-lg p-3 bg-secondary rounded mx-auto d-block mt-0 mb-5">
+    <script src="image.js"></script>
+</body>
+</html>
