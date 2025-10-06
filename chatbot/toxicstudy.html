@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyRoast AI - Your Brutal Study Coach</title>
+    <link rel="stylesheet" href="style.css">
+  
+    
+
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-status">
+                <div class="status-dot"></div>
+                <span style="font-size: 0.8rem;">Online</span>
+            </div>
+            <h1>StudyRoast AI</h1>
+            <p>Your brutally honest study motivation coach</p>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                Chat with StudyRoast - Tell it about your study struggles and get roasted! 🔥
+            </div>
+
+            <div class="message bot">
+                <div class="avatar bot">🤖</div>
+                <div class="message-content">
+                    Hey there, future failure! 👋 I'm StudyRoast AI, your brutally honest study coach. Tell me what
+                    you're supposed to be studying or what excuses you've been making, and I'll give you the reality
+                    check you desperately need. Don't hold back - I certainly won't! 😈
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="avatar bot">🤖</div>
+            <div class="typing-dots">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Tell me about your study struggles..."
+                maxlength="500">
+            <button class="send-button" id="sendButton" onclick="sendMessage()">
+                ➤
+            </button>
+        </div>
+    </div>
+   <script src="toxicstudy.js"></script>
+    </body>
+
+</html>
