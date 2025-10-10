@@ -24,7 +24,7 @@ console.log(myName)
 // Q3. Write script to a) Declare a JS variable, titled message. b) Assign “Hello World” to variable
 // message c) Display the message in alert box
 let message = "Hello World"
-alert(message)
+// alert(message)
 
 // Q4. Declare a variable called email and assign to it a string that represents your Email
 // Address(e.g. example@example.com). Show the blow mentioned message in an alert box.(Hint:
@@ -42,44 +42,66 @@ console.log("variable 1", variable1, "variable 2", variable2, "variable 3", vari
 // Repeat task above for subtraction, multiplication, division & modulus.
 const display = document.getElementById('display');
 
-    function appendChar(char) {
-      display.value += char;
-    }
+function appendChar(char) {
+    display.value += char;
+}
 
-    function clearDisplay() {
-      display.value = '';
-    }
+function clearDisplay() {
+    display.value = '';
+}
 
-    function delChar() {
-      display.value = display.value.slice(0, -1);
-    }
+function delChar() {
+    display.value = display.value.slice(0, -1);
+}
 
-    function calculate() {
-      try {
+function calculate() {
+    try {
         display.value = eval(display.value);
-      } catch {
+    } catch {
         display.value = 'Error';
-      }
     }
+}
 
 // Q8. Cost of one movie ticket is 600 PKR. Write a script to store ticket price in a variable &
 // calculate the cost of buying 5 tickets to a movie. Example output:
 var ticketPkr = 600
-var tickets5 = 600 * 5
-console.log("The Price Of 5 Tickets is " + tickets5 + "PKR")
+var discountAmount = document.getElementById('discount-amount')
+var subtotal = document.getElementById('subtotal')
+var fnlPrice = document.getElementById('final-price')
+var DiscMsg = document.getElementById('discount-message')
 
-// Q9. Write a script to display multiplication table of any number in your browser.
-const number = parseInt(prompt("Enter A Number"))
-if (isNaN(number)) {
-    alert("Please enter a valid number.");
-} else {
-
-    for (let i = 0; i <= 10; i++) {
-        const writeTable = document.getElementById('Table')
-        writeTable.innerHTML += '<li class=tablestyle>' + number + 'x' + i + "=" + number * i + '</li>'
-
+function calculatePrice() {
+    var noOfTickets = parseInt(document.getElementById('tickets').value);
+    var total = ticketPkr * noOfTickets;
+    if (noOfTickets >= 5) {
+        var discount = total * 0.2
+        var discountedprice = total - discount;
+        discountAmount.innerText = `-${discount} PKR`
+        subtotal.innerText = `${total} PKR`
+        fnlPrice.innerText = `${discountedprice} PKR`
+         DiscMsg.style.visibility = "hidden";
+    } else {
+        subtotal.innerText = `${total} PKR`
+        fnlPrice.innerText = `${total} PKR`
+        DiscMsg.style.visibility = "visible";
     }
 }
+
+
+// Q9. Write a script to display multiplication table of any number in your browser.
+function table() {
+    const number = parseInt(document.getElementById('number').value);
+    const writeTable = document.getElementById('Table');
+    writeTable.innerHTML = '';
+    if (isNaN(number)) {
+        alert("Please enter a valid number.");
+    } else {
+        for (let i = 0; i <= 10; i++) {
+            writeTable.innerHTML += '<li class=tablestyle>' + number + ' x ' + i + " = " + (number * i) + '</li>';
+        }
+    }
+}
+
 // Q10. The Temperature Converter: It’s hot out!
 // Let’s make a converter based on the steps here.
 // a. Store a Celsius temperature into a variable. b.
@@ -96,20 +118,17 @@ function inputMssg(e) {
         console.log(intofarenhiet)
         const finput = document.getElementById('farenhietinput');
         finput.value = intofarenhiet
-
-
     }
 }
 function inputMsg(e) {
     if (e.keyCode === 13) {
-        const finput = document.getElementById('finput');
+        const finput = document.getElementById('farenhietinput');
         const farenhiet = finput.value;
 
         var intocelsius = (farenhiet - 32) * 5 / 9
         console.log(intocelsius)
         const celsiusinput = document.getElementById('celsiusinput');
         celsiusinput.value = intocelsius
-
     }
 }
 // Q11. The Age Calculator: Forgot how old someone is?
@@ -128,10 +147,13 @@ function calculateAndDisplayAge() {
     const resultDiv = document.getElementById('result');
     if (isNaN(birthYear) || birthYear <= 0 || birthYear > currentYear) {
         resultDiv.innerHTML = "Please enter a valid birth year.";
+        resultDiv.style.display ="block"
     } else {
+
         resultDiv.innerHTML = `
                 <p>Based on a birth year of ${birthYear} and the current year ${currentYear}:</p> <p>Their age could be: <strong>${age1}</strong> or <strong>${age2}</strong> (if their birthday hasn't occurred yet this year).</p>`
             ;
+             resultDiv.style.display ="block"
     }
 
 }
@@ -145,10 +167,13 @@ function compareinteger() {
     const compareDiv = document.getElementById('compare');
     if (int1 > int2) {
         compareDiv.innerHTML = int1 + " is the larger integer";
+        compareDiv.style.display ="block"
     } else if (int2 > int1) {
         compareDiv.innerHTML = int2 + " is the larger integer";
+        compareDiv.style.display ="block"
     } else {
         compareDiv.innerHTML = "Both integers are equal.";
+        compareDiv.style.display ="block"
     }
 
 }
@@ -166,6 +191,7 @@ function checkpassword() {
     if (pass1 === "" || pass2 === "") {
         errorDiv.innerHTML = "Please enter your password."
         errorDiv.style.color = "red"
+        errorDiv.style.display ="block"
         return
     }
 
@@ -173,6 +199,7 @@ function checkpassword() {
     if (pass1 !== pass2) {
         errorDiv.innerHTML = "Passwords do not match."
         errorDiv.style.color = "red"
+         errorDiv.style.display ="block"
         return
     }
 
@@ -185,12 +212,15 @@ function checkpassword() {
     if (pass1.length < 8) {
         errorDiv.innerHTML = "Password must be at least 8 characters long.";
         errorDiv.style.color = "red";
+         errorDiv.style.display ="block"
     } else if (!hasNumber || !hasSpecial || !hasUpper || !hasLower) {
         errorDiv.innerHTML = "Password must include uppercase, lowercase, number & special character.";
         errorDiv.style.color = "red";
+         errorDiv.style.display ="block"
     } else {
         errorDiv.innerHTML = "✅ Strong password! You're good to go.";
         errorDiv.style.color = "green";
+         errorDiv.style.display ="block"
     }
 }
 
@@ -217,7 +247,7 @@ const qualifications = [
 ];
 const listElement = document.getElementById("qualificationsList");
 for (let i = 0; i <= 7; i++) {
- const listItem = document.createElement("li")
- listItem.innerText = qualifications[i]
- listElement.appendChild(listItem)
+    const listItem = document.createElement("li")
+    listItem.innerText = qualifications[i]
+    listElement.appendChild(listItem)
 }
