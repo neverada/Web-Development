@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Q6. Declare 5 legal & 5 illegal variable names. Display this in your browser
+a) A heading stating “Rules for naming JS variables” b) Variable names can only contain ______,
+______, ______ and ______. For example $my_1stVariable c) Variables must begin with a
+______, ______ or _____. For example $name, _name or name d) Variable names are case
+_________ e) Variable names should not be JS _________ -->
+    <h1>Rules for naming JS variables</h1>
+
+    <p><b>Variable names can only contain</b>
+    <ul>
+        <li>Letters</li>
+        <li>Numbers</li>
+        <li>Underscore</li>
+        <li>Dollar Sign</li>
+        <li><i> For example: $my_1stVariable</i></li>
+    </ul>
+
+    <p> <b>Variables must begin with a </b>
+    <ul>
+        <li>Letters</li>
+        <li>Numbers</li>
+        <li>Underscore</li>
+        <li>Dollar Sign</li>
+        <li><i> For example: $name, _name, or name</i></li>
+    </ul>
+    </p>
+    <p>Variable names are case <b>sensitive</b>.</p>
+    <p>Variable names should not be JS <b>keywords</b>.</p>
+
+    <h2>Legal Variable Names:</h2>
+    <ul>
+        <li>myVariable</li>
+        <li>_userName</li>
+        <li>$prices</li>
+        <li>quantity123</li>
+        <li>firstName</li>
+    </ul>
+
+    <h2>Illegal Variable Names:</h2>
+    <ul>
+        <li>1stNumber (starts with a number)</li>
+        <li>my-variable (contains a hyphen)</li>
+        <li>alert (is a JavaScript keyword)</li>
+        <li>user Name (contains space)</li>
+        <li>#invalidChar (contains an illegal special character)</li>
+    </ul>
+    <div>
+        <h1>Movie Ticket Console</h1>
+        <p>
+            Price per ticket: <span>600 PKR</span>. <br>
+            A **20% discount** is applied automatically for 5 or more tickets!
+        </p>
+
+        <!-- Input Section -->
+        <div>
+            <label for="tickets">
+                Number of Tickets (Quantity)
+            </label>
+            <input type="number" id="tickets" min="1" value="1" oninput="calculatePrice()" placeholder="Enter 1 or more" />
+        </div>
+
+        <!-- Output Section -->
+        <div id="result-console">
+            <h2>
+                Order Summary
+            </h2>
+
+            <div>
+                <!-- Subtotal -->
+                <div>
+                    <span>Subtotal</span>
+                    <span id="subtotal">0 PKR</span>
+                </div>
+
+                <!-- Discount -->
+                <div id="discount-row">
+                    <span>Discount (20%)</span>
+                    <span id="discount-amount">-0 PKR</span>
+                </div>
+
+                <!-- Separator -->
+                <div>-------------------------</div>
+
+                <!-- Final Price -->
+                <div>
+                    <span>Total Price</span>
+                    <span id="final-price">600 PKR</span>
+                </div>
+
+                <!-- Discount Message -->
+                <p id="discount-message" style="visibility: hidden;">
+                    You need 5 tickets or more for a 20% discount!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <h1>Multiplication table</h1>
+    <ul id="Table">
+
+    </ul>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
+
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="delChar()">DEL</button>
+            <button onclick="appendChar('%')">%</button>
+            <button class="operator" onclick="appendChar('/')">÷</button>
+
+            <button onclick="appendChar('7')">7</button>
+            <button onclick="appendChar('8')">8</button>
+            <button onclick="appendChar('9')">9</button>
+            <button class="operator" onclick="appendChar('*')">×</button>
+
+            <button onclick="appendChar('4')">4</button>
+            <button onclick="appendChar('5')">5</button>
+            <button onclick="appendChar('6')">6</button>
+            <button class="operator" onclick="appendChar('-')">−</button>
+
+            <button onclick="appendChar('1')">1</button>
+            <button onclick="appendChar('2')">2</button>
+            <button onclick="appendChar('3')">3</button>
+            <button class="operator" onclick="appendChar('+')">+</button>
+
+            <button onclick="appendChar('0')">0</button>
+            <button onclick="appendChar('.')">.</button>
+            <button class="operator" style="grid-column: span 2;" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <h1>Temperature Converter</h1>
+    <div style="display: flex;">
+        <input type="number" placeholder="Temperature in celsius" onkeypress="inputMssg(event)" id="celsiusinput">
+        <label for="celsiusinput" style="display: flex;">
+            <h5>°C</h5>
+        </label><br>
+    </div>
+    <div style="display: flex;">
+        <input type="number" placeholder="Temperature in farenhiet" onkeypress="inputMsg(event)" id="farenhietinput">
+        <label for="farenhiet" style="display: inline;">
+            <h5>°F</h5>
+        </label><br>
+    </div>
+
+    <h1>Age Calculator</h1>
+    <p>Enter the birth year to calculate the age.</p>
+    <label for="birthYearInput">Birth Year:</label>
+    <input type="number" id="birthYearInput" min="1900" max="2025" value="2000">
+    <button onclick="calculateAndDisplayAge()">Calculate Age</button>
+    <div id="result"></div>
+
+    <h1>Integer Comparision</h1>
+    <p>Enter the integers to compare them.</p>
+    <label for="int1">Integer 1</label>
+    <input type="number" id="int1" value="20">
+    <label for="int2">Integer 1</label>
+    <input type="number" id="int2" value="30">
+    <button onclick="compareinteger()">Compare Integers</button>
+    <div id="compare" style="font-size: 1.2rem ; font-weight: bold;"></div>
+
+    <h1>Password Simulator</h1>
+    <p>Create Strong Password</p>
+    <div>
+        <label for="passwordInput">Enter Password:</label>
+        <input type="password" id="passwordInput" placeholder="Enter your password">
+        <input type="password" id="confirm" placeholder="Confirm Password">
+        <button onclick="checkpassword()">Submit</button>
+        <div id="passwordMessage" style="margin-top: 10px; color: red; font-weight: bold;"></div>
+    </div>
+    <h1>Available Education Qualifications in Pakistan</h1>
+    <ul id="qualificationsList"></ul>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
