@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Todo App — Template</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="theme-light">
+    <div class="app-container">
+       
+        <header class="topbar">
+            <div class="brand">
+                <div class="logo"><i class="bi bi-list-check"></i></div>
+                <div>
+                    <div>My Todos</div>
+                    <small class="text-muted">clean — fast — focused</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-end">
+                <!-- Theme selector -->
+                <div class="dropdown theme-select">
+                    <button class="btn btn-sm btn-light dropdown-toggle" id="themeDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">Theme</button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="themeDropdown">
+                        <li><button class="dropdown-item" data-theme="theme-rainbow">🌈 Rainbow</button></li>
+                        <li><button class="dropdown-item" data-theme="theme-light">☁️ Light (Sky Blue)</button></li>
+                        <li><button class="dropdown-item" data-theme="theme-dark">🌑 Dark (Navy)</button></li>
+                        <li><button class="dropdown-item" data-theme="theme-glass">🪟 Glass</button></li>
+                    </ul>
+                </div>
+
+                <!-- Plus icon adds a new column (JS hook: #addColumnBtn) -->
+                <button id="addColumnBtn" class="add-column-btn" title="Add column">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="board container-fluid">
+            <!-- Columns container (JS will append new .todo-column nodes here) -->
+            <div id="columnsWrapper" class="columns">
+
+
+                <div class="todo-column" data-column-id="1">
+                    <div class="col-header">
+                        <div class="col-title" id="To-do-Title">To do</div>
+                        <div class="col-actions">
+                            <button class="btn btn-sm  btn-remove-col" title="Remove column"><i
+                                    class="bi bi-x"></i></button>
+                        </div>
+
+
+                    </div>
+                    <div class="progress-bar-container mb-3">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="task-list" data-list-id="1">
+                        <div class="todo-item justify-content-between" draggable="true" data-list-id="1">
+                            <div class="d-flex gap-1">
+                                <span class="circle"></span>
+                                <span class="task-text ">Sample task</span>
+                            </div>
+
+
+                            <div>
+                                <button class="btn-edit-task">✏️</button>
+                                <button class="btn-remove-task">🗑️</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Add task input (JS hook: .task-input) -->
+                    <div class="mt-2 d-flex gap-2">
+                        <input class="form-control form-control-sm task-input" placeholder="Add task...">
+                        <button class="btn btn-sm btn-primary btn-add-task">Add</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap 5 JS bundle (Popper included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+    <!--
+    NOTES FOR YOUR JS (do this in your own JS file):
+    - To add a column: clone the .todo-column (template) or create elements, assign a unique data-column-id and data-list-id, then append to #columnsWrapper. Keep event listeners attached (or use event delegation).
+    - Theme switching: add/remove classes on <body> such as 'theme-rainbow', 'theme-dark', etc. Only one theme class at a time; store selection in localStorage if you want persistence.
+    - Drag & drop hooks (basic idea):
+        element.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', taskId); element.classList.add('dragging'); });
+        listElement.addEventListener('dragover', e => { e.preventDefault(); /* show drop target */ });
+        listElement.addEventListener('drop', e => { e.preventDefault(); const id = e.dataTransfer.getData('text/plain'); moveTaskToList(id, targetListId); });
+      Use 'dragenter'/'dragleave' to toggle .drop-target.
+    - To allow reordering inside a list, on 'dragover' compute nearest sibling by Y coordinate and insertBefore accordingly.
+    - Keep data attributes: data-task-id and data-list-id so your JS can find and update objects.
+    - Example helper names: addColumn(), removeColumn(el), addTask(listId, text), removeTask(taskId), moveTask(taskId, toListId, position)
+  -->
+</body>
+
+</html>
