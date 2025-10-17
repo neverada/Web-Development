@@ -1,456 +1,574 @@
   :root {
-      --bg: #f7f9fc;
-      --card-bg: #ffffff;
-      --text: #111827;
-      --accent: #0ea5e9;
-      --glass-bg: rgba(255, 255, 255, 0.12);
+    --bg: #f7f9fc;
+    --card-bg: #ffffff;
+    --text: #111827;
+    --accent: #0ea5e9;
+    --glass-bg: rgba(255, 255, 255, 0.12);
   }
 
   body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, Segoe UI, Arial;
-      margin: 0;
-      padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, Segoe UI, Arial;
+    margin: 0;
+    padding: 0;
   }
 
   .app-container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+  }
+
+  .navbar {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  
   }
 
   .topbar {
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.6), transparent)
-  }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--bg, #fff);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  } 
 
-  .brand {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      font-weight: 600
-  }
 
   .brand .logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent);
-      color: white
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: var(--accent, #4f46e5);
   }
 
+  .text-muted {
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .brand small {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    display: block;
+    line-height: 1.2;
+  }
+  .theme-select{
+    width: 40px !important;
+  }
+  .dropdown{
+    width: 40px !important;
+  }
+  /* Theme dropdown */
+  .theme-select .btn {
+    background: var(--accent, #4f46e5);
+    color: white;
+    border: none;
+    padding: .4rem .8rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.2s ease;
+    width: fit-content;
+  }
+
+  .theme-select .btn:hover {
+    opacity: 0.85;
+  }
+
+  /* Dropdown menu styling */
+  .theme-select .dropdown-menu {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .theme-select .dropdown-item {
+    transition: background 0.2s ease;
+  }
+
+  /* Styling for the Add Column button */
+  /* .add-column-btn {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(13, 110, 253, 0.2);
+    color: white;
+   
+  }
+
+  .add-column-btn:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+    box-shadow: 0 6px 8px rgba(13, 110, 253, 0.3);
+  } */
+
   .board {
-      padding: 1rem;
-      flex: 1;
-      overflow: auto
+    padding: 1rem;
+    flex: 1;
+    overflow: auto
   }
 
   .columns {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start
   }
 
   .todo-column {
-      width: 280px;
-      min-width: 230px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 12px;
-      box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06)
+    width: 280px;
+    min-width: 230px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06)
   }
 
   .col-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: .5rem
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .5rem
   }
 
   .col-title {
-      font-weight: 600
+    font-weight: 600
   }
 
   .task-list {
-      min-height: 60px;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem
   }
 
   .todo-item {
-      padding: 8px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent);
-      cursor: grab;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent);
+    cursor: grab;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.3s ease;
   }
 
   /* Drag & drop visual helpers */
   .dragging {
-      opacity: .4
+    opacity: .4
   }
 
   .drop-target {
-      outline: 2px dashed rgba(0, 0, 0, 0.08);
-      outline-offset: 6px
+    outline: 2px dashed rgba(0, 0, 0, 0.08);
+    outline-offset: 6px
   }
 
   /* --- Theme variants (toggle by adding class to <body>) --- */
   /* Rainbow theme (gradient) */
   .theme-rainbow {
-      --bg: linear-gradient(135deg, #ff8a00, #e52e71, #7b2ff7);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --text: #0b1220;
-      --accent: #e52e71
+    --bg: linear-gradient(135deg, #ff8a00, #e52e71, #7b2ff7);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text: #0b1220;
+    --accent: #e52e71
   }
 
   /* Light (sky blue) */
   .theme-light {
-      --bg: #eaf8ff;
-      --card-bg: #ffffff;
-      --text: #0b1220;
-      --accent: #38bdf8
+    --bg: #eaf8ff;
+    --card-bg: #ffffff;
+    --text: #0b1220;
+    --accent: #38bdf8
   }
 
   /* Dark (navy blue) */
   .theme-dark {
-      --bg: #0B1021;
-      --card-bg: #131A33;
-      --text: #ffffff;
-      --accent: #20294F;
+    --bg: #0B1021;
+    --card-bg: #131A33;
+    --text: #ffffff;
+    --accent: #20294F;
   }
-  .theme-dark .circle{
+
+  .theme-dark .circle {
     border-color: azure !important;
   }
-  
+
 
   .theme-dark .topbar {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      background: linear-gradient(0deg, #20294fa2, transparent)
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(0deg, #20294fa2, transparent);
+    color: azure !important;
+    
   }
 
   .theme-dark .text-muted {
-      color: azure !important;
+    color: azure !important;
+  }
+  .theme-dark .brand div {
+    color: #ffffff !important;
   }
 
   .theme-dark .add-column-btn {
-      border: 1px dashed azure;
-      background: transparent
+    border: 1px dashed azure;
+    background: transparent
   }
 
-  .theme-dark  .bi {
-      color: #ffffff !important;
+  .theme-dark .bi {
+    color: #ffffff !important;
   }
 
   .theme-dark .todo-item {
-      background: var(--accent);
-      color: azure;
-      cursor: grab;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+    background: var(--accent);
+    color: azure;
+    cursor: grab;
+    border: 1px solid rgba(0, 0, 0, 0.04);
   }
-  .theme-dark .task-input{
+
+  .theme-dark .task-input {
     background-color: var(--accent);
-    color:#ffffff;
+    color: #ffffff;
     outline: none;
     border: none !important;
   }
-.theme-dark .task-input::placeholder{
+
+  .theme-dark .task-input::placeholder {
     color: azure !important;
-}
+  }
 
   /* Glassmorphism */
   .theme-glass {
-      --bg: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
-      --card-bg: rgba(255, 255, 255, 0.08);
-      --text: #0b1220;
-      --accent: #7c3aed
+    --bg: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --text: #0b1220;
+    --accent: #7c3aed
   }
 
   .theme-glass .topbar {
-      backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 
   .theme-glass .todo-column {
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.08)
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.08)
+  }
+  .theme-glass .add-column-btn {
+    border: 1px dashed rgba(255, 255, 255, 0.6);
+    background: var(--accent)
   }
 
   /* Base bar */
   .progress-bar-container {
-      width: 100%;
-      height: 10px;
-      border-radius: 15px;
-      overflow: hidden;
-      margin-top: 8px;
+    width: 100%;
+    height: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 8px;
   }
 
   .progress-bar {
-      height: 100%;
-      width: 0%;
-      
-      border-radius: 15px;
-      transition: width 0.4s ease, background 0.4s ease;
-      /* transition: width 0.4s ease-in-out;  */
+    height: 100%;
+    width: 0%;
+
+    border-radius: 15px;
+    transition: width 0.4s ease, background 0.4s ease;
+    /* transition: width 0.4s ease-in-out;  */
   }
 
   /* 🌈 Rainbow */
   .theme-rainbow .progress-bar-container {
-      background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.678);
   }
 
   .theme-rainbow .progress-bar {
-      background: linear-gradient(90deg,
-              #ff0057,
-              #ff9a00,
-              #fffb00,
-              #48ff00,
-              #00ffd5,
-              #002bff,
-              #7a00ff,
-              #ff00c8);
-      background-size: 300%;
-      animation: rainbowFlow 4s linear infinite;
+    background: linear-gradient(90deg,
+        #ff0057,
+        #ff9a00,
+        #fffb00,
+        #48ff00,
+        #00ffd5,
+        #002bff,
+        #7a00ff,
+        #ff00c8);
+    background-size: 300%;
+    animation: rainbowFlow 4s linear infinite;
   }
 
   /* 🧊 Glassmorphism */
   .theme-glass .progress-bar-container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.884);
+     background: #e3f2fd;
   }
 
   .theme-glass .progress-bar {
-      background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
-      box-shadow: 0 0 10px rgba(200, 200, 255, 0.3);
+    background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+    box-shadow: 0 0 10px rgba(200, 200, 255, 0.3);
   }
 
   /* ☀️ Light */
   .theme-light .progress-bar-container {
-      background: #e3f2fd;
+    background: #e3f2fd;
   }
 
   .theme-light .progress-bar {
-      background: #64b5f6;
+    background: #64b5f6;
   }
 
   /* 🌙 Dark */
   .theme-dark .progress-bar-container {
-      background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   .theme-dark .progress-bar {
-      background: linear-gradient(90deg, #1565c0, #0d47a1);
+    background: linear-gradient(90deg, #1565c0, #0d47a1);
   }
 
   @keyframes rainbowFlow {
-      0% {
-          background-position: 0% 50%;
-      }
+    0% {
+      background-position: 0% 50%;
+    }
 
-      100% {
-          background-position: 100% 50%;
-      }
+    100% {
+      background-position: 100% 50%;
+    }
   }
 
   /* check todo */
- 
-/* ---- Task layout (if not already set) ---- */
+
+  /* ---- Task layout (if not already set) ---- */
 
 
-/* circle (hollow by default) */
-.circle{
+  /* circle (hollow by default) */
+  .circle {
     cursor: pointer;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  border:2px solid var(--accent, #0ea5e9);
-  position:relative;
-  flex:0 0 18px;
-  transition: transform .22s ease, border-color .22s ease;
-  display:inline-block;
-  box-sizing:content-box;
-}
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--accent, #0ea5e9);
+    position: relative;
+    flex: 0 0 18px;
+    transition: transform .22s ease, border-color .22s ease;
+    display: inline-block;
+    box-sizing: content-box;
+  }
 
-/* inside fill + checkmark (hidden by default) */
-.circle::after{
-  content:"";
-  position:absolute;
-  inset:3px;              /* smaller filled circle inside border */
-  border-radius:50%;
-  background:var(--accent, #0ea5e9);
-  transform: scale(0);
-  opacity:0;
-  transition: transform .25s cubic-bezier(.2,.9,.3,1), opacity .18s ease;
-  pointer-events:none;
-}
+  /* inside fill + checkmark (hidden by default) */
+  .circle::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    /* smaller filled circle inside border */
+    border-radius: 50%;
+    background: var(--accent, #0ea5e9);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .25s cubic-bezier(.2, .9, .3, 1), opacity .18s ease;
+    pointer-events: none;
+  }
 
-/* optional checkmark symbol */
-.circle::before{
-  content:"✓";
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform: translate(-50%,-50%) scale(.9);
-  color:white;
-  font-size:11px;
-  opacity:0;
-  transition: opacity .18s ease .06s;
-  pointer-events:none;
-}
+  /* optional checkmark symbol */
+  .circle::before {
+    content: "✓";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(.9);
+    color: white;
+    font-size: 11px;
+    opacity: 0;
+    transition: opacity .18s ease .06s;
+    pointer-events: none;
+  }
 
-/* animation when checked (circle fills) */
-.circle.checked{
-  transform: scale(1.05);
-  border-color: transparent; /* hide border so fill looks clean */
-}
-.circle.checked::after{
-  transform: scale(1);
-  opacity:1;
-}
-.circle.checked::before{
-  opacity:1;
-}
+  /* animation when checked (circle fills) */
+  .circle.checked {
+    transform: scale(1.05);
+    border-color: transparent;
+    /* hide border so fill looks clean */
+  }
 
-/* ---- text + animated strike ---- */
-.task-text{
-  position:relative;
-  transition: color .18s ease, opacity .18s ease;
-  cursor: pointer;
-}
+  .circle.checked::after {
+    transform: scale(1);
+    opacity: 1;
+  }
 
-/* the strike line is a pseudo element whose width animates */
-.task-text::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:50%;
-  height:2px;
-  background:currentColor;      /* uses text color, theme-aware */
-  transform:translateY(-50%);
-  width:0%;
-  opacity:0;
-  transition: width .28s ease, opacity .18s ease;
-}
+  .circle.checked::before {
+    opacity: 1;
+  }
 
-/* when checked: show strike and fade text slightly */
-.task-text.checked{
-  opacity:.65;
-  color: rgba(0,0,0,0.55); /* default — theme overrides below */
-}
-.task-text.checked::after{
-  width:100%;
-  opacity:1;
-}
+  /* ---- text + animated strike ---- */
+  .task-text {
+    position: relative;
+    transition: color .18s ease, opacity .18s ease;
+    cursor: pointer;
+  }
 
-/* --- Theme-specific tweaks (so colors match) --- */
-.theme-light .task-text.checked { color: #2b5d9f; }   /* bluish strike */
-.theme-dark  .task-text.checked { color: #bcd3ff; }   /* light color for contrast */
-.theme-glass .task-text.checked { color: inherit; }
-.theme-rainbow .task-text.checked { color: inherit; }    /* for better contrast over gradient */
+  /* the strike line is a pseudo element whose width animates */
+  .task-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 2px;
+    background: currentColor;
+    /* uses text color, theme-aware */
+    transform: translateY(-50%);
+    width: 0%;
+    opacity: 0;
+    transition: width .28s ease, opacity .18s ease;
+  }
+
+  /* when checked: show strike and fade text slightly */
+  .task-text.checked {
+    opacity: .65;
+    color: rgba(0, 0, 0, 0.55);
+    /* default — theme overrides below */
+  }
+
+  .task-text.checked::after {
+    width: 100%;
+    opacity: 1;
+  }
+
+  /* --- Theme-specific tweaks (so colors match) --- */
+  .theme-light .task-text.checked {
+    color: #2b5d9f;
+  }
+
+  /* bluish strike */
+  .theme-dark .task-text.checked {
+    color: #bcd3ff;
+  }
+
+  /* light color for contrast */
+  .theme-glass .task-text.checked {
+    color: inherit;
+  }
+
+  .theme-rainbow .task-text.checked {
+    color: inherit;
+  }
+
+  /* for better contrast over gradient */
 
   /* small UI niceties */
   .add-column-btn {
-      height: 40px;
-      width: 40px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px dashed rgba(0, 0, 0, 0.06);
-      background: transparent
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(0, 0, 0, 0.06);
+    background: transparent
   }
 
   .theme-select {
-      min-width: 210px
+    min-width: 210px
   }
 
-  
+
   .btn:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12)
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12)
   }
-/* Base styles for both buttons */
-.btn-edit-task,
-.btn-remove-task {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
 
-/* Hover: subtle scale-up and brighter emoji */
-.btn-edit-task:hover,
-.btn-remove-task:hover {
-  transform: scale(1.2);
-  opacity: 0.8;
-}
+  /* Base styles for both buttons */
+  .btn-edit-task,
+  .btn-remove-task {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
 
-/* Click: slight press effect */
-.btn-edit-task:active,
-.btn-remove-task:active {
-  transform: scale(0.9);
-  opacity: 0.6;
-}
-/* edit task text */
-.task-text.editing {
-  outline: none; 
-  padding: 4px 6px; 
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
+  /* Hover: subtle scale-up and brighter emoji */
+  .btn-edit-task:hover,
+  .btn-remove-task:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 
-/* ✨ Rainbow theme */
-.theme-rainbow .task-text.editing {
-  background: linear-gradient(90deg, #ff8a00, #e52e71);
-  /* -webkit-background-clip: text; */
-  color: transparent;
-  border-bottom: 2px solid #e52e71;
-}
+  /* Click: slight press effect */
+  .btn-edit-task:active,
+  .btn-remove-task:active {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
 
-/* 🌫️ Glassmorphism */
-.theme-glass .task-text.editing {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: inherit;
-}
+  /* edit task text */
+  .task-text.editing {
+    outline: none;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
 
-/* 💡 Light theme */
-.theme-light .task-text.editing {
-  background: #f0f8ff;
-  border: 1px solid #b0c4de;
-  color: #1c1c1c;
-}
+  /* ✨ Rainbow theme */
+  .theme-rainbow .task-text.editing {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    /* -webkit-background-clip: text; */
+    color: transparent;
+    border-bottom: 2px solid #e52e71;
+  }
 
-/* 🌙 Dark theme */
-.theme-dark .task-text.editing {
-  background: #1f2a44;
-  border: 1px solid #3b4d75;
-  color: #f5f7fa;
-}
+  /* 🌫️ Glassmorphism */
+  .theme-glass .task-text.editing {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: inherit;
+  }
+
+  /* 💡 Light theme */
+  .theme-light .task-text.editing {
+    background: #f0f8ff;
+    border: 1px solid #b0c4de;
+    color: #1c1c1c;
+  }
+
+  /* 🌙 Dark theme */
+  .theme-dark .task-text.editing {
+    background: #1f2a44;
+    border: 1px solid #3b4d75;
+    color: #f5f7fa;
+  }
+
+  .todo-item.dragging {
+    opacity: 0.6;
+    transform: scale(1.02);
+    cursor: grabbing;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
 
 
   /* Small screens: columns wrap */
-  @media (max-width:991px) {
-      .columns {
-          flex-wrap: wrap
-      }
+  @media (max-width:800px) {
+    .columns {
+      flex-wrap: wrap
+    }
 
-      .todo-column {
-          width: 100%
-      }
+    .todo-column {
+      width: 100%
+    }
+  }
+
+  /* 📱 Responsive fix for mobile */
+  @media (max-width: 600px) {
+    .topbar {
+      flex-direction: column;
+      height: auto;
+      padding: .5rem;
+      gap: 0rem;
+    }
+
+    .brand small {
+      display: none;
+    }
+
+    .topbar .d-flex {
+      width: 100%;
+      justify-content: space-between;
+    }
   }

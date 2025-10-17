@@ -4,6 +4,75 @@ const themebtn = document.querySelectorAll('.dropdown-item');
 themebtn.forEach(btn => btn.addEventListener("click", changeTheme));
 // global var drag drop
 let draggedItem = null;
+// Drag & drop for todo items (delegated handlers)
+document.addEventListener("dragstart", (e) => {
+    const item = e.target.closest(".todo-item");
+    if (!item) return;
+    draggedItem = item;
+    item.classList.add("dragging");
+    e.dataTransfer.effectAllowed = "move";
+    try { e.dataTransfer.setData("text/plain", ""); } catch {}
+});
+
+document.addEventListener("dragend", () => {
+    if (draggedItem) {
+        draggedItem.classList.remove("dragging");
+        draggedItem = null;
+        document.querySelectorAll(".task-list").forEach(updateProgressForList);
+    }
+});
+
+document.addEventListener("dragover", (e) => {
+    const list = e.target.closest(".task-list");
+    if (!list) return;
+    e.preventDefault(); // allow drop
+    const after = getDragAfterElement(list, e.clientY);
+    if (!draggedItem) return;
+    if (after == null) {
+        list.appendChild(draggedItem);
+    } else {
+        list.insertBefore(draggedItem, after);
+    }
+});
+
+document.addEventListener("drop", (e) => {
+    const list = e.target.closest(".task-list");
+    if (!list) return;
+    e.preventDefault();
+    // ensure item is in the list after drop
+    if (draggedItem && draggedItem.parentNode !== list) {
+        list.appendChild(draggedItem);
+    }
+    document.querySelectorAll(".task-list").forEach(updateProgressForList);
+});
+
+// helper to find insertion point
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll(".todo-item:not(.dragging)")];
+    let closest = { offset: Number.NEGATIVE_INFINITY, element: null };
+    for (const child of draggableElements) {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+            closest = { offset, element: child };
+        }
+    }
+    return closest.element;
+}
+
+// update progress bar for one task-list
+function updateProgressForList(list) {
+    const todoItems = list.querySelectorAll(".todo-item");
+    const total = todoItems.length;
+    let done = 0;
+    todoItems.forEach(item => {
+        const circle = item.querySelector(".circle");
+        if (circle && circle.classList.contains("checked")) done++;
+    });
+    const percentage = total === 0 ? 0 : (done / total) * 100;
+    const percentBar = list.closest(".todo-column")?.querySelector(".progress-bar");
+    if (percentBar) percentBar.style.width = percentage + "%";
+}
 
 function changeTheme(event) {
 
@@ -199,7 +268,7 @@ function addTask(input, addBtn) {
        
                             <div class="d-flex gap-1">
                                 <span class="circle"></span>
-                                <span class="task-text ">Sample task</span>
+                                <span class="task-text ">${input.value.trim()}</span>
                             </div>
 
 
