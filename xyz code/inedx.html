@@ -1,53 +1,747 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NoCramFScFbise</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantu - E-commerce Template</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3bb77e;
+            --secondary-color: #ffba43;
+            --dark-color: #253d4e;
+            --light-color: #f2f3f4;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2a9e67;
+            border-color: #2a9e67;
+        }
+        
+        .category-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-sidebar.hidden {
+            transform: translateX(-100%);
+        }
+        
+        .category-sidebar .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .category-sidebar .sidebar-title {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+        }
+        
+        .category-sidebar .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        .category-sidebar .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .category-sidebar .category-item {
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .category-sidebar .category-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .category-sidebar .category-link:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .category-sidebar .category-icon {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .category-sidebar .sub-category {
+            list-style: none;
+            padding-left: 20px;
+            margin: 0;
+            display: none;
+        }
+        
+        .category-sidebar .category-item.active .sub-category {
+            display: block;
+        }
+        
+        .main-content {
+            transition: margin-left 0.3s ease;
+        }
+        
+        .main-content.sidebar-open {
+            margin-left: 280px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .product-old-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 5px;
+        }
+        
+        .badge-discount {
+            background-color: var(--secondary-color);
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        
+        .trending-badge {
+            background-color: #ff6b6b;
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #bdc3c7;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .category-sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .category-sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+            }
+            
+            .toggle-sidebar {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .category-sidebar {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 280px;
+            }
+            
+            .toggle-sidebar {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">NoCram<span>FScFbise</span></div>
-    <nav class="nav">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Subjects</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Category Sidebar -->
+    <div class="category-sidebar" id="categorySidebar">
+        <div class="sidebar-header">
+            <h3 class="sidebar-title">Categories</h3>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="category-list">
+            <li class="category-item active">
+                <a href="#" class="category-link">
+                    <span class="category-icon"><i class="fas fa-tshirt"></i></span>
+                    <span>Fashion</span>
+                    <span class="ms-auto"><i class="fas fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-category">
+                    <li><a href="#" class="category-link">Men's Fashion</a></li>
+                    <li><a href="#" class="category-link">Women's Fashion</a></li>
+                    <li><a href="#" class="category-link">Kids' Fashion</a></li>
+                    <li><a href="#" class="category-link">Accessories</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-link">
+                    <span class="category-icon"><i class="fas fa-mobile-alt"></i></span>
+                    <span>Electronics</span>
+                    <span class="ms-auto"><i class="fas fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-category">
+                    <li><a href="#" class="category-link">Smartphones</a></li>
+                    <li><a href="#" class="category-link">Laptops</a></li>
+                    <li><a href="#" class="category-link">Tablets</a></li>
+                    <li><a href="#" class="category-link">Cameras</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-link">
+                    <span class="category-icon"><i class="fas fa-home"></i></span>
+                    <span>Home & Garden</span>
+                    <span class="ms-auto"><i class="fas fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-category">
+                    <li><a href="#" class="category-link">Furniture</a></li>
+                    <li><a href="#" class="category-link">Kitchen</a></li>
+                    <li><a href="#" class="category-link">Bedding</a></li>
+                    <li><a href="#" class="category-link">Home Decor</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-link">
+                    <span class="category-icon"><i class="fas fa-heartbeat"></i></span>
+                    <span>Health & Beauty</span>
+                    <span class="ms-auto"><i class="fas fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-category">
+                    <li><a href="#" class="category-link">Skincare</a></li>
+                    <li><a href="#" class="category-link">Makeup</a></li>
+                    <li><a href="#" class="category-link">Hair Care</a></li>
+                    <li><a href="#" class="category-link">Fragrance</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-link">
+                    <span class="category-icon"><i class="fas fa-futbol"></i></span>
+                    <span>Sports & Outdoors</span>
+                    <span class="ms-auto"><i class="fas fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-category">
+                    <li><a href="#" class="category-link">Exercise & Fitness</a></li>
+                    <li><a href="#" class="category-link">Outdoor Recreation</a></li>
+                    <li><a href="#" class="category-link">Team Sports</a></li>
+                    <li><a href="#" class="category-link">Sports Apparel</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-link">
+                    <span class="category-icon"><i class="fas fa-car"></i></span>
+                    <span>Automotive</span>
+                    <span class="ms-auto"><i class="fas fa-chevron-down"></i></span>
+                </a>
+                <ul class="sub-category">
+                    <li><a href="#" class="category-link">Car Parts</a></li>
+                    <li><a href="#" class="category-link">Car Care</a></li>
+                    <li><a href="#" class="category-link">Motorcycle</a></li>
+                    <li><a href="#" class="category-link">Tools & Equipment</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Study Smart, Not Hard</h1>
-      <p>Your personal study portal for FSc & ICS students.</p>
-      <a href="#" class="btn">Get Started</a>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container">
+                <button class="btn btn-outline-primary toggle-sidebar me-3" id="toggleSidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#">Mantu</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex align-items-center">
+                        <div class="input-group me-3">
+                            <input type="text" class="form-control" placeholder="Search products...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="dropdown me-3">
+                            <a href="#" class="text-dark position-relative" data-bs-toggle="dropdown">
+                                <i class="fas fa-shopping-cart fa-lg"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    3
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="px-3 py-2">
+                                    <p class="mb-1">3 items in cart</p>
+                                    <div class="d-grid">
+                                        <a href="#" class="btn btn-primary btn-sm">View Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dropdown">
+                            <a href="#" class="text-dark" data-bs-toggle="dropdown">
+                                <i class="fas fa-user fa-lg"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="#">Orders</a>
+                                <a class="dropdown-item" href="#">Wishlist</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-  <!-- Features -->
-  <section class="features">
-    <div class="feature">
-      <h2>📘 Subject Notes</h2>
-      <p>Organized notes for every chapter.</p>
-    </div>
-    <div class="feature">
-      <h2>📝 Past Papers</h2>
-      <p>Practice with solved & unsolved past papers.</p>
-    </div>
-    <div class="feature">
-      <h2>⚡ Quick Revision</h2>
-      <p>One-stop revision sheets for exam prep.</p>
-    </div>
-  </section>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold mb-4">Summer Collection 2023</h1>
+                        <p class="lead mb-4">Discover the latest trends in fashion with our exclusive summer collection. Up to 50% off on selected items.</p>
+                        <a href="#" class="btn btn-primary btn-lg">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 NoCramFScFbise. All rights reserved.</p>
-  </footer>
+        <!-- Featured Categories -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title">Featured Categories</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" class="card-img-top" alt="Men's Fashion">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Men's Fashion</h5>
+                                <a href="#" class="btn btn-outline-primary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Women's Fashion">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Women's Fashion</h5>
+                                <a href="#" class="btn btn-outline-primary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1581338834647-b0fb40704e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Electronics">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Electronics</h5>
+                                <a href="#" class="btn btn-outline-primary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Products -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title">Trending Products</h2>
+                <div class="row">
+                    <!-- Product 1 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card product-card">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top product-img" alt="Product 1">
+                                <span class="badge-discount">-20%</span>
+                                <span class="trending-badge">Trending</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="product-title">Men's Casual Shirt</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="product-price">$29.99</span>
+                                        <span class="product-old-price">$37.99</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card product-card">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=1342&q=80" class="card-img-top product-img" alt="Product 2">
+                                <span class="trending-badge">Trending</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="product-title">Women's Summer Dress</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="product-price">$39.99</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card product-card">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top product-img" alt="Product 3">
+                                <span class="badge-discount">-15%</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="product-title">Wireless Headphones</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="product-price">$79.99</span>
+                                        <span class="product-old-price">$94.99</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card product-card">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top product-img" alt="Product 4">
+                                <span class="trending-badge">Trending</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="product-title">Running Shoes</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="product-price">$59.99</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Offers -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title">Special Offers</h2>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card border-0 bg-warning text-white overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-6">
+                                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid h-100" style="object-fit: cover;" alt="Special Offer 1">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body p-4 d-flex flex-column h-100">
+                                        <h3 class="card-title">Summer Sale</h3>
+                                        <p class="card-text flex-grow-1">Up to 50% off on all summer collection items. Limited time offer!</p>
+                                        <a href="#" class="btn btn-dark align-self-start">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card border-0 bg-primary text-white overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-6">
+                                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid h-100" style="object-fit: cover;" alt="Special Offer 2">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body p-4 d-flex flex-column h-100">
+                                        <h3 class="card-title">New Arrivals</h3>
+                                        <p class="card-text flex-grow-1">Check out our latest collection of fashion and accessories.</p>
+                                        <a href="#" class="btn btn-light align-self-start">Explore</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5>Mantu</h5>
+                        <p>Your one-stop destination for all your shopping needs. Quality products at affordable prices.</p>
+                        <div class="social-icons mt-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5>Quick Links</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Shop</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5>Customer Service</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">Shipping Policy</a></li>
+                            <li><a href="#">Returns & Refunds</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Track Your Order</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5>Contact Info</h5>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Fashion Street, New York</li>
+                            <li><i class="fas fa-phone me-2"></i> +1 234 567 8900</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@mantu.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Mantu. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle sidebar on mobile
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            document.getElementById('categorySidebar').classList.toggle('show');
+        });
+        
+        // Close sidebar on mobile
+        document.getElementById('closeSidebar').addEventListener('click', function() {
+            document.getElementById('categorySidebar').classList.remove('show');
+        });
+        
+        // Toggle subcategories
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (e.target.closest('.category-link')) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Adjust main content margin based on sidebar state
+        function adjustContentMargin() {
+            const sidebar = document.getElementById('categorySidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (window.innerWidth >= 992) {
+                mainContent.classList.add('sidebar-open');
+            } else {
+                mainContent.classList.remove('sidebar-open');
+            }
+        }
+        
+        // Initialize on load and resize
+        window.addEventListener('load', adjustContentMargin);
+        window.addEventListener('resize', adjustContentMargin);
+    </script>
 </body>
 </html>

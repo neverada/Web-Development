@@ -1,0 +1,895 @@
+:root {
+     --bg-color: #f1f4f7;
+     --bg-secondary: #e1e5e9;
+    
+ }
+body {
+     overflow-x: hidden;
+ }
+
+ /*  Mobile Top Bar Styling */
+ .mobile-top-bar {
+     padding: 15px;
+     background: #fff;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+ }
+
+ /*Mobile Bottom Fixed Nav Styling */
+ .mobile-bottom-nav {
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background: #fff;
+     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+     z-index: 1030;
+     padding: 10px 0;
+ }
+
+ .mobile-bottom-nav .nav-item {
+     text-align: center;
+     flex-grow: 1;
+ }
+
+ .mobile-bottom-nav .nav-link {
+     color: #333;
+     font-size: 1.2rem;
+     position: relative;
+ }
+
+ /* Red badge for mobile bottom nav */
+ .mobile-badge {
+     position: absolute;
+     top: 0;
+     right: 25%;
+     font-size: 0.6rem;
+     padding: 3px 5px;
+ }
+
+
+
+ .small-link {
+     font-size: 0.9rem;
+     transition: all 0.2s;
+ }
+
+ /* Custom hover */
+ .small-link:hover {
+     background-color: transparent;
+     color: var(--bs-primary) !important;
+     padding-left: 10px !important;
+ }
+
+ .mantu-mega-menu h6 {
+     border-bottom: 1px solid #eee;
+     padding-bottom: 10px;
+ }
+
+ /* Mantu-style Offcanvas Menu */
+ .mantu-offcanvas {
+     background: #181e2a;
+     width: 40% !important;
+     color: #fff;
+     scrollbar-color: #23293a #181e2a;
+     scrollbar-width: thin;
+ }
+
+ .mantu-offcanvas .offcanvas-header {
+     background: #181e2a;
+     border-bottom: none;
+ }
+
+ .mantu-menu-link {
+     display: block;
+     width: 100%;
+     background: #23293a;
+     color: #fff;
+     border-radius: 18px;
+     padding: 18px 24px;
+     margin-bottom: 18px;
+     font-weight: 600;
+     font-size: 1.25rem;
+     border: 1px solid #23293a;
+     transition: background 0.2s, color 0.2s;
+     text-decoration: none;
+ }
+
+ .mantu-menu-link:focus,
+ .mantu-menu-link:hover {
+     background: #23293a;
+     color: #6e7bf7;
+     outline: none;
+ }
+
+ .mantu-offcanvas .collapse .mantu-menu-link {
+     background: transparent;
+     color: #bfc6d1;
+     font-size: 1.1rem;
+     padding: 10px 0 10px 10px;
+     margin-bottom: 0;
+     border-radius: 0;
+     border: none;
+ }
+
+ .mantu-offcanvas .collapse .mantu-menu-link:hover {
+     color: #6e7bf7;
+     background: transparent;
+ }
+
+ .mantu-social {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     width: 38px;
+     height: 38px;
+     background: #3d57ff;
+     color: #fff;
+     border-radius: 50%;
+     font-size: 1.2rem;
+     transition: background 0.2s;
+     text-decoration: none;
+ }
+
+ .mantu-social:hover {
+     background: #6e7bf7;
+     color: #fff;
+ }
+
+ .btn-close-white {
+     filter: invert(1) grayscale(1) brightness(2);
+ }
+
+ /* 1. The Main Layout Container */
+ .main-layout {
+     display: grid;
+     grid-template-columns: 0fr 1fr;
+     transition: grid-template-columns 0.3s ease-in-out;
+     background-color: #f1f4f7;
+ }
+
+
+ .main-layout.sidebar-open {
+     grid-template-columns: 300px 1fr;
+ }
+
+ .category-sidebar {
+     background-color: transparent;
+     overflow-y: auto;
+     overflow-x: hidden;
+     height: 93%;
+     z-index: 50;
+     padding: 0;
+     transition: all 0.3s ease;
+
+ }
+
+ #category-sidebar-inner {
+     padding: 0px;
+     width: 288px;
+     background-color: #111827;
+     color: #fff;
+     overflow-y: auto;
+     overflow-x: hidden;
+     height: 80%;
+     z-index: 1040;
+     scrollbar-width: thin;
+     scrollbar-color: #4b5563 transparent;
+     transition: all 0.3s ease;
+
+ }
+
+
+ .category-sidebar::-webkit-scrollbar {
+     width: 8px;
+     color: black;
+ }
+
+ /* 3. The Main Content Wrapper */
+ .main-content-wrapper {
+     /* This ensures content inside doesn't overflow weirdly */
+     min-width: 0;
+ }
+
+ /* 4. The Toggle Button (your existing style is fine) */
+ .sidebar-toggle {
+     background-color: #ffdb58;
+     padding: 4px !important;
+     border-radius: 30px;
+     display: flex !important;
+     align-items: center !important;
+     /* justify-content: flex-end !important; */
+     width: 40px;
+     height: 30px;
+     transition: all 0.3s ease !important;
+     border: 1px solid #070707 !important;
+     margin-right: 2px !important;
+ }
+
+ /* category offcanvas */
+
+ .mantu-category-offcanvas {
+     background-color: #1a222f;
+     color: #fff;
+     width: 300px;
+     border-radius: 0;
+     scrollbar-color: #4b5563 transparent;
+ }
+
+ /* --- Category Toggle Links --- */
+ .category-toggle {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 18px 25px;
+     cursor: pointer;
+     font-weight: 600;
+     font-size: 1rem;
+     color: #fff;
+     transition: background-color 0.2s, color 0.2s;
+ }
+
+ .category-toggle:hover {
+     color: var(--bs-yellow);
+     /* Primary color on hover */
+ }
+
+ .category-toggle[aria-expanded="true"] {
+     background-color: #2b3342;
+ }
+
+ .category-toggle i:first-child {
+     font-size: 1.1rem;
+ }
+
+ /* --- Subcategory Panel Styling (The Rounded Collapse) --- */
+ .subcategory-panel {
+     background-color: #2b3342;
+     padding: 15px 15px 15px 25px;
+     margin: 0 15px 15px 15px;
+     border-radius: 12px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ }
+
+ .subcategory-panel li {
+     margin: 8px 0;
+ }
+
+ .subcategory-panel li a {
+     color: #bfc6d1;
+     /* Muted subcategory link color */
+     font-size: 0.95rem;
+     text-decoration: none;
+     transition: color 0.2s;
+ }
+
+ .subcategory-panel li a:hover {
+     color: var(--bs-yellow);
+ }
+
+ .subcategory-panel .fa-circle {
+     font-size: 0.5em;
+     /* Smaller circle icons */
+     vertical-align: middle;
+ }
+
+ /* --- HERO CAROUSEL STYLING --- */
+
+ .mantu-hero-carousel {
+     height: 450px;
+ }
+
+ .mantu-carousel-inner {
+     height: 100%;
+ }
+
+ .carousel-item {
+     height: 100%;
+    background-size: cover;
+    background-position: center;
+ }
+
+ .mantu-slide-content {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     height: 100%;
+     padding: 30px;
+     position: relative;
+     color: #fff;
+ }
+
+ /* Text Content Positioning */
+ .slide-text {
+     z-index: 10;
+     max-width: 45%;
+ }
+
+ .slide-text h1 {
+     font-size: clamp(1rem, 0.3333rem + 3.5556vw, 3rem);
+     font-weight: 700;
+ }
+
+ /* Discount Tag  */
+ .discount-tag {
+     position: absolute;
+     top: 15%;
+     left: 5%;
+     width: 80px;
+     height: 80px;
+     background: #FFC857;
+     border-radius: 40% 60% 70% 30% / 50% 60% 30% 70%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-weight: 700;
+     color: #000;
+     font-size: 0.8rem;
+     box-shadow: 0 0 0 8px rgba(255, 200, 87, 0.3);
+     z-index: 10;
+    animation:   morphBlob 3s linear infinite alternate;
+ }
+    
+
+    @keyframes morphBlob {
+        0% { border-radius: 40% 60% 70% 30% / 50% 60% 30% 70%; }
+        10%{ border-radius: 50% 50% 60% 40% / 60% 40% 50% 50%; }
+        20% { border-radius: 60% 40% 50% 50% / 50% 70% 40% 60%; }
+        30% { border-radius: 50% 50% 40% 60% / 60% 50% 70% 40%; }
+        40% { border-radius: 30% 70% 60% 40% / 40% 60% 50% 70%; }
+        50% { border-radius: 60% 40% 30% 70% / 70% 30% 50% 60%; }
+        60% { border-radius: 70% 30% 40% 60% / 60% 50% 70% 40%; }
+        70% { border-radius: 60% 40% 50% 50% / 50% 70% 40% 60%; }
+        80% { border-radius: 50% 50% 60% 40% / 60% 40% 50% 50%; }
+        90% { border-radius: 40% 60% 70% 30% / 50% 60% 30% 70%; }
+        100% { border-radius: 40% 60% 70% 30% / 50% 60% 30% 70%; }
+    }
+
+ /* Carousel Indicators (The dots need custom styling) */
+ .carousel-indicators [data-bs-target] {
+     background-color: rgba(10, 10, 10, 0.5);
+     width: 8px;
+     height: 8px;
+     border-radius: 50%;
+    margin: 0 4px;
+     border: none;
+ }
+
+ .carousel-indicators .active {
+     background-color: var(--bs-primary);
+     opacity: 1;
+     width: 30px;
+     border-radius: 8px;
+ }
+
+ .carousel-indicators {
+     bottom: -20px;
+     left: 45%;
+     background-color: var(--bg-color);
+     width: fit-content;   
+     margin-right: auto;
+     margin-left: 0;
+     justify-content: flex-start;
+     padding: 4px;
+ }
+ 
+
+
+
+ /* --- CATEGORY STATS CARDS STYLING --- */
+/* Main Card Container */
+.mantu-cat-card {
+    background-color: #e1e5e9; 
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden; /* Keeps the faded number inside the card */
+    height: 100%;
+   
+    transition: all 0.3s ease;
+}
+
+.mantu-cat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* Discount Badge (Top Left) */
+.mantu-cat-card .discount-badge {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: #2c3444; /* Dark color from image */
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    /* Creates the unique leaf/tag shape */
+    border-radius: 0px 15px 15px 15px; 
+    z-index: 2;
+}
+
+/* Faded Background Number (Top Right) */
+.mantu-cat-card .faded-bg-text {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 5rem;
+    font-weight: 900;
+    color: #2c3444;
+    opacity: 0.04; /* Makes it very faint */
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Text Content Area */
+.mantu-cat-card .cat-content {
+    margin-top: 40px; /* Spacing from the top badge */
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.mantu-cat-card .sub-title {
+    color: #555e6d;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.mantu-cat-card .main-title {
+    color: #2c3444;
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.mantu-cat-card .item-count {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Thumbnails Container */
+.mantu-cat-card .cat-thumbnails {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Individual Thumbnail Images */
+.mantu-cat-card .cat-thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px; /* Soft rounded corners */
+    border: 3px solid #fff; /* White border as seen in design */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+/* --- NEW ARRIVALS CAROUSEL STYLING --- */
+
+#newArrivalsCarousel {
+    position: relative;
+    
+}
+
+#newArrivalsCarousel .carousel-inner {
+    overflow-x: auto; 
+    padding: 0 20px;
+    margin: 0 -20px; /* Compensate for padding */
+    scrollbar-width: none;
+}
+
+#newArrivalsCarousel .carousel-item {
+    display: block;
+    width: auto; 
+    flex-shrink: 0; /* Prevent shrinking */
+    padding: 0;
+    margin: 0;
+}
+
+/* Product Card Styling */
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+    border: 1px solid #eee;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+    max-height: 220px;
+    object-fit: contain;
+    background: #f8f9fa;
+}
+
+.product-card .badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+}
+
+.product-card h6 {
+    font-size: 1rem;
+    line-height: 1.3;
+    margin-bottom: 5px;
+}
+
+.product-card .color-dot {
+    border: 1px solid transparent;
+}
+
+/* Feature Cards (Below) */
+.feature-card {
+    background: #fff;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.feature-card i {
+    color: #3d57ff;
+}
+.feature-card h5 {
+    font-weight: 600;
+}
+.feature-card p {
+    line-height: 1.4;
+}
+
+.mantu-promo-card {
+  background: #f9c94c;
+  border-radius: 24px !important;
+  min-height: 370px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+
+/* Image column with background image */
+.promo-img-col {
+  min-height: 370px;
+  background: #ffd86b url('https://maraviyainfotech.com/projects/mantu-html/assets/img/banner/1.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+/* Overlay text for mobile */
+.promo-overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: linear-gradient(0deg, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.0) 100%);
+  text-align: center;
+}
+/* Hover Tools */
+.product-card .hover-icons {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.product-card:hover .hover-icons {
+  opacity: 1;
+  right: 10px;
+}
+
+/* Dot Indicators like Mantu */
+.carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+  background-color: #cfd6e4;
+  border: none;
+  opacity: 1;
+}
+.carousel-indicators .active {
+  width: 28px;
+  background-color: #0d6efd;
+}
+#testimonial-wrapper {
+        background-image: url('https://maraviyainfotech.com/projects/mantu-html/assets/img/testimonials/bg.png');
+        background-size: cover;
+        background-position: center center;
+        background-color: var(--bg-secondary);
+        overflow: hidden; /* Ensures quote marks don't spill out if positioned too far */
+    }
+
+    /* Styling for the decorative quote marks */
+    .top-quote {
+        top: 2rem;
+        left: 15%;
+        opacity: 0.1;
+        width: 60px;
+    }
+
+    .bottom-quote {
+        bottom: 2rem;
+        right: 15%;
+        opacity: 0.1;
+        width: 60px;
+    }
+
+    /* This is the container for the content that will be animated */
+    .testimonial-content {
+        /* The transition property makes changes to opacity smooth */
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Style for the person's image */
+    #testimonial-img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Limit the width of the quote text so it doesn't get too long */
+    #testimonial-text {
+        max-width: 700px;
+    }
+
+    /* Style for the author's name to match the example */
+    #testimonial-author {
+        color: #4a69bd; 
+    }
+        .marquee {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        --gap: 1.5rem;
+        --duration: 10s; 
+    }
+
+    .marquee__track {
+        display: flex; /* This is crucial for a horizontal layout */
+        gap: var(--gap);
+        animation: scroll var(--duration) linear infinite;
+    }
+
+    /* Pause animation on hover */
+    .marquee:hover .marquee__track {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-40%);
+        }
+    }
+
+    .marquee__item {
+        position: relative;
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ... The rest of your item, image, and overlay styles remain the same ... */
+    .marquee__item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .marquee__overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(43, 88, 219, 0.7);
+        display: flex; justify-content: center; align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+    .marquee__overlay i { font-size: 3rem; color: white; }
+    .marquee__item:hover .marquee__overlay { opacity: 1; }
+
+/* Main footer styles */
+    .site-footer {
+        background-color: #212832;
+        color: rgba(255, 255, 255, 0.7); /* Slightly transparent white for body text */
+        padding: 0;
+        margin: 0;
+    }
+
+    .site-footer .footer-brand,
+    .site-footer .footer-heading {
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    /* Links styling */
+    .site-footer a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .site-footer a:hover {
+        color: #ffffff;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
+    .footer-links li a:hover {
+        color: #FFC857;
+    }
+
+    /* App store buttons */
+    .store-button {
+        display: flex;
+        align-items: center;
+        background-color: #343b44;
+        border-radius: 5px;
+        padding: 8px 15px;
+        margin-bottom: 1rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    .store-button:hover {
+        background-color: #4a5461;
+        color: #fff;
+    }
+
+    .store-button i {
+        font-size: 1.8rem;
+        margin-right: 10px;
+    }
+
+    .store-button span {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+    
+    .store-button span strong {
+        font-size: 1rem;
+    }
+
+    /* Contact info styling */
+    .contact-info li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info i {
+        color: #fff;
+        margin-right: 15px;
+        margin-top: 5px;
+    }
+
+    /* Social icons styling */
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #343b44;
+        color: #fff;
+        margin-right: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background-color: #0d6efd; /* Bootstrap primary blue */
+        color: #fff;
+    }
+
+    /* Footer bottom bar */
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .payment-icons img {
+        height: 24px;
+        margin-left: 0.5rem;
+    }
+
+    /* Responsive adjustments for the bottom bar */
+    @media (max-width: 767px) {
+        .footer-bottom .d-flex {
+            justify-content: center !important; /* Center content on small screens */
+            text-align: center;
+            flex-direction: column;
+        }
+      
+    }
+/* General styling for the team section */
+.team-section {
+  display: flex;
+  justify-content: space-around; /* Distribute cards evenly */
+
+}
+
+/* Individual Card Styling */
+.team-card {
+  text-align: center;
+  width: 200px; /* Adjust as needed */
+  margin: 0 15px;
+}
+
+/* Image container for positioning the overlay */
+.card-img-container {
+  position: relative;
+  overflow: hidden; /* Ensures nothing spills out */
+ 
+  margin: 0 auto 15px; /* Center and add space below */
+}
+
+.team-member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  border-radius: 10%;
+}
+
+/* Name and Designation Styling */
+.member-name {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 5px 0 3px;
+}
+
+.member-designation {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* --- Social Icons Overlay Styling --- */
+
+.social-icons-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Show the overlay on hover over the image container */
+.card-img-container:hover .social-icons-overlay {
+  opacity: 1; /* Make it visible */
+  transform: translateY(-20px); /* Move it up into position (Adjust to your liking) */
+}
+
+/* Styling for the very very small icons */
+.social-icons-overlay a {
+  color: #fff; /* Icon color (white) */
+  background-color: #333; /* Background color (dark grey/black) */
+  border-radius: 50%;
+  text-decoration: none;
+  width: 25px; /* Very small size */
+  height: 25px; /* Very small size */
+  line-height: 25px; /* Vertically center the icon */
+  text-align: center;
+  margin: 0 4px; /* Space between icons */
+  font-size: 0.6em; /* Make the icon itself very small */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-icons-overlay a:hover {
+  background-color: var(--bs-yellow); 
+  color: #fff; 
+}
+  

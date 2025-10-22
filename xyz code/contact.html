@@ -1,181 +1,1358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokedex Advanced Search</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopX — Bootstrap E‑commerce</title>
+  <meta name="description" content="A clean, responsive e-commerce landing page built with HTML, CSS, and Bootstrap." />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #2e2e2e;
-      color: white;
-      padding: 20px;
+    :root{
+      --accent: #ff6b6b;
+      --dark: #212529;
     }
 
-    .search-section {
-      max-width: 1000px;
-      margin: auto;
-      background: #3a3a3a;
-      padding: 20px;
-      border-radius: 8px;
+    /* Topbar */
+    .topbar {
+      font-size: .9rem;
     }
 
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
+    /* Navbar */
+    .navbar-brand {
+      letter-spacing: .5px;
+    }
+    .nav-link:hover { color: var(--accent) !important; }
+
+    /* Hero carousel */
+    .hero .carousel-item {
+      min-height: 70vh;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      color: #fff;
+    }
+    .hero .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.55));
+    }
+    .hero .content {
+      position: relative;
+      z-index: 2;
+    }
+    .btn-accent {
+      --bs-btn-color:#fff;
+      --bs-btn-bg: var(--accent);
+      --bs-btn-border-color: var(--accent);
+      --bs-btn-hover-bg: #ff4a4a;
+      --bs-btn-hover-border-color: #ff4a4a;
     }
 
-    /* Type grid */
-    .type-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
+    /* Category cards */
+    .category-card {
+      overflow: hidden;
+      border-radius: .75rem;
+    }
+    .category-card img {
+      transition: transform .5s ease;
+      display: block;
+    }
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+    .category-label {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 1rem 1.25rem;
+      color: #fff;
+      font-weight: 600;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.65) 100%);
     }
 
-    .type-btn {
-      padding: 8px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
+    /* Product cards */
+    .product-card .card-img-top {
+      object-fit: cover;
+      height: 240px;
+      transition: transform .4s ease;
+    }
+    .product-card:hover .card-img-top {
+      transform: scale(1.04);
+    }
+    .price .old {
+      text-decoration: line-through;
+      color: #6c757d;
+      font-weight: 400;
+      margin-left: .35rem;
+    }
+    .rating {
+      color: #f4b400; /* warm gold */
+      letter-spacing: 1px;
+      font-size: .9rem;
+    }
+    .badge-corner {
+      position: absolute; top: .75rem; left: .75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      padding: .4rem .6rem;
     }
 
-    /* Example colors */
-    .bug { background: #92BC2C; }
-    .dragon { background: #0C69C8; color: white; }
-    .fairy { background: #EE90E6; }
-    .fire { background: #FBA54C; }
-    .water { background: #539DDF; color: white; }
-    .grass { background: #5FBD58; }
-    .electric { background: #F9CF30; }
-    .normal { background: #A0A29F; }
-    .psychic { background: #FA8581; }
-    .ghost { background: #5269AD; color: white; }
-    .rock { background: #C9BB8A; }
-    .steel { background: #5A8EA2; color: white; }
-    .flying { background: #89AAE3; }
-    .poison { background: #B567CE; color: white; }
-    .fighting { background: #D3425F; color: white; }
-    .ground { background: #DA7C4D; }
-    .ice { background: #75D0C1; }
-    .dark { background: #595761; color: white; }
-
-    /* Dropdown */
-    select {
-      width: 200px;
-      padding: 8px;
-      margin-bottom: 20px;
+    /* Promo banner */
+    .promo {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .promo::before{
+      content:""; position:absolute; inset:0;
+      background: radial-gradient(circle at 20% 20%, rgba(0,0,0,.4), rgba(0,0,0,.65));
+    }
+    .promo .inner {
+      position: relative; z-index: 1;
     }
 
-    /* Height + weight icons (placeholders for now) */
-    .icon-grid {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+    /* Testimonials */
+    .testimonial {
+      max-width: 760px;
+      margin: 0 auto;
     }
-    .icon-box {
-      background: #222;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 5px;
-      cursor: pointer;
+    .quote-mark {
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
     }
 
-    /* Number range */
-    .range-inputs {
-      margin-bottom: 20px;
+    /* Brands */
+    .brand-tile {
+      opacity: .7;
+      transition: opacity .2s ease, transform .2s ease;
+      filter: grayscale(100%);
     }
-    .range-inputs input {
-      width: 80px;
-      padding: 6px;
-      text-align: center;
-    }
-
-    /* Buttons */
-    .btns {
-      display: flex;
-      gap: 15px;
-    }
-    .reset {
-      background: #999;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .search {
-      background: #F74C06;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+    .brand-tile:hover {
+      opacity: 1; transform: translateY(-2px);
+      filter: grayscale(0%);
     }
 
+    /* Footer */
+    .footer a {
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Back-to-top */
+    .back-to-top {
+      position: fixed;
+      right: 1rem; bottom: 1rem;
+      z-index: 1030;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    }
+
+    /* Utilities */
+    .section-title {
+      letter-spacing: .3px;
+    }
+    @media (max-width: 576px) {
+      .product-card .card-img-top { height: 200px; }
+      .hero .carousel-item { min-height: 60vh; }
+    }
   </style>
 </head>
-<body>
+<body id="top">
 
-  <div class="search-section">
-    <h2>Type & Weakness</h2>
-    <div class="type-grid">
-      <button class="type-btn bug">Bug</button>
-      <button class="type-btn dragon">Dragon</button>
-      <button class="type-btn fairy">Fairy</button>
-      <button class="type-btn fire">Fire</button>
-      <button class="type-btn ghost">Ghost</button>
-      <button class="type-btn ground">Ground</button>
-      <button class="type-btn normal">Normal</button>
-      <button class="type-btn psychic">Psychic</button>
-      <button class="type-btn steel">Steel</button>
-      <button class="type-btn flying">Flying</button>
-      <button class="type-btn grass">Grass</button>
-      <button class="type-btn water">Water</button>
-      <button class="type-btn ice">Ice</button>
-      <button class="type-btn poison">Poison</button>
-      <button class="type-btn rock">Rock</button>
-      <button class="type-btn electric">Electric</button>
-      <button class="type-btn fighting">Fighting</button>
-      <button class="type-btn dark">Dark</button>
-    </div>
-
-    <h2>Ability</h2>
-    <select>
-      <option>All</option>
-      <option>Overgrow</option>
-      <option>Blaze</option>
-      <option>Torrent</option>
-    </select>
-
-    <h2>Height</h2>
-    <div class="icon-grid">
-      <div class="icon-box">S</div>
-      <div class="icon-box">M</div>
-      <div class="icon-box">L</div>
-    </div>
-
-    <h2>Weight</h2>
-    <div class="icon-grid">
-      <div class="icon-box">L</div>
-      <div class="icon-box">XL</div>
-      <div class="icon-box">XXL</div>
-    </div>
-
-    <h2>Number Range</h2>
-    <div class="range-inputs">
-      <input type="number" value="1"> -
-      <input type="number" value="1025">
-    </div>
-
-    <div class="btns">
-      <button class="reset">Reset</button>
-      <button class="search">Search</button>
+  <!-- Topbar -->
+  <div class="topbar bg-dark text-light py-2 d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>Free shipping on orders $49+ • 30‑day returns</div>
+      <div class="d-flex gap-3">
+        <a href="#" class="link-light link-underline-opacity-0">Help</a>
+        <a href="#" class="link-light link-underline-opacity-0">Track Order</a>
+        <span class="text-secondary">USD • EN</span>
+      </div>
     </div>
   </div>
 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">ShopX</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#new-arrivals">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+        </ul>
+
+        <form class="d-none d-lg-flex" role="search">
+          <input class="form-control rounded-start-pill" type="search" placeholder="Search products…" aria-label="Search">
+          <button class="btn btn-outline-secondary rounded-end-pill px-3" type="submit">Search</button>
+        </form>
+
+        <div class="ms-lg-3 d-flex align-items-center gap-3">
+          <a href="#" class="text-decoration-none text-dark">Sign in</a>
+          <a href="#" class="btn btn-sm btn-primary position-relative">
+            Cart
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Carousel -->
+  <section class="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image:url('https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=1600&auto=format&fit=crop');">
+          <div class="overlay"></div>
+          <div class="container content">
+            <div class="row min-vh-60 align-items-center">
+              <div class="col-lg-7 col-xl-6 py-5">
+                <h1 class="display-5 fw-bold mb-3">Fresh styles for your everyday</h1>
+                <p class="lead mb-4">New arrivals are in. Grab essentials that go with literally everything.</p>
+                <div class="d-flex gap-2">
+                  <a href="#new-arrivals" class="btn btn-accent btn-lg px-4">Shop New In</a>
+                  <a href="#categories" class="btn btn-outline-light btn-lg px-4">Browse Categories</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image:url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1600&auto=format&fit=crop');">
+          <div class="overlay"></div>
+          <div class="container content">
+            <div class="row min-vh-60 align-items-center justify-content-end">
+              <div class="col-lg-6 py-5 text-lg-end">
+                <h2 class="display-6 fw-bold mb-3">Up to 40% off — limited time</h2>
+                <p class="lead mb-4">Top sellers with special pricing this week only.</p>
+                <a href="#featured" class="btn btn-light btn-lg px-4">See Deals</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image:url('https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1600&auto=format&fit=crop');">
+          <div class="overlay"></div>
+          <div class="container content">
+            <div class="row min-vh-60 align-items-center">
+              <div class="col-lg-6 py-5">
+                <h2 class="display-6 fw-bold mb-3">Footwear that goes the distance</h2>
+                <p class="lead mb-4">Comfort, performance, and style — no compromises.</p>
+                <a href="#new-arrivals" class="btn btn-accent btn-lg px-4">Shop Shoes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="container py-5" id="categories" aria-label="Shop by Category">
+    <div class="d-flex align-items-end justify-content-between mb-4">
+      <h3 class="section-title m-0">Shop by Category</h3>
+      <a href="#" class="link-secondary">View all</a>
+    </div>
+    <div class="row g-3 g-md-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="category-card position-relative">
+          <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?q=80&w=900&auto=format&fit=crop" class="w-100" alt="Men's clothing category">
+          <div class="category-label">Men</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="category-card position-relative">
+          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=900&auto=format&fit=crop" class="w-100" alt="Women's clothing category">
+          <div class="category-label">Women</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="category-card position-relative">
+          <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=900&auto=format&fit=crop" class="w-100" alt="Accessories category">
+          <div class="category-label">Accessories</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="category-card position-relative">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop" class="w-100" alt="Shoes category">
+          <div class="category-label">Shoes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals -->
+  <section class="container py-5" id="new-arrivals">
+    <div class="d-flex align-items-end justify-content-between mb-4">
+      <h3 class="section-title m-0">New Arrivals</h3>
+      <a href="#" class="link-secondary">Browse all</a>
+    </div>
+
+    <div class="row g-3 g-md-4">
+      <!-- Product 1 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Knitted sweater">
+            <span class="badge bg-danger badge-corner">-20%</span>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Cozy Knit Sweater</h6>
+            <div class="rating mb-2" aria-label="Rated 4.5 out of 5">★★★★☆</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$48 <span class="old">$60</span></div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Classic denim jacket">
+            <span class="badge bg-success badge-corner">New</span>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Classic Denim Jacket</h6>
+            <div class="rating mb-2">★★★★★</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$79</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Running sneakers">
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Lightweight Runners</h6>
+            <div class="rating mb-2">★★★★☆</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$92</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1520975922203-b923f0172257?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Leather tote bag">
+            <span class="badge bg-warning text-dark badge-corner">Hot</span>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Leather Tote</h6>
+            <div class="rating mb-2">★★★★★</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$120</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1618355776464-8666794d252d?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Casual tee">
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Everyday Tee</h6>
+            <div class="rating mb-2">★★★★☆</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$25</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 6 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Wrist watch">
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Minimal Watch</h6>
+            <div class="rating mb-2">★★★☆☆</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$149</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 7 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1520974735194-6c0a1b8e5872?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Sunglasses">
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Aviator Shades</h6>
+            <div class="rating mb-2">★★★★★</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$59</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 8 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1533281808624-e9b07b4294ff?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Backpack">
+          </div>
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Urban Backpack</h6>
+            <div class="rating mb-2">★★★★☆</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="price fw-bold">$89</div>
+              <button class="btn btn-sm btn-outline-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banner -->
+  <section class="container my-5">
+    <div class="promo p-5 p-md-6" style="background-image:url('https://images.unsplash.com/photo-1555529771-35a38c822e56?q=80&w=1600&auto=format&fit=crop');">
+      <div class="inner d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4">
+        <div class="text-white">
+          <h3 class="fw-bold mb-2">Members get an extra 10% off</h3>
+          <p class="mb-0">Use code MEMBER10 at checkout. Ends Sunday.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="#" class="btn btn-light btn-lg">Join free</a>
+          <a href="#featured" class="btn btn-outline-light btn-lg">Shop deals</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="container py-5" id="featured">
+    <div class="d-flex align-items-end justify-content-between mb-4">
+      <h3 class="section-title m-0">Featured Picks</h3>
+      <a href="#" class="link-secondary">Explore more</a>
+    </div>
+
+    <div class="row g-3 g-md-4">
+      <!-- 4 featured products -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Watch">
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Chrono Steel Watch</h6>
+            <div class="rating mb-2">★★★★★</div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="price fw-bold">$199</div>
+              <a href="#" class="btn btn-sm btn-outline-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1520974735194-6c0a1b8e5872?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Sunglasses">
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Polarized Shades</h6>
+            <div class="rating mb-2">★★★★☆</div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="price fw-bold">$69</div>
+              <a href="#" class="btn btn-sm btn-outline-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Sneakers">
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">All‑Day Sneakers</h6>
+            <div class="rating mb-2">★★★★☆</div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="price fw-bold">$99</div>
+              <a href="#" class="btn btn-sm btn-outline-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card product-card h-100 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1520975922203-b923f0172257?q=80&w=900&auto=format&fit=crop" class="card-img-top" alt="Leather bag">
+          <div class="card-body">
+            <h6 class="card-title text-truncate mb-1">Premium Leather Bag</h6>
+            <div class="rating mb-2">★★★★★</div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="price fw-bold">$189</div>
+              <a href="#" class="btn btn-sm btn-outline-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h3 class="section-title m-0">What our customers say</h3>
+      </div>
+
+      <div id="testimonials" class="carousel slide testimonial" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <figure class="text-center">
+              <div class="quote-mark mb-2">“</div>
+              <blockquote class="blockquote">
+                <p class="mb-3">Super fast shipping and the quality is legit. The sneakers are insanely comfy.</p>
+              </blockquote>
+              <figcaption class="blockquote-footer mb-0">
+                Jordan R. <cite title="Source Title">Verified Buyer</cite>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="carousel-item">
+            <figure class="text-center">
+              <div class="quote-mark mb-2">“</div>
+              <blockquote class="blockquote">
+                <p class="mb-3">Great prices, tons of options, and returns were painless. 10/10.</p>
+              </blockquote>
+              <figcaption class="blockquote-footer mb-0">
+                Priya S. <cite title="Source Title">Verified Buyer</cite>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="carousel-item">
+            <figure class="text-center">
+              <div class="quote-mark mb-2">“</div>
+              <blockquote class="blockquote">
+                <p class="mb-3">My new go‑to store. Love the curated selections and fast support.</p>
+              </blockquote>
+              <figcaption class="blockquote-footer mb-0">
+                Mateo L. <cite title="Source Title">Verified Buyer</cite>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center gap-2 mt-3">
+          <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-target="#testimonials" data-bs-slide="prev">Prev</button>
+          <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-target="#testimonials" data-bs-slide="next">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-5" id="news">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h3 class="mb-2">Get 10% off your first order</h3>
+          <p class="text-secondary mb-0">Join our newsletter for fresh drops, deals, and style tips.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="input-group input-group-lg">
+            <input type="email" class="form-control" placeholder="Your email address" aria-label="Email">
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+          <small class="text-secondary d-block mt-2">We respect your privacy. Unsubscribe anytime.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="py-4 border-top border-bottom bg-white">
+    <div class="container">
+      <div class="row g-4 align-items-center justify-content-center text-center">
+        <div class="col-4 col-md-2">
+          <img class="brand-tile img-fluid" src="https://placehold.co/160x48?text=Brand+1" alt="Brand 1">
+        </div>
+        <div class="col-4 col-md-2">
+          <img class="brand-tile img-fluid" src="https://placehold.co/160x48?text=Brand+2" alt="Brand 2">
+        </div>
+        <div class="col-4 col-md-2">
+          <img class="brand-tile img-fluid" src="https://placehold.co/160x48?text=Brand+3" alt="Brand 3">
+        </div>
+        <div class="col-4 col-md-2">
+          <img class="brand-tile img-fluid" src="https://placehold.co/160x48?text=Brand+4" alt="Brand 4">
+        </div>
+        <div class="col-4 col-md-2">
+          <img class="brand-tile img-fluid" src="https://placehold.co/160x48?text=Brand+5" alt="Brand 5">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-light pt-5" id="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="fw-bold">ShopX</h5>
+          <p class="text-secondary">Modern essentials, fair prices. We keep it simple so you can keep it stylish.</p>
+          <p class="text-secondary small mb-0">123 Market Street, Cityville</p>
+          <p class="text-secondary small">support@example.com</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="fw-bold">Shop</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="link-light">Men</a></li>
+            <li><a href="#" class="link-light">Women</a></li>
+            <li><a href="#" class="link-light">Accessories</a></li>
+            <li><a href="#" class="link-light">Shoes</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="fw-bold">Help</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="link-light">Shipping</a></li>
+            <li><a href="#" class="link-light">Returns</a></li>
+            <li><a href="#" class="link-light">Size Guide</a></li>
+            <li><a href="#" class="link-light">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold">Stay in the loop</h6>
+          <form class="input-group mb-2">
+            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+            <button class="btn btn-primary" type="submit">Join</button>
+          </form>
+          <small class="text-secondary">By subscribing you agree to our Terms & Privacy.</small>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pb-4">
+        <div class="text-secondary small">© <span id="year"></span> ShopX. All rights reserved.</div>
+        <div class="d-flex gap-3 small">
+          <a href="#" class="link-secondary">Privacy</a>
+          <a href="#" class="link-secondary">Terms</a>
+          <a href="#" class="link-secondary">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#top" class="btn btn-primary back-to-top" aria-label="Back to top">↑</a>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Set footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-lg-flex d-md-flex d-sm-flex  shadow-sm container-xxl px-2 rounded-bottom-5 ">
+        <div class="container-xxl">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="fa-solid fa-bag-shopping text-primary"></i> E-shop
+            </a>
+
+            <!-- Desktop Menu Links -->
+            <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Categories</a>
+                        <div class="dropdown-menu mantu-mega-menu shadow border-0 p-4 rounded-4">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h6 class="fw-bold text-primary mb-3">Classic</h6>
+                                    <ul class="list-unstyled">
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Shop Right
+                                                Sidebar</a></li>
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Banner
+                                                Right Sidebar</a></li>
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Shop Full
+                                                Width</a></li>
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Banner
+                                                Full Width</a></li>
+                                    </ul>
+                                </div>
+
+
+                                <div class="col-6 ">
+                                    <h6 class="fw-bold text-primary mb-3">List</h6>
+                                    <ul class="list-unstyled">
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Shop Right
+                                                Sidebar</a></li>
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Banner
+                                                Right Sidebar</a></li>
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Shop Full
+                                                Width</a></li>
+                                        <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Banner
+                                                Full Width</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Product</a>
+                        <ul class="dropdown-menu shadow border-0 p-4 rounded-4">
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product Detail</a>
+                            </li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product Accordian</a>
+                            </li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product Full Width</a>
+                            </li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Accordian Full
+                                    Width</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
+                        <ul class="dropdown-menu shadow border-0 p-4 rounded-4">
+                            <li>
+                                <a class="dropdown-item dropdown-toggle text-muted px-0 py-1 small-link"
+                                    href="#">Blog</a>
+                                <ul class="submenu dropdown-menu shadow border-0 p-4 rounded-4">
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Right Side
+                                            Bar</a></li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Full Width</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Detail Right
+                                            Side Bar</a></li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Detail Full
+                                            Width</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">About Us</a></li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Contact Us</a></li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Car</a></li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Check Out</a></li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Compare</a></li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">FAQ</a></li>
+                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Log In</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Desktop Right Icons -->
+            <div class="d-flex gap-4 align-items-center">
+                <a href="#" class="text-dark fs-5"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
+                <a href="#" class="text-dark fs-5 position-relative">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 0.5em;">3</span>
+                </a>
+                <a href="#" class="text-dark fs-5 position-relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 0.5em;">4</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    Below is a **drop-in offcanvas sidebar** that will look and behave **exactly** like the Mantu demo you’re targeting:
+
+• Dark full-height panel  
+• “My Menu” title + red “X” close button  
+• Rounded pill links (Home)  
+• Multi-level accordion for Categories ▶ Classic ▶ List etc.  
+• Auto-switch +/− icons  
+• Scrollable body  
+• Social icons stuck at the bottom  
+
+— just paste this into your page (after your `<body>` tag) and include the CSS/JS shown.
+
+```html
+<!-- 1) Toggle Button (someplace in your navbar on mobile) -->
+<button class="btn btn-light d-lg-none" 
+        data-bs-toggle="offcanvas" 
+        data-bs-target="#offcanvasMenu" 
+        aria-controls="offcanvasMenu">
+  <i class="fa-solid fa-bars-staggered fa-lg"></i>
+</button>
+
+<!-- 2) The Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-start custom-offcanvas" 
+     tabindex="-1" 
+     id="offcanvasMenu" 
+     aria-labelledby="offcanvasMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasMenuLabel">My Menu</h5>
+    <button type="button" class="btn-close btn-close-white close-red" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column p-3">
+
+    <!-- Home (non-collapsible) -->
+    <div class="menu-link">Home</div>
+
+    <!-- Categories -->
+    <div class="accordion custom-acc" id="accCategories">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hdrCat">
+          <button class="accordion-button custom-btn collapsed" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#colCat" 
+                  aria-expanded="false" 
+                  aria-controls="colCat">
+            Categories
+          </button>
+        </h2>
+        <div id="colCat" class="accordion-collapse collapse" aria-labelledby="hdrCat" data-bs-parent="#accCategories">
+          <div class="accordion-body px-0">
+            <!-- Classic -->
+            <div class="accordion custom-acc" id="accClassic">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="hdrClassic">
+                  <button class="accordion-button custom-btn collapsed" 
+                          type="button" 
+                          data-bs-toggle="collapse" 
+                          data-bs-target="#colClassic" 
+                          aria-expanded="false" 
+                          aria-controls="colClassic">
+                    Classic
+                  </button>
+                </h2>
+                <div id="colClassic" class="accordion-collapse collapse" aria-labelledby="hdrClassic" data-bs-parent="#accClassic">
+                  <div class="accordion-body submenu-body px-0">
+                    <a href="#">Shop Right Sidebar</a>
+                    <a href="#">Banner Right Sidebar</a>
+                    <a href="#">Shop Full Width</a>
+                    <a href="#">Banner Full Width</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- List -->
+            <div class="accordion custom-acc mt-2" id="accList">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="hdrList">
+                  <button class="accordion-button custom-btn collapsed" 
+                          type="button" 
+                          data-bs-toggle="collapse" 
+                          data-bs-target="#colList" 
+                          aria-expanded="false" 
+                          aria-controls="colList">
+                    List
+                  </button>
+                </h2>
+                <div id="colList" class="accordion-collapse collapse" aria-labelledby="hdrList" data-bs-parent="#accList">
+                  <div class="accordion-body submenu-body px-0">
+                    <a href="#">List Right Sidebar</a>
+                    <a href="#">List Full Width</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products -->
+    <div class="accordion custom-acc mt-3" id="accProducts">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hdrProd">
+          <button class="accordion-button custom-btn collapsed" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#colProd" 
+                  aria-expanded="false" 
+                  aria-controls="colProd">
+            Products
+          </button>
+        </h2>
+        <div id="colProd" class="accordion-collapse collapse" aria-labelledby="hdrProd" data-bs-parent="#accProducts">
+          <div class="accordion-body submenu-body px-0">
+            <a href="#">Product Detail</a>
+            <a href="#">Product Accordion</a>
+            <a href="#">Product Full Width</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pages -->
+    <div class="accordion custom-acc mt-3" id="accPages">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hdrPages">
+          <button class="accordion-button custom-btn collapsed" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#colPages" 
+                  aria-expanded="false" 
+                  aria-controls="colPages">
+            Pages
+          </button>
+        </h2>
+        <div id="colPages" class="accordion-collapse collapse" aria-labelledby="hdrPages" data-bs-parent="#accPages">
+          <div class="accordion-body submenu-body px-0">
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog -->
+    <div class="accordion custom-acc mt-3" id="accBlog">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hdrBlog">
+          <button class="accordion-button custom-btn collapsed" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  data-bs-target="#colBlog" 
+                  aria-expanded="false" 
+                  aria-controls="colBlog">
+            Blog
+          </button>
+        </h2>
+        <div id="colBlog" class="accordion-collapse collapse" aria-labelledby="hdrBlog" data-bs-parent="#accBlog">
+          <div class="accordion-body submenu-body px-0">
+            <a href="#">Right Sidebar</a>
+            <a href="#">Full Width</a>
+            <a href="#">Detail Right Sidebar</a>
+            <a href="#">Detail Full Width</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- push socials to bottom -->
+    <div class="mt-auto pt-4 social-icons text-center">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- 3) REQUIRED CSS (put in your stylesheet) -->
+<style>
+  .custom-offcanvas {
+    width: 280px;
+    background: #0F172A;
+    color: #F1F5F9;
+  }
+  .offcanvas-header {
+    border-bottom: none;
+  }
+  .offcanvas-title {
+    font-weight: 600;
+  }
+  .close-red {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(-20deg);
+  }
+  .menu-link {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #1E293B;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .custom-acc .custom-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: 1px solid #1E293B;
+    border-radius: 0.5rem;
+    color: #F1F5F9;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .custom-acc .accordion-button::after {
+    display: none;
+  }
+  .custom-acc .custom-btn.collapsed::after {
+    content: '+';
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .custom-acc .custom-btn:not(.collapsed)::after {
+    content: '–';
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .submenu-body a {
+    display: block;
+    padding: 0.5rem 1.75rem;
+    color: #F1F5F9;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .submenu-body a:hover {
+    color: #3B82F6;
+  }
+  .social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: #3B82F6;
+    color: #FFF;
+    border-radius: 50%;
+    line-height: 36px;
+    margin: 0 0.25rem;
+    transition: background 0.2s;
+  }
+  .social-icons a:hover {
+    background: #2563EB;
+  }
+</style>
+
+<!-- 4) Bootstrap & Font-Awesome JS (end of body) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+This is a slightly more complex component because it requires combining Bootstrap's **Offcanvas** (for the sliding sidebar) with a heavily customized **Accordion** (for the expanding menus like "Clothes").
+
+Here is the complete solution to get that exact dark, nested sidebar look.
+
+### 1. The HTML
+Add the **Toggle Button** where you want it in your navbar (usually near the logo), and place the **Sidebar Container** outside your navbar (e.g., right after the `<body>` tag).
+
+```html
+<!-- ==================== 1. TOGGLE BUTTON ==================== -->
+<!-- Place this in your navbar where you want the trigger to be -->
+<button class="btn category-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#categorySidebar">
+    <span class="icon-wrapper">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </span>
+</button>
+
+<!-- ==================== 2. SIDEBAR CONTAINER ==================== -->
+<!-- Place this at the very START of your <body> tag -->
+<div class="offcanvas offcanvas-start category-sidebar" tabindex="-1" id="categorySidebar">
+    
+    <!-- Header with Title and Close Button -->
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-uppercase text-muted small fw-bold ls-1">Fashion</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <!-- Body with Accordion Menu -->
+    <div class="offcanvas-body p-3">
+        <div class="accordion accordion-flush custom-dark-accordion" id="categoryAccordion">
+            
+            <!-- ITEM 1: Clothes (Standard Link - No Submenu) -->
+            <!-- If you want it to just be a link, don't use accordion-collapse -->
+            <!-- <a href="#" class="sidebar-link non-collapsible">
+                <i class="fa-solid fa-shirt me-3 text-primary"></i> Clothes
+            </a> -->
+
+             <!-- ITEM 1: Clothes (WITH SUBMENU like Img 3) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#clothesCollapse">
+                        <span class="d-flex align-items-center">
+                            <i class="fa-solid fa-shirt me-3 category-icon" style="color: #38bdf8;"></i> <!-- Light Blue Icon -->
+                            Clothes
+                        </span>
+                    </button>
+                </h2>
+                <div id="clothesCollapse" class="accordion-collapse collapse" data-bs-parent="#categoryAccordion">
+                    <div class="accordion-body">
+                        <ul class="submenu-list">
+                            <li><a href="#">T-Shirts</a></li>
+                            <li><a href="#">Shirts</a></li>
+                            <li><a href="#">Gowns</a></li>
+                            <li><a href="#">Dresses</a></li>
+                            <li><a href="#">Sharees</a></li>
+                            <li><a href="#">Jeans</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 2: Shoes -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shoesCollapse">
+                        <span class="d-flex align-items-center">
+                            <i class="fa-solid fa-shoe-prints me-3 category-icon" style="color: #f87171;"></i> <!-- Red icon -->
+                            Shoes
+                        </span>
+                    </button>
+                </h2>
+                <div id="shoesCollapse" class="accordion-collapse collapse" data-bs-parent="#categoryAccordion">
+                    <div class="accordion-body">
+                        <ul class="submenu-list">
+                            <li><a href="#">Sneakers</a></li>
+                            <li><a href="#">Formal</a></li>
+                            <li><a href="#">Casual</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 3: Bags (showing standard link example) -->
+             <div class="accordion-item">
+                 <h2 class="accordion-header">
+                    <!-- Notice NO data-bs-toggle here if it's just a link -->
+                     <a href="#" class="accordion-button no-arrow">
+                         <span class="d-flex align-items-center">
+                             <i class="fa-solid fa-bag-shopping me-3 category-icon" style="color: #fbbf24;"></i> <!-- Yellow icon -->
+                             Bags
+                         </span>
+                     </a>
+                 </h2>
+             </div>
+
+This is a crucial layout component for e-commerce sites! It's a classic **"Collapsible Sidebar / Offcanvas Filter"** pattern.
+
+To achieve this, we need to use:
+1.  **Bootstrap Grid (`row` and `col`)**: To divide the screen space.
+2.  **Responsiveness Classes**: To show the sidebar on desktop (`d-lg-block`) and hide it on mobile (`d-none`).
+3.  **Bootstrap Offcanvas**: To make the sidebar slide out on mobile.
+
+Here is the complete setup for the layout shown in Image 2 (Desktop) and Image 3 (Mobile/Small Screen):
+
+---
+
+### 1. CSS (Styling the Dark Sidebar)
+
+Add this to your stylesheet (`style.css`):
+
+```css
+/* Custom Mantu Sidebar Styling */
+.category-sidebar {
+    background-color: #1a222f; /* Dark background color */
+    color: #fff;
+    min-height: 100%; /* Ensures it fills vertical space */
+}
+
+/* Category Item Styling */
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.category-item:hover, .category-item.active {
+    background-color: #2b3342; /* Slightly lighter background on hover/active */
+    color: #fff;
+}
+
+/* Submenu/Collapse styling (for nested items like T-shirts) */
+.category-submenu {
+    list-style: none;
+    padding: 10px 0 10px 20px; /* Indent sub-items */
+    background-color: #1a222f; /* Maintain dark background */
+}
+.category-submenu li a {
+    color: #b0b4ba; /* Lighter text for sub-items */
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+}
+.category-submenu li a:hover {
+    color: #3d57ff; /* Primary color on hover */
+}
+```
+
+### 2. HTML Structure (Layout and Responsiveness)
+
+This HTML uses Bootstrap Grid (`row` and `col`) to define the layout.
+
+#### A. Mobile Toggle Button (Visible on screens < `lg`)
+
+This button will open the Offcanvas component for the categories list. Place this near your main header/logo on the Shop page.
+
+```html
+<!-- Categories Toggle Button (Visible only on mobile/tablet) -->
+<button class="btn btn-dark d-lg-none my-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#categoriesOffcanvas">
+    <i class="fa-solid fa-filter me-2"></i> Shop Filters
+</button>
+```
+
+#### B. Main Layout Structure (Shop Page)
+
+```html
+<div class="container-xxl my-5">
+    <div class="row">
+
+        <!-- ---------------------------------------------------- -->
+        <!-- 1. CATEGORY SIDEBAR (Desktop Fixed / Mobile Offcanvas) -->
+        <!-- ---------------------------------------------------- -->
+
+        <!-- Desktop Sidebar (Visible only on LG screens and up) -->
+        <div class="col-lg-3 d-none d-lg-block">
+            <aside class="category-sidebar p-0 rounded-4" style="overflow: hidden;">
+                <h5 class="p-4 mb-0 fw-bold border-bottom" style="background-color: #1b2533;">FASHION</h5>
+                <!-- Desktop Category List -->
+                <div id="desktopCategoryList">
+                    <!-- CONTENT GOES HERE (See 2.C for content) -->
+                </div>
+                <h5 class="p-4 mb-0 fw-bold border-top" style="background-color: #1b2533;">BAKERY</h5>
+                <!-- More categories if needed -->
+            </aside>
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- 2. MAIN CONTENT AREA (Product Grid) -->
+        <!-- ---------------------------------------------------- -->
+        <div class="col-12 col-lg-9">
+            <h1 class="mb-4">Shop Products</h1>
+            <!-- Products will be dynamically loaded here in Phase 2 -->
+            <div id="product-grid" class="row">
+                <!-- Product cards go here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------------------------- -->
+<!-- 3. MOBILE OFFCANVAS (Slides out on mobile/tablet) -->
+<!-- ---------------------------------------------------- -->
+
+<div class="offcanvas offcanvas-start category-sidebar" tabindex="-1" id="categoriesOffcanvas">
+    <div class="offcanvas-header border-bottom border-light border-opacity-25">
+        <h5 class="offcanvas-title text-white fw-bold">SHOP FILTERS</h5>
+        <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <!-- CONTENT GOES HERE (See 2.C for content, wrapped in its own ID) -->
+        <div id="mobileCategoryList">
+            <!-- CONTENT GOES HERE (See 2.C for content) -->
+        </div>
+    </div>
+</div>
+```
+
+#### C. **The Collapsible Category List Content**
+
+We need this content to appear in **both** the desktop sidebar (`#desktopCategoryList`) **and** the mobile offcanvas (`#mobileCategoryList`).
+
+```html
+<!-- Example of ONE main category item: Clothes -->
+<div class="category-item" data-bs-toggle="collapse" data-bs-target="#clothesCollapse" aria-expanded="false">
+    <span class="d-flex align-items-center">
+        <i class="fa-solid fa-shirt me-3" style="color:#FFC857;"></i> Clothes
+    </span>
+    <i class="fa-solid fa-chevron-down small"></i>
+</div>
+<div class="collapse" id="clothesCollapse">
+    <ul class="category-submenu">
+        <li class="p-0">
+            <!-- Nested Subcategories -->
+            <div class="category-item p-0 ps-3 border-0" data-bs-toggle="collapse" data-bs-target="#tshirtsCollapse">
+                <span class="text-white-50">T-Shirts</span>
+                <i class="fa-solid fa-chevron-down small"></i>
+            </div>
+            <div class="collapse" id="tshirtsCollapse">
+                 <ul class="category-submenu">
+                    <li><a href="#">T-Shirts (Men)</a></li>
+                    <li><a href="#">T-Shirts (Women)</a></li>
+                 </ul>
+            </div>
+        </li>
+        <li><a href="#">Shirts</a></li>
+        <li><a href="#">Gowns</a></li>
+        <li><a href="#">Dresses</a></li>
+        <li><a href="#">Jeans</a></li>
+    </ul>
+</div>
+
+<!-- Example of a Second Category Item: Shoes -->
+<div class="category-item" data-bs-toggle="collapse" data-bs-target="#shoesCollapse">
+    <span class="d-flex align-items-center">
+        <i class="fa-solid fa-shoe-prints me-3" style="color:#20C997;"></i> Shoes
+    </span>
+    <i class="fa-solid fa-chevron-down small"></i>
+</div>
+<div class="collapse" id="shoesCollapse">
+    <ul class="category-submenu">
+        <li><a href="#">Runners</a></li>
+        <li><a href="#">Boots</a></li>
+    </ul>
+</div>
+<!-- Repeat structure for Glasses, Bags, Hat, Makeup, etc. -->
+```
+
+### 3. JavaScript (For Toggling Icons)
+
+On the Mantu template, the chevron icon flips when the accordion opens. We can use a tiny bit of JS to achieve this for better UX.
+
+```javascript
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all items that toggle a collapse panel
+    document.querySelectorAll('.category-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-bs-target');
+            const targetElement = document.querySelector(targetId);
+            const icon = this.querySelector('.fa-chevron-down');
+
+            if (targetElement && icon) {
+                // Wait briefly for Bootstrap's collapse transition to check state
+                setTimeout(() => {
+                    if (targetElement.classList.contains('show')) {
+                        // Panel is open, rotate icon up
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        // Panel is closed, rotate icon down
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                }, 50); // Small delay
+            }
+        });
+    });
+});
+```
+
+### Summary of Responsiveness:
+
+| Screen Size | Classes Applied | Result |
+| :--- | :--- | :--- |
+| **XS, SM, MD** (< 992px) | `d-lg-none` hides desktop sidebar. | The **"Shop Filters" button** appears and opens the **Mobile Offcanvas** (Image 3). |
+| **LG, XL, XXL** (≥ 992px) | `d-none d-lg-block` shows desktop sidebar. | The sidebar is fixed on the left in the `col-lg-3` grid space (Image 2). |
+
+This setup provides the required dual functionality and visual styling. Now you have a clean, scalable way to manage your filters and categories!

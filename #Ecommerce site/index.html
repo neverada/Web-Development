@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantu Style Clone</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+
+    <!-- This is the NEW main layout container -->
+    <div id="mainLayout" class="main-layout">
+
+        <!-- 1. The Sidebar (initially hidden) -->
+        <aside id="categorySidebar" class="category-sidebar  shadow-sm   mt-5">
+            <div id="category-sidebar-inner" class="rounded-end-5 d-none d-lg-block shadow-sm mantu-category-sidebar">
+                <div class="sidebar-header">
+                    <h5 class="sidebar-title text-uppercase text-muted small fw-bold ls-1">Fashion</h5>
+                    <button type="button" class="btn-close btn-close-white" id="closeSidebarBtn"></button>
+                </div>
+                <div class="sidebar-body p-3">
+
+
+                    <ul class="list-unstyled">
+                        <!-- Category Item 1: Clothes (Toggles Collapse) -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Fashion</h5>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mClothesCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-shirt me-3" style="color:#6E7BF7;"></i> Clothes
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mClothesCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="#">T-Shirts</a></li>
+                                    <li><a href="#">Shirts</a></li>
+                                    <li><a href="#">Gowns</a></li>
+                                    <li><a href="#">Dresses</a></li>
+                                    <li><a href="#">Sharees</a></li>
+                                    <li><a href="#">Jeans</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Category Item 2: Shoes -->
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-shoe-prints me-3" style="color:#F3735E;"></i> Shoes
+                                </span>
+
+                            </div>
+                        </li>
+
+                        <!-- Category Item 3: Bags (Complex Nested Collapse) -->
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBagsCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-suitcase me-3" style="color:#FFAA55;"></i> Bags
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mBagsCollapse">
+                                <!-- The collapse panel itself is highly styled in the screenshot -->
+                                <ul class="subcategory-panel bags-panel p-3">
+                                    <li><a href="#"></i> Purse</a></li>
+                                    <li><a href="#"></i> Bags</a></li>
+                                    <li><a href="#"></i> Wallet</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <!-- Repeat for Glasses, Hat, Makeup, etc. -->
+                        <!-- Category Item 4: Glasses -->
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-glasses me-3" style="color:#34C3FF;"></i> Glasses
+                                </span>
+
+                            </div>
+                        </li>
+                        <!-- Category Item 5: Hat -->
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-hat-cowboy me-3" style="color:#8D6EF1;"></i> Hat
+                                </span>
+                            </div>
+                        </li>
+                        <!-- Category Item 6: Cosmetics (Toggles Collapse) -->
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mCosmeticsCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-spray-can me-3" style="color:#ec4899;"></i>
+                                    Cosmetics
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mCosmeticsCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="#">Skincare</a></li>
+                                    <li><a href="#">Haircare</a></li>
+                                    <li><a href="#">Fragrance</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--  Bakery (Toggles Collapse) -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Bakery</h5>
+
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBakeryCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-cake-candles me-3" style="color:#f59e0b;"></i>
+                                    Cake
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mBakeryCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="#">Cup Cake</a></li>
+                                    <li><a href="#">Cake</a></li>
+                                    <li><a href="#">Pastries</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-bread-slice me-3" style="color:#d97706;"></i>
+                                    Bread
+                                </span>
+
+                            </div>
+                        </li>
+                        <!--  Vegetables -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Vegetables</h5>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse"
+                                data-bs-target="#mVegetablesCollapse">
+                                <span class="d-flex align-items-center">
+                                    🍅
+                                    Tomato
+                                </span>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    🥬
+                                    Leafy Greens
+                                </span>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    🥔
+                                    Tuber Root
+                                </span>
+
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- 2. The Main Content Wrapper -->
+        <div class="main-content-wrapper ">
+            <!-- ==================== DESKTOP NAVBAR (Hidden on Mobile) ==================== -->
+            <nav
+                class="navbar navbar-expand-lg navbar-light bg-white d-none d-lg-flex  shadow-sm container-fluid px-2 rounded-bottom-5">
+                <div class="container-fluid">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-circle"></i>
+                    </button>
+
+                    <!-- logo -->
+                    <a class="navbar-brand fw-bold fs-3" href="#">
+                        <i class="fa-solid fa-bag-shopping text-primary"></i> E-shop
+                    </a>
+
+
+                    <!-- Desktop Menu Links -->
+                    <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Categories</a>
+                                <div class="dropdown-menu mantu-mega-menu shadow border-0 p-4 rounded-4">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h6 class="fw-bold text-primary mb-3">Classic</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Shop Right
+                                                        Sidebar</a></li>
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Banner
+                                                        Right Sidebar</a></li>
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Shop Full
+                                                        Width</a></li>
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Banner
+                                                        Full Width</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                        <div class="col-6 ">
+                                            <h6 class="fw-bold text-primary mb-3">List</h6>
+                                            <ul class="list-unstyled">
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Shop Right
+                                                        Sidebar</a></li>
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Banner
+                                                        Right Sidebar</a></li>
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Shop Full
+                                                        Width</a></li>
+                                                <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                        href="#">Banner
+                                                        Full Width</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Product</a>
+                                <ul class="dropdown-menu shadow border-0 p-4 rounded-4">
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product
+                                            Detail</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product
+                                            Accordian</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product Full
+                                            Width</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Accordian Full
+                                            Width</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
+                                <ul class="dropdown-menu shadow border-0 p-4 rounded-4">
+                                    <li>
+                                        <a class="dropdown-item dropdown-toggle text-muted px-0 py-1 small-link"
+                                            href="#">Blog</a>
+                                        <ul class="submenu dropdown-menu shadow border-0 p-4 rounded-4">
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Right
+                                                    Side
+                                                    Bar</a></li>
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Full
+                                                    Width</a>
+                                            </li>
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Detail
+                                                    Right
+                                                    Side Bar</a></li>
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Detail
+                                                    Full
+                                                    Width</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">About Us</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Contact Us</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Car</a></li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Check Out</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Compare</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">FAQ</a></li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Log In</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Desktop Right Icons -->
+                    <div class="d-flex gap-4 align-items-center">
+                        <a href="#" class="text-dark fs-5"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
+                        <a href="#" class="text-dark fs-5 position-relative">
+                            <i class="fa-regular fa-heart"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size: 0.5em;">3</span>
+                        </a>
+                        <a href="#" class="text-dark fs-5 position-relative">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size: 0.5em;">4</span>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+
+            <!--  TABLET TOP BAR  ( < 1200px ) -->
+            <div class=" d-none d-sm-flex d-lg-none  bg-white shadow-sm py-3">
+                <div class="container-xxl d-flex justify-content-between align-items-center">
+
+                    <button class="btn border-0 p-0 sidebar-toggle" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#categorySidebarMobile">
+                        <i class="fa-solid fa-circle"></i>
+                    </button>
+                    <!-- logo -->
+                    <a class="navbar-brand fw-bold fs-3" href="#">
+                        <i class="fa-solid fa-bag-shopping text-primary"></i> E-shop
+                    </a>
+
+                    <!-- hamburger -->
+                    <button class="btn border-0 fs-3 ms-0 me-auto" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasMenu" aria-label="Menu">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <!-- Desktop Right Icons -->
+                    <div class="d-flex gap-4 align-items-center">
+                        <a href="#" class="text-dark fs-5"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
+                        <a href="#" class="text-dark fs-5 position-relative">
+                            <i class="fa-regular fa-heart"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size: 0.5em;">3</span>
+                        </a>
+                        <a href="#" class="text-dark fs-5 position-relative">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size: 0.5em;">4</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③  OFF-CANVAS SIDEBAR  -->
+            <div class="offcanvas offcanvas-start mantu-offcanvas" tabindex="-1" id="offcanvasMenu">
+                <div class="offcanvas-header border-0">
+                    <h5 class="offcanvas-title fw-bold text-white">My Menu</h5>
+                    <button type="button" class="btn-close btn-close-white fs-4" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-unstyled mb-4">
+                        <li>
+                            <a href="#" class="mantu-menu-link">Home</a>
+                        </li>
+                        <li>
+                            <button
+                                class="mantu-menu-link w-100 text-start d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#catCollapse">
+                                Categories <span class="fs-4">+</span>
+                            </button>
+                            <div class="collapse" id="catCollapse">
+                                <ul class="list-unstyled ps-3">
+                                    <li>
+                                        <button
+                                            class="mantu-menu-link w-100 text-start d-flex justify-content-between align-items-center"
+                                            data-bs-toggle="collapse" data-bs-target="#classicCollapse">
+                                            Classic <span class="fs-4">+</span>
+                                        </button>
+                                        <div class="collapse" id="classicCollapse">
+                                            <ul class="list-unstyled ps-3">
+                                                <li><a href="#" class="mantu-menu-link">Shop Right Sidebar</a></li>
+                                                <li><a href="#" class="mantu-menu-link">Banner Right Sidebar</a></li>
+                                                <li><a href="#" class="mantu-menu-link">Shop Full Width</a></li>
+                                                <li><a href="#" class="mantu-menu-link">Banner Full Width</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <button
+                                            class="mantu-menu-link w-100 text-start d-flex justify-content-between align-items-center"
+                                            data-bs-toggle="collapse" data-bs-target="#listCollapse">
+                                            List <span class="fs-4">+</span>
+                                        </button>
+                                        <div class="collapse" id="listCollapse">
+                                            <ul class="list-unstyled ps-3">
+                                                <li><a href="#" class="mantu-menu-link">Shop Right Sidebar</a></li>
+                                                <li><a href="#" class="mantu-menu-link">Banner Right Sidebar</a></li>
+                                                <li><a href="#" class="mantu-menu-link">Shop Full Width</a></li>
+                                                <li><a href="#" class="mantu-menu-link">Banner Full Width</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button
+                                class="mantu-menu-link w-100 text-start d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#prodCollapse">
+                                Products <span class="fs-4">+</span>
+                            </button>
+                            <div class="collapse" id="prodCollapse">
+                                <ul class="list-unstyled ps-3">
+                                    <li><a href="#" class="mantu-menu-link">Product Detail</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Product Accordion</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Product Full Width</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Accordion Full Width</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button
+                                class="mantu-menu-link w-100 text-start d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#pagesCollapse">
+                                Pages <span class="fs-4">+</span>
+                            </button>
+                            <div class="collapse" id="pagesCollapse">
+                                <ul class="list-unstyled ps-3">
+                                    <li><a href="#" class="mantu-menu-link">About Us</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Contact Us</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Cart</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Check Out</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Compare</a></li>
+                                    <li><a href="#" class="mantu-menu-link">FAQ</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Log In</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button
+                                class="mantu-menu-link w-100 text-start d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#blogCollapse">
+                                Blog <span class="fs-4">+</span>
+                            </button>
+                            <div class="collapse" id="blogCollapse">
+                                <ul class="list-unstyled ps-3">
+                                    <li><a href="#" class="mantu-menu-link">Right Sidebar</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Full Width</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Detail Right Sidebar</a></li>
+                                    <li><a href="#" class="mantu-menu-link">Detail Full Width</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Social Icons -->
+                    <div class="d-flex gap-3 justify-content-center mt-4">
+                        <a href="#" class="mantu-social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="mantu-social"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="mantu-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="mantu-social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ==================== MOBILE TOP BAR (Hidden on Desktop) ==================== -->
+            <div
+                class="mobile-top-bar d-xs-flex  d-flex d-lg-none d-md-none d-sm-none justify-content-between align-items-center">
+
+                <button class="btn border-0 p-0 sidebar-toggle" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#categorySidebarMobile">
+                    <i class="fa-solid fa-circle"></i>
+                </button>
+
+
+
+                <!-- Centered Logo -->
+                <a class="navbar-brand fw-bold fs-3" href="#">
+                    <i class="fa-solid fa-bag-shopping text-primary"></i> E-Shop
+                </a>
+
+                <!-- Hamburger Toggler -->
+                <button class="btn border-0 p-0" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasMenu">
+                    <i class="fa-solid fa-bars-staggered fs-3"></i>
+                </button>
+            </div>
+
+            <!-- ==================== MOBILE BOTTOM NAV (Fixed) ==================== -->
+            <div class="mobile-bottom-nav d-lg-none d-md-none d-sm-none d-xs-block">
+                <ul class="nav justify-content-between">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="fa-regular fa-user"></i></a>
+                    </li>
+                    <!-- Home is highlighted and slightly bigger -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-primary fs-4"><i class="fa-solid fa-house"></i></a>
+                    </li>
+                    <li class="nav-item position-relative">
+                        <a href="#" class="nav-link">
+                            <i class="fa-regular fa-heart"></i>
+                            <span class="badge bg-danger rounded-pill mobile-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item position-relative">
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="badge bg-danger rounded-pill mobile-badge">4</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Mobile/Tablet Category Offcanvas -->
+            <div class="offcanvas offcanvas-start mantu-category-offcanvas d-lg-none" tabindex="-1"
+                id="categorySidebarMobile">
+
+                <div class="offcanvas-header pb-0 border-0">
+
+                    <!-- Custom close button style -->
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body p-0">
+                    <ul class="list-unstyled">
+                        <!-- Category Item 1: Clothes (Toggles Collapse) -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 px-5">Fashion</h5>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mClothesCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-shirt me-3" style="color:#6E7BF7;"></i> Clothes
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mClothesCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="#">T-Shirts</a></li>
+                                    <li><a href="#">Shirts</a></li>
+                                    <li><a href="#">Gowns</a></li>
+                                    <li><a href="#">Dresses</a></li>
+                                    <li><a href="#">Sharees</a></li>
+                                    <li><a href="#">Jeans</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Category Item 2: Shoes -->
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-shoe-prints me-3" style="color:#F3735E;"></i> Shoes
+                                </span>
+
+                            </div>
+                        </li>
+
+                        <!-- Category Item 3: Bags (Complex Nested Collapse) -->
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBagsCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-suitcase me-3" style="color:#FFAA55;"></i> Bags
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mBagsCollapse">
+                                <!-- The collapse panel itself is highly styled in the screenshot -->
+                                <ul class="subcategory-panel bags-panel p-3">
+                                    <li><a href="#"></i> Purse</a></li>
+                                    <li><a href="#"></i> Bags</a></li>
+                                    <li><a href="#"></i> Wallet</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <!-- Repeat for Glasses, Hat, Makeup, etc. -->
+                        <!-- Category Item 4: Glasses -->
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-glasses me-3" style="color:#34C3FF;"></i> Glasses
+                                </span>
+
+                            </div>
+                        </li>
+                        <!-- Category Item 5: Hat -->
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-hat-cowboy me-3" style="color:#8D6EF1;"></i> Hat
+                                </span>
+                            </div>
+                        </li>
+                        <!-- Category Item 6: Cosmetics (Toggles Collapse) -->
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mCosmeticsCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-spray-can me-3" style="color:#ec4899;"></i>
+                                    Cosmetics
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mCosmeticsCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="#">Skincare</a></li>
+                                    <li><a href="#">Haircare</a></li>
+                                    <li><a href="#">Fragrance</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--  Bakery (Toggles Collapse) -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 px-5">Bakery</h5>
+
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBakeryCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-cake-candles me-3" style="color:#f59e0b;"></i>
+                                    Cake
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+                            </div>
+                            <!-- Subcategory Collapse Panel -->
+                            <div class="collapse" id="mBakeryCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="#">Cup Cake</a></li>
+                                    <li><a href="#">Cake</a></li>
+                                    <li><a href="#">Pastries</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-bread-slice me-3" style="color:#d97706;"></i>
+                                    Bread
+                                </span>
+
+                            </div>
+                        </li>
+                        <!--  Vegetables -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 px-5">Vegetables</h5>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse"
+                                data-bs-target="#mVegetablesCollapse">
+                                <span class="d-flex align-items-center">
+                                    🍅
+                                    Tomato
+                                </span>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    🥬
+                                    Leafy Greens
+                                </span>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+                                <span class="d-flex align-items-center">
+                                    🥔
+                                    Tuber Root
+                                </span>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <main class="container-fluid px-4 py-4">
+
+
+                <section class="hero-section container-fluid mt-4">
+
+                    <!-- ===== HERO CAROUSEL START ===== -->
+                    <div id="heroCarousel" class="carousel slide mantu-hero-carousel " data-bs-ride="carousel">
+                        <!-- Indicators (the three dots at the bottom) -->
+                        <div class="carousel-indicators mb-3 rounded-top-5 p-1">
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                        </div>
+
+                        <!-- Carousel Content -->
+                        <div class="carousel-inner mantu-carousel-inner rounded-4 ">
+
+                            <!-- SLIDE 1: Women's Cosmetics -->
+                            <div class="carousel-item active"
+                                style="background-image: url(https://maraviyainfotech.com/projects/mantu-html/assets/img/hero/1.jpg);">
+                                <div class="mantu-slide-content">
+                                    <!-- Discount Tag -->
+                                    <div class="discount-tag">-22% Off</div>
+
+                                    <!-- Text Content -->
+                                    <div class="slide-text">
+                                        <h1>Cosmetics sale for Women's</h1>
+                                        <p>Wear the change. Fashion that feels good.</p>
+                                        <a href="#" class="btn btn-sm btn-primary rounded-3">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 2: Men's Fashion (Example) -->
+                            <div class="carousel-item"
+                                style="background-image: url(https://maraviyainfotech.com/projects/mantu-html/assets/img/hero/2.jpg);">
+                                <div class="mantu-slide-content">
+                                    <!-- Discount Tag -->
+                                    <div class="discount-tag">-50% Off</div>
+                                    <div class="slide-text text-white">
+                                        <h1>Fashion sale for Men's</h1>
+                                        <p>Elevate your every day. Style that speaks volumes.</p>
+                                        <a href="#" class="btn btn-sm btn-primary rounded-3">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 3 & 4: Repeat the structure for the other two slides -->
+                            <div class="carousel-item"
+                                style="background-image: url(https://maraviyainfotech.com/projects/mantu-html/assets/img/hero/3.jpg);">
+                                <div class="mantu-slide-content">
+                                    <!-- Discount Tag -->
+                                    <div class="discount-tag">-33% Off</div>
+                                    <div class="slide-text text-white">
+                                        <h1>Fashion sale for Children's</h1>
+                                        <p>Elevate your every day. Fashion that feels good.</p>
+                                        <a href="#" class="btn btn-sm btn-primary rounded-3">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item"
+                                style="background-image: url(https://maraviyainfotech.com/projects/mantu-html/assets/img/hero/4.jpg); ">
+                                <div class="mantu-slide-content">
+                                    <!-- Discount Tag -->
+                                    <div class="discount-tag">-33% Off</div>
+                                    <div class="slide-text text-white">
+                                        <h1>Fashion sale for Women</h1>
+                                        <p>Wear the change. Fashion that feels good. </p>
+                                        <a href="#" class="btn btn-sm btn-primary rounded-3">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Carousel Controls (Arrows) -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <!-- ===== HERO CAROUSEL END ===== -->
+
+                </section>
+
+                <!-- ===== CATEGORY STATS CARDS START ===== -->
+                <section class="category-section py-5">
+                    <div class="container-fluid">
+                        <!-- Section Header -->
+                        <div class="mb-4">
+                            <h3 class="fw-bold">Popular Categories</h3>
+                        </div>
+
+                        <div class="row g-3 g-lg-4">
+
+                            <!-- CARD 1: Fashion -->
+                            <div class="col">
+                                <div class="mantu-cat-card">
+                                    <div class="discount-badge">35%</div>
+                                    <div class="faded-bg-text">35%</div>
+                                    <div class="cat-content">
+                                        <span class="sub-title">Fashion</span>
+                                        <h4 class="main-title">Clothes</h4>
+                                        <p class="item-count">Items (16)</p>
+                                    </div>
+                                    <div class="cat-thumbnails">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/1.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/2.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/3.jpg"
+                                            alt="thumb">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD 2: Cosmetics -->
+                            <div class="col">
+                                <div class="mantu-cat-card">
+                                    <div class="discount-badge">22%</div>
+                                    <div class="faded-bg-text">22%</div>
+                                    <div class="cat-content">
+                                        <span class="sub-title">Generic</span>
+                                        <h4 class="main-title">Cosmetics</h4>
+                                        <p class="item-count">Items (45)</p>
+                                    </div>
+                                    <div class="cat-thumbnails">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/4.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/5.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/6.jpg"
+                                            alt="thumb">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD 3: Shoes -->
+                            <div class="col d-none d-xl-block d-lg-block d-md-block d-sm-block">
+                                <div class="mantu-cat-card">
+                                    <div class="discount-badge">65%</div>
+                                    <div class="faded-bg-text">65%</div>
+                                    <div class="cat-content">
+                                        <span class="sub-title">Stylish</span>
+                                        <h4 class="main-title">Shoes</h4>
+                                        <p class="item-count">Items (58)</p>
+                                    </div>
+                                    <div class="cat-thumbnails">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/7.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/8.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/9.jpg"
+                                            alt="thumb">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD 4: Watches -->
+                            <div class="col d-none d-xl-block d-lg-block">
+                                <div class="mantu-cat-card">
+                                    <div class="discount-badge">45%</div>
+                                    <div class="faded-bg-text">45%</div>
+                                    <div class="cat-content">
+                                        <span class="sub-title">Digital</span>
+                                        <h4 class="main-title">Watches</h4>
+                                        <p class="item-count">Items (64)</p>
+                                    </div>
+                                    <div class="cat-thumbnails">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/10.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/11.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/12.jpg"
+                                            alt="thumb">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD 5: Belts (Visible on XL screens, hidden on LG) -->
+                            <div class="col d-none d-xl-block">
+                                <div class="mantu-cat-card">
+                                    <div class="discount-badge">63%</div>
+                                    <div class="faded-bg-text">63%</div>
+                                    <div class="cat-content">
+                                        <span class="sub-title">Leather</span>
+                                        <h4 class="main-title">Belts</h4>
+                                        <p class="item-count">Items (75)</p>
+                                    </div>
+                                    <div class="cat-thumbnails">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/13.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/14.jpg"
+                                            alt="thumb">
+                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/category/15.jpg"
+                                            alt="thumb">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- ==================== NEW ARRIVALS SECTION ==================== -->
+                <section class="new-arrivals-section py-5">
+
+
+
+                    <!-- Horizontal Scroller Carousel (Top) -->
+                    <div id="newArrivalsCarousel" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="false">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <!-- Section Header -->
+                            <h3 class=" mb-4">New <span class="text-primary">Arrivals</span></h3>
+                            <!-- Custom controls -->
+                            <div>
+                                <button class="btn btn-light rounded-circle me-2" type="button"
+                                    data-bs-target="#newArrivalsCarousel" data-bs-slide="prev" id="scrollLeft">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button class="btn btn-light rounded-circle " type="button"
+                                    data-bs-target="#newArrivalsCarousel" data-bs-slide="next" id="scrollRight">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="carousel-inner d-flex flex-nowrap">
+                            <!-- PRODUCT CARD 2 -->
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="product-card rounded-4 shadow-sm p-3 me-3" style="width: 280px;">
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                        alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="mt-3">
+                                        <span class="badge bg-primary">T-SHIRT</span>
+                                        <h6 class="mt-2 fw-bold">Cotton fabric T-shirt</h6>
+                                        <p class="text-muted small mb-1">S M XL</p>
+                                        <div class="d-inline-block">
+                                            <span class="fs-5 fw-bold">$120</span>
+                                            <span class="text-muted text-decoration-line-through">$130</span>
+
+                                        </div>
+                                        <div class="mt-2 d-flex">
+                                            <div>
+                                                <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                                <span class="color-dot bg-success rounded-circle d-inline-block ms-2"
+                                                    style="width:14px;height:14px;"></span>
+                                            </div>
+
+                                            <button class="btn btn-small ms-auto text-danger"><i
+                                                    class="fa-regular fa-heart"></i></button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div> <!-- /carousel-inner -->
+
+
+
+                    </div> <!-- /carousel -->
+
+                    <!-- Below Cards Section -->
+                    <div class="row mt-4 g-4">
+                        <!-- Card 1 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">Free Shipping</h5>
+                                <p class="text-muted small">Free shipping on all US order or order above $200</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-headset fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">24X7 Support</h5>
+                                <p class="text-muted small">Contact us 24 hours live support, 7 days in a week</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-rotate fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">30 Days Return</h5>
+                                <p class="text-muted small">Simply return it within 30 days for an exchange <br></p>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-shield-alt fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">Payment Secure</h5>
+                                <p class="text-muted small">Contact us 24 hours live support, 7 days in a week</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+                <section class="promo-banner py-5">
+
+                    <div class="row g-0 align-items-center mantu-promo-card rounded-4 overflow-hidden">
+                        <!-- Image column -->
+                        <div class="col-lg-6 promo-img-col position-relative">
+                            <!-- Overlay text for mobile (hidden on lg+) -->
+                            <div class="promo-overlay-text d-lg-none">
+                                <div class="fw-bold text-uppercase text-muted small mb-2">Women's</div>
+                                <div class="promo-title mb-3">
+                                    <span class="fw-bold text-primary"
+                                        style="font-size:2rem;line-height:1.1;letter-spacing:1px;display:block;">FASHION<br>COLLECTION</span>
+                                </div>
+                                <div class="fw-semibold mb-1" style="font-size:1.1rem;">Summer</div>
+                                <div class="text-muted mb-3" style="font-size:1rem;">New Stylish Shirts, Pants &amp;
+                                    Accessories.</div>
+                                <a href="#" class="btn btn-warning rounded-pill px-4 py-2 fw-bold">Book Now</a>
+                            </div>
+                        </div>
+                        <!-- Text column (hidden on mobile, visible on lg+) -->
+                        <div class="col-lg-6 bg-white p-4 p-lg-5 d-none d-lg-flex flex-column justify-content-center">
+                            <div>
+                                <div class="fw-bold text-uppercase text-muted small mb-2">Women's</div>
+                                <div class="promo-title mb-3">
+                                    <span class="fw-bold text-primary"
+                                        style="font-size:2.5rem;line-height:1.1;letter-spacing:1px;display:block;">FASHION<br>COLLECTION</span>
+                                </div>
+                                <div class="fw-semibold mb-1" style="font-size:1.2rem;">Summer</div>
+                                <div class="text-muted mb-4" style="font-size:1rem;">New Stylish Shirts, Pants &amp;
+                                    Accessories.</div>
+                                <a href="#" class="btn btn-warning rounded-pill px-4 py-2 fw-bold">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <section class="deal-section py-3 container-fluid">
+                    <!-- Heading and Timer -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                        <h3 class="mb-2 fw-bold">Day Of The <span class="text-primary">Deals</span></h3>
+                        <div id="deal-timer" class="badge bg-light text-dark fs-6 py-2 px-3 fw-semibold"></div>
+                    </div>
+
+                    <!-- Bootstrap Carousel Slider -->
+                    <div id="dealCarousel" class="carousel slide" data-bs-interval="false">
+
+                        <!-- CAROUSEL CONTENT: JS will populate this -->
+                        <div class="carousel-inner row g-4">
+                            <!-- 
+                All product cards go here in a flat list. 
+                The JS will automatically group them into slides.
+            -->
+                            <div class="product-card rounded-4 shadow-sm p-3 col">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                    alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                <div class="mt-3">
+                                    <span class="badge bg-primary">T-SHIRT</span>
+                                    <h6 class="mt-2 fw-bold">Cotton T-shirt 1</h6>
+                                    <p class="text-muted small mb-1">S M XL</p>
+                                    <div class="d-inline-block">
+                                        <span class="fs-5 fw-bold">$120</span>
+                                        <span class="text-muted text-decoration-line-through">$130</span>
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        <div>
+                                            <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                style="width:14px;height:14px;"></span>
+                                            <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                style="width:14px;height:14px;"></span>
+                                        </div>
+                                        <button class="btn btn-small ms-auto text-danger"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-card rounded-4 shadow-sm p-3 col">
+                                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=400&fit=crop"
+                                    alt="Hoodie" class="img-fluid rounded-3" style="width: 100%;">
+                                <div class="mt-3">
+                                    <span class="badge bg-success">HOODIE</span>
+                                    <h6 class="mt-2 fw-bold">Comfort Hoodie</h6>
+                                    <p class="text-muted small mb-1">M L XL</p>
+                                    <div class="d-inline-block">
+                                        <span class="fs-5 fw-bold">$150</span>
+                                        <span class="text-muted text-decoration-line-through">$175</span>
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        <div>
+                                            <span class="color-dot bg-dark rounded-circle d-inline-block"
+                                                style="width:14px;height:14px;"></span>
+                                            <span class="color-dot bg-secondary rounded-circle d-inline-block ms-2"
+                                                style="width:14px;height:14px;"></span>
+                                        </div>
+                                        <button class="btn btn-small ms-auto text-danger"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-card rounded-4 shadow-sm p-3 col">
+                                <!-- ... Card 3 ... -->
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop"
+                                    alt="Shoes" class="img-fluid rounded-3" style="width: 100%;">
+                                <div class="mt-3">
+                                    <span class="badge bg-danger">SHOES</span>
+                                    <h6 class="mt-2 fw-bold">Running Sneakers</h6>
+                                    <p class="text-muted small mb-1">8 9 10</p>
+                                    <div class="d-inline-block">
+                                        <span class="fs-5 fw-bold">$210</span>
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        <div>
+                                            <span class="color-dot bg-primary rounded-circle d-inline-block"
+                                                style="width:14px;height:14px;"></span>
+                                        </div>
+                                        <button class="btn btn-small ms-auto text-danger"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-card rounded-4 shadow-sm p-3 col">
+                                <!-- ... Card 4 ... -->
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                    alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                <div class="mt-3">
+                                    <span class="badge bg-primary">T-SHIRT</span>
+                                    <h6 class="mt-2 fw-bold">Cotton T-shirt 4</h6>
+                                    <p class="text-muted small mb-1">S M XL</p>
+                                    <div class="d-inline-block">
+                                        <span class="fs-5 fw-bold">$120</span>
+                                        <span class="text-muted text-decoration-line-through">$130</span>
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        <div>
+                                            <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                style="width:14px;height:14px;"></span>
+                                            <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                style="width:14px;height:14px;"></span>
+                                        </div>
+                                        <button class="btn btn-small ms-auto text-danger"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-card rounded-4 shadow-sm p-3 col">
+                                <!-- ... Card 5 ... -->
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                    alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                <div class="mt-3">
+                                    <span class="badge bg-primary">T-SHIRT</span>
+                                    <h6 class="mt-2 fw-bold">Cotton T-shirt 5</h6>
+                                    <p class="text-muted small mb-1">S M XL</p>
+                                    <div class="d-inline-block">
+                                        <span class="fs-5 fw-bold">$120</span>
+                                        <span class="text-muted text-decoration-line-through">$130</span>
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        <div>
+                                            <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                style="width:14px;height:14px;"></span>
+                                            <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                style="width:14px;height:14px;"></span>
+                                        </div>
+                                        <button class="btn btn-small ms-auto text-danger"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-card rounded-4 shadow-sm p-3 col">
+                                <!-- ... Card 6 ... -->
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop"
+                                    alt="T-Shirt" class="img-fluid rounded-3" style="width: 100%;">
+                                <div class="mt-3">
+                                    <span class="badge bg-primary">T-SHIRT</span>
+                                    <h6 class="mt-2 fw-bold">Cotton T-shirt 6</h6>
+                                    <p class="text-muted small mb-1">S M XL</p>
+                                    <div class="d-inline-block">
+                                        <span class="fs-5 fw-bold">$120</span>
+                                        <span class="text-muted text-decoration-line-through">$130</span>
+                                    </div>
+                                    <div class="mt-2 d-flex">
+                                        <div>
+                                            <span class="color-dot bg-info rounded-circle d-inline-block"
+                                                style="width:14px;height:14px;"></span>
+                                            <span class="color-dot bg-warning rounded-circle d-inline-block ms-2"
+                                                style="width:14px;height:14px;"></span>
+                                        </div>
+                                        <button class="btn btn-small ms-auto text-danger"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add more product cards as needed... -->
+
+                        </div>
+
+                        <!-- Indicators (The dots!) - JS will also populate this -->
+                        <div class="carousel-indicators mt-4 justify-content-end position-static">
+                            <!-- Indicators will be generated here -->
+                        </div>
+                    </div>
+                </section>
+                <!-- Testimonial Section -->
+                <section class="testimonial-section py-5">
+                    <div class="container-fluid">
+                        <!-- Main wrapper with background and relative positioning -->
+                        <div id="testimonial-wrapper" class="position-relative rounded-4 p-5 text-center shadow-sm">
+
+                            <!-- Decorative Quote Images -->
+                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/icons/top-quotes.svg"
+                                alt="quote" class="top-quote position-absolute">
+                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/icons/bottom-quotes.svg"
+                                alt="quote" class="bottom-quote position-absolute">
+
+                            <!-- Content that will fade in and out -->
+                            <div id="testimonial-content" class="testimonial-content">
+                                <!-- Image of the person -->
+                                <img id="testimonial-img" src="" alt="Client"
+                                    class="rounded-circle mx-auto mb-4 border-none">
+
+                                <!-- The quote text -->
+                                <p id="testimonial-text" class="lead text-muted fst-italic mx-auto"> </p>
+
+                                <!-- Author's name and title -->
+                                <h5 id="testimonial-author" class="fw-bold mt-4 mb-1"></h5>
+                                <small id="testimonial-title" class="text-uppercase text-secondary"></small>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </section>
+
+                <section class="blog-section pb-0 pt-4">
+                    <div class="container-fluid px-0">
+                        <!-- Heading -->
+                        <div class="d-flex justify-content-between align-items-center mb-4  border-bottom">
+                            <h3 class="mb-2 fw-bold">From Our <span class="text-primary">Blog</span></h3>
+                        </div>
+
+                        <!-- Bootstrap Carousel for Blog Posts -->
+                        <div id="blogCarousel" class="carousel slide" data-bs-interval="false">
+
+                            <!-- CAROUSEL CONTENT: JS will populate this -->
+                            <div class="carousel-inner row">
+                                <!-- JS WILL GRP THE CARDS -->
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/5.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/6.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/1.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/2.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/5.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/3.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-card card rounded-4 shadow-sm overflow-hidden p-3 col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/blog/4.jpg"
+                                        alt="Blog Post 1" class="img-fluid rounded-3" style="width: 100%;">
+                                    <div class="card-body">
+                                        <span class="text-muted mb-3">March 2, 2024 - Business</span>
+                                        <h5 class="card-title fw-bold my-3">Business Ideas to grow your business traffic
+                                        </h5>
+
+                                        <a href="#" class="text-primary fw-semibold text-decoration-none">Read More <i
+                                                class="fa-solid fa-arrow-right-long "></i></a>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Add more blog cards as needed... -->
+
+                            </div>
+
+                            <!-- Indicators (The dots!) - JS will populate this -->
+                            <div class="carousel-indicators mt-4 justify-content-end position-static">
+                                <!-- Indicators will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="instagram-feed py-2">
+
+
+                    <div class="marquee">
+
+                        <div class="marquee__track">
+
+
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/1.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/2.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/3.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/4.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/5.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/6.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/7.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/8.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marquee__item">
+                                <a href="#_">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/instagram/9.jpg"
+                                        alt="Instagram Post">
+                                    <div class="marquee__overlay">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+
+            </main>
+            <!-- =================== SITE FOOTER =================== -->
+            <footer class="site-footer mb-0 rounded-top-5">
+                <div class="container-fluid pb-0 mb-0">
+                    <!-- Main Footer Content -->
+                    <div class="main-footer-content pt-5 mb-0">
+                        <div class="row">
+
+                            <!-- Column 1: Brand and App Stores -->
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <h4 class="footer-brand mb-3">
+                                    <i class="fa-solid fa-bag-shopping me-2 text-primary"></i>E-Shop
+                                </h4>
+                                <p class="text-white-50">
+                                    The Mantu is the biggest market of grocery products. Get your daily needs from
+                                    our store.
+                                </p>
+                                <a href="#" class="store-button">
+                                    <i class="fab fa-google-play"></i>
+                                    <span>
+                                        <small>GET IT ON</small>
+                                        <strong>Google Play</strong>
+                                    </span>
+                                </a>
+                                <a href="#" class="store-button">
+                                    <i class="fab fa-apple"></i>
+                                    <span>
+                                        <small>Download on the</small>
+                                        <strong>App Store</strong>
+                                    </span>
+                                </a>
+                            </div>
+
+                            <!-- Column 2: Category Links -->
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <h5 class="footer-heading">Category</h5>
+                                <ul class="list-unstyled footer-links">
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Cosmetics</a></li>
+                                    <li><a href="#">Bags & Purse</a></li>
+                                    <li><a href="#">Shoes</a></li>
+                                    <li><a href="#">Belts</a></li>
+                                    <li><a href="#">Perfumes</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 3: Company Links -->
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <h5 class="footer-heading">Company</h5>
+                                <ul class="list-unstyled footer-links">
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Delivery</a></li>
+                                    <li><a href="#">Legal Notice</a></li>
+                                    <li><a href="#">Terms of use</a></li>
+                                    <li><a href="#">Secure payment</a></li>
+                                    <li><a href="#">Contact us</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 4: Account Links -->
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <h5 class="footer-heading">Account</h5>
+                                <ul class="list-unstyled footer-links">
+                                    <li><a href="#">Sign In</a></li>
+                                    <li><a href="#">View Cart</a></li>
+                                    <li><a href="#">Return Policy</a></li>
+                                    <li><a href="#">Become a Vendor</a></li>
+                                    <li><a href="#">Affiliate Program</a></li>
+                                    <li><a href="#">Payments</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 5: Contact Info -->
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <h5 class="footer-heading">Contact</h5>
+                                <ul class="list-unstyled contact-info">
+                                    <li>
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>1234 Elm Street Springfield Avenue, Brooklyn den, IL 62704 USA.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-phone-alt"></i>
+                                        <a href="tel:+009876543210">+00 9876543210</a>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="mailto:example@email.com">example@email.com</a>
+                                    </li>
+                                </ul>
+                                <div class="social-icons mt-3">
+                                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Footer Bottom Bar -->
+                    <div class="footer-bottom py-3 px-2">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <p class="mb-0 small">
+                                Copyright &copy; 2025 <a href="#" class="fw-bold  text-warning">E-Shop</a> all rights reserved.
+                            </p>
+                            <div class="payment-icons">
+                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/footer/payment.png"
+                                    alt="Visa">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div> <!-- End of .main-layout -->
+
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="functionality.js"></script>
+</body>
+
+</html>

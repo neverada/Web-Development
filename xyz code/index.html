@@ -7,226 +7,103 @@
   <title>Document</title>
 </head>
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      scroll-behavior: smooth; /* smooth transition */
-    }
-
-    body {
-      scroll-snap-type: y mandatory; /* enable vertical snap */
-      overflow-y: scroll;
-    }
-
-    section {
-      height: 100vh; /* full screen */
-      scroll-snap-align: start; /* snap each section at top */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      color: white;
-    }
-
-    #divA { background: #1e1e2f; }
-    #divB { background: #27293d; }
-    #divC { background: #3a3f5c; }
-  </style>
-</head>
 <body>
-  <section id="divA">Div A</section>
-  <section id="divB">Div B</section>
-  <section id="divC">Div C</section>
-</body>
-
-
-<style>
-  .book {
-  display: inline-block;
-  padding: 20px;
-  margin: 10px;
-  background: #f5deb3; /* book color */
-  border-radius: 4px;
-  text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
+  <style>
+    /* General reset */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-.book:hover {
-  transform: scale(1.1); /* pop out */
-  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-}
-.reading-view {
-  display: none;
+/* Sidebar base */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #111827;
+  color: white;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #fff;
-  padding: 40px;
-  overflow: auto;
+  left: 0;
+  top: 0;
+  transition: 0.3s;
+  padding: 20px;
 }
 
-.reading-view:target {
-  display: block; /* only shows when clicked */
+/* Sidebar hidden (for small screens) */
+.sidebar.hidden {
+  left: -260px;
 }
 
+/* Main content */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: 0.3s;
+}
 
-</style>
-<body>
-  <div class="bookshelf">
-  <a href="#book1" class="book">Book 1</a>
-  <a href="#book2" class="book">Book 2</a>
-</div> -->
-<!-- Hidden reading view -->
-<div id="book1" class="reading-view">
-  <a href="#" class="close">✖ Close</a>
-  <h2>Book 1 Title</h2>
-  <p>This is where your poem or story goes.</p>
-</div>
+/* When sidebar hidden */
+.sidebar.hidden ~ .main-content {
+  margin-left: 0;
+}
 
-<div id="book2" class="reading-view">
-  <a href="#" class="close">✖ Close</a>
-  <h2>Book 2 Title</h2>
-  <p>This is another piece of content.</p>
-</div>
+/* Toggle button */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
 
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -260px;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
 
-</body>
-
-<!-- 
-<body>
-  <form>
-    <label for="user">Enter ur username</label>
-    <input type="text" name="username" size=100" value="user">
-    <br>
-    <p>password</p>
-    <input type="password" name="userpass" maxlength="10" required>
-    <br>
-    <input type="email" placeholder="email">
-    <input type="number" name="userno" placeholder="enter your no" id="user">
-    <br>
-    <br>
-    <fieldset>
-      <legend>for office use only</legend>
-      <p><input type="radio" name="gender" value="m"> Male</p>
-      <p><input type="radio" name="gender" value="f" checked> female</p>
-
-
-      <p>select programming languages</p>
-      <p><input type="checkbox" name="planguage" value="js" checked>javascript</p>
-      <p><input type="checkbox" name="planguage" value="ja">java</p>
-      <p><input type="checkbox" name="planguage" value="css">css</p>
-
-      <br>
-      <input type="file" name="file">
-      <br>
-
-      <select name="cityname" multiple>
-        <option value="khi">karachi</option>
-        <option value="lhr">lahore</option>
-        <option value="isl">islamabd</option>
-      </select>
-      <br>
-    </fieldset>
-
-    <textarea cols="20" rows="2" placeholder="enter "> </textarea>
-    <br>\
-    <input type="url" name="" id="">
-    <br>
-    <input type="search" name="" id="">
-  >
-    <button type="submit">post</button>
-    <input type="image" src="" id="">
-
-
-    <input type="month">
-    <style>
-      .wave-bg {
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-        line-height: 0;
-        
-      }
-
-      .wave-bg svg {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-    </style>
-    <section class="wave-bg">
-      
-      <svg viewBox="0 0 1440 320">
-        <path fill="#fe3f40" fill-opacity="1"
-          d="M0,64L48,90.7C96,117,192,171,288,186.7C384,203,480,181,576,170.7C672,160,768,160,864,176C960,192,1056,224,1152,208C1248,192,1344,128,1392,96L1440,64V0H0Z">
-        </path>
-      </svg>
-    </section>
-
-
-
-
-  </form>
-
-  <style>
-    .card {
-      position: relative;
-      width: 250px;
-      height: 250px;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100px;
-      margin-top: 60px;
-      /* centers image vertically */
-      transition: transform 0.5s ease;
-    }
-
-    .text-panel {
-      position: absolute;
-      top: -100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(#ff4d4d, #ff7a7a);
-      color: white;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: top 0.5s ease;
-    }
-
-    .text-panel h3 {
-      margin: 0;
-    }
-
-    .card:hover img {
-      transform: translateY(40px);
-      /* move image down */
-    }
-
-    .card:hover .text-panel {
-      top: 0;
-      /* slide down into place */
-    }
   </style>
-  </head>
 
-  <body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h3>Fashion</h3>
+    <ul>
+      <li>Clothes</li>
+      <li>Shoes</li>
+      <li>Glasses</li>
+      <li>Bags</li>
+      <li>Makeup</li>
+    </ul>
+  </div>
 
-    <div class="card">
-      <div class="text-panel">
-        <h3>SEO Analysis</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-      </div>
-      <img src="https://via.placeholder.com/100" alt="Sample">
-    </div>
+  <!-- Toggle Button -->
+  <button class="toggle-btn" id="toggleBtn">☰</button>
 
-  </body> 
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Welcome to Mantu Clone</h1>
+    <p>Your content goes here...</p>
+  </div>
+
+<script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+  </script>
+</body>
 
 </html>
