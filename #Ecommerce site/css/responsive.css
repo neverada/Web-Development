@@ -67,15 +67,5 @@
   .promo-title span { font-size: 1.1rem !important; }
   .promo-overlay-text { padding: 1.2rem 0.5rem 0.7rem 0.5rem; }
 }
-  /* Media query to adjust quote positions on smaller screens */
-    @media (max-width: 768px) {
-        .top-quote {
-            left: 5%;
-        }
-        .bottom-quote {
-            right: 5%;
-        }
-        #testimonial-wrapper {
-            padding: 4rem 2rem !important; /* Less padding on smaller screens */
-        }
-    }
+ 
+

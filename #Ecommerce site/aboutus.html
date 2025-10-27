@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantu Style Clone</title>
+
+    <title>Neverada E-Shop</title>
+    <link rel="icon" type="image/svg+xml"
+        href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="%230d6efd"><path d="M160 80c0-35.3 28.7-64 64-64s64 28.7 64 64l0 48-128 0 0-48zm-48 48l-64 0c-26.5 0-48 21.5-48 48L0 384c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-208c0-26.5-21.5-48-48-48l-64 0 0-48c0-61.9-50.1-112-112-112S112 18.1 112 80l0 48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>'>
 
     <!-- Bootstrap 5.3 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -12,28 +15,69 @@
     <!-- Font Awesome 6 CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
+    <div id="preloader">
+        <video id="preloader-video" autoplay loop muted playsinline>
+            <source src="assets/images/preloader.webm" type="video/webm">
+        </video>
+    </div>
 
 
     <!-- This is the NEW main layout container -->
     <div id="mainLayout" class="main-layout">
 
+
+
         <!-- 1. The Sidebar (initially hidden) -->
-        <aside id="categorySidebar" class="category-sidebar  shadow-sm   mt-5">
-            <div id="category-sidebar-inner" class="rounded-end-5 d-none d-lg-block shadow-sm mantu-category-sidebar">
+        <aside id="categorySidebar" class="category-sidebar  shadow-sm   mt-5 ">
+            <div id="category-sidebar-inner" class="rounded-end-5 d-none d-lg-block shadow-sm mantu-category-sidebar ">
                 <div class="sidebar-header">
                     <h5 class="sidebar-title text-uppercase text-muted small fw-bold ls-1">Fashion</h5>
                     <button type="button" class="btn-close btn-close-white" id="closeSidebarBtn"></button>
                 </div>
                 <div class="sidebar-body p-3">
-
-
                     <ul class="list-unstyled">
                         <!-- Category Item 1: Clothes (Toggles Collapse) -->
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Electronics</h5>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mobilesCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-mobile  me-3" style="color:#f7f7f7;"></i> Mobiles
+
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
+                            </div>
+                            <div class="collapse" id="mobilesCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=smartphones">Mobiles</a></li>
+                                    <li><a href="products.html?category=mobile-accessories">Mobile Accessories</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#TLCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-laptop me-3" style="color:#dcf0f3;"></i> Tabs & Laptops
+
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
+                            </div>
+                            <div class="collapse" id="TLCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=laptops">Laptops</a></li>
+                                    <li><a href="products.html?category=tablets">Tablets</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
                         <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Fashion</h5>
                         <li>
                             <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mClothesCollapse">
@@ -45,141 +89,176 @@
                             <!-- Subcategory Collapse Panel -->
                             <div class="collapse" id="mClothesCollapse">
                                 <ul class="subcategory-panel">
-                                    <li><a href="#">T-Shirts</a></li>
-                                    <li><a href="#">Shirts</a></li>
-                                    <li><a href="#">Gowns</a></li>
-                                    <li><a href="#">Dresses</a></li>
-                                    <li><a href="#">Sharees</a></li>
-                                    <li><a href="#">Jeans</a></li>
+                                    <li><a href="products.html?category=tops">Tops</a></li>
+                                    <li><a href="products.html?category=mens-shirts">Mens Shirts</a></li>
+                                    <li><a href="products.html?category=womens-dresses">Womens Dresses</a></li>
                                 </ul>
                             </div>
                         </li>
 
                         <!-- Category Item 2: Shoes -->
                         <li>
-                            <div class="category-toggle">
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#shoesCollapse">
                                 <span class="d-flex align-items-center">
                                     <i class="fa-solid fa-shoe-prints me-3" style="color:#F3735E;"></i> Shoes
                                 </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
 
+                            </div>
+                            <div class="collapse" id="shoesCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=womens-shoes">Womens</a></li>
+                                    <li><a href="products.html?category=mens-shoes">Mens</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#watchCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-clock me-3" style="color:#da5ef3;"></i> Watches
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
+                            </div>
+                            <div class="collapse" id="watchCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=womens-watches">Womens</a></li>
+                                    <li><a href="products.html?category=mens-watches">Mens</a></li>
+                                </ul>
                             </div>
                         </li>
 
                         <!-- Category Item 3: Bags (Complex Nested Collapse) -->
                         <li>
-                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBagsCollapse">
+                            <div class="category-toggle">
                                 <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-suitcase me-3" style="color:#FFAA55;"></i> Bags
+                                    <a class="text-decoration-none an" href="products.html?category=womens-bags"> <i
+                                            class="fa-solid fa-suitcase me-3" style="color:#FFAA55;"></i> <span
+                                            class="text-white">Bags</span></a>
                                 </span>
-                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
                             </div>
-                            <!-- Subcategory Collapse Panel -->
-                            <div class="collapse" id="mBagsCollapse">
-                                <!-- The collapse panel itself is highly styled in the screenshot -->
-                                <ul class="subcategory-panel bags-panel p-3">
-                                    <li><a href="#"></i> Purse</a></li>
-                                    <li><a href="#"></i> Bags</a></li>
-                                    <li><a href="#"></i> Wallet</a></li>
-                                </ul>
-                            </div>
+
                         </li>
-
-
-                        <!-- Repeat for Glasses, Hat, Makeup, etc. -->
-                        <!-- Category Item 4: Glasses -->
                         <li>
                             <div class="category-toggle">
                                 <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-glasses me-3" style="color:#34C3FF;"></i> Glasses
+                                    <a class="text-decoration-none an" href="products.html?category=sunglasses"> <i
+                                            class="fa-solid fa-glasses me-3" style="color:#34C3FF;"></i> <span
+                                            class="text-white">Sunglasses</span></a>
                                 </span>
 
                             </div>
+
                         </li>
-                        <!-- Category Item 5: Hat -->
-                        <li>
-                            <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-hat-cowboy me-3" style="color:#8D6EF1;"></i> Hat
-                                </span>
-                            </div>
-                        </li>
+
+
+
+
                         <!-- Category Item 6: Cosmetics (Toggles Collapse) -->
                         <li>
                             <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mCosmeticsCollapse">
                                 <span class="d-flex align-items-center">
                                     <i class="fa-solid fa-spray-can me-3" style="color:#ec4899;"></i>
-                                    Cosmetics
+                                    Cosmetics & Jewels
                                 </span>
                                 <i class="fa-solid fa-chevron-down small chevron-icon"></i>
                             </div>
                             <!-- Subcategory Collapse Panel -->
                             <div class="collapse" id="mCosmeticsCollapse">
                                 <ul class="subcategory-panel">
-                                    <li><a href="#">Skincare</a></li>
-                                    <li><a href="#">Haircare</a></li>
-                                    <li><a href="#">Fragrance</a></li>
+                                    <li><a href="products.html?category=womens-jewellery">Jewels</a></li>
                                 </ul>
                             </div>
                         </li>
                         <!--  Bakery (Toggles Collapse) -->
-                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Bakery</h5>
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Transportation</h5>
 
                         <li>
                             <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBakeryCollapse">
                                 <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-cake-candles me-3" style="color:#f59e0b;"></i>
-                                    Cake
+                                    <i class="fa-solid fa-car me-3" style="color:#f59e0b;"></i>
+                                    Vehicles
                                 </span>
                                 <i class="fa-solid fa-chevron-down small chevron-icon"></i>
                             </div>
                             <!-- Subcategory Collapse Panel -->
                             <div class="collapse" id="mBakeryCollapse">
                                 <ul class="subcategory-panel">
-                                    <li><a href="#">Cup Cake</a></li>
-                                    <li><a href="#">Cake</a></li>
-                                    <li><a href="#">Pastries</a></li>
+                                    <li><a href="products.html?category=vehicle">Cars</a></li>
+                                    <li><a href="products.html?category=motorcycle">Bikes</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li>
-                            <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-bread-slice me-3" style="color:#d97706;"></i>
-                                    Bread
-                                </span>
 
-                            </div>
-                        </li>
                         <!--  Vegetables -->
-                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">Vegetables</h5>
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50">House Goods</h5>
                         <li>
-                            <div class="category-toggle" data-bs-toggle="collapse"
-                                data-bs-target="#mVegetablesCollapse">
-                                <span class="d-flex align-items-center">
-                                    🍅
-                                    Tomato
-                                </span>
+                            <div class="category-toggle">
+                                <a class="text-decoration-none an" href="products.html?category=groceries">
+                                    <span class="d-flex align-items-center">
+                                        🍅
+                                        Groceries
+                                    </span>
+                                </a>
+
 
                             </div>
                         </li>
                         <li>
                             <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    🥬
-                                    Leafy Greens
-                                </span>
+                                <a class="text-decoration-none an" href="products.html?category=furniture">
+                                    <span class="d-flex align-items-center">
+                                        🛏️
+                                        Furniture
+                                    </span>
+                                </a>
+
 
                             </div>
                         </li>
                         <li>
                             <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    🥔
-                                    Tuber Root
-                                </span>
+                                <a class="text-decoration-none an" href="products.html?category=home-decoration">
+                                    <span class="d-flex align-items-center">
+                                        🏡
+                                        Home Decor
+                                    </span>
+                                </a>
+
 
                             </div>
                         </li>
+                        <li>
+                            <div class="category-toggle">
+                                <a class="text-decoration-none text-white"
+                                    href="products.html?category=kitchen-accessories">
+                                    <span class="d-flex align-items-center">
+                                        🍽️
+                                        Kitchen Items
+                                    </span>
+                                </a>
+
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+
+                                <span class="d-flex align-items-center">
+                                    ⚽
+                                    <a class="text-decoration-none an"
+                                        href="products.html?category=sports-accessories"></a>
+                                    Sports Items
+                                    </a>
+                                </span>
+
+
+
+                            </div>
+                        </li>
+
+
                     </ul>
 
                 </div>
@@ -188,7 +267,33 @@
         </aside>
 
         <!-- 2. The Main Content Wrapper -->
-        <div class="main-content-wrapper ">
+        <div class="main-content-wrapper d-flex flex-column min-vh-100">
+            <!-- toast ntification for cart alert -->
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div id="cart-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto text-primary">Neverada Shop</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Item added to cart successfully! <a href="#" data-bs-toggle="offcanvas"
+                            data-bs-target="#cart-offcanvas">View Cart</a>.
+                    </div>
+                </div>
+            </div>
+            <!-- toast ntification for wish alert -->
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div id="wish-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto text-danger">Neverada Shop</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body ">
+                        Item added to wishlist successfully! <a href="#" data-bs-toggle="offcanvas"
+                            data-bs-target="#wish-offcanvas" class="text-danger">View Wishlist</a>.
+                    </div>
+                </div>
+            </div>
             <!-- ==================== DESKTOP NAVBAR (Hidden on Mobile) ==================== -->
             <nav
                 class="navbar navbar-expand-lg navbar-light bg-white d-none d-lg-flex  shadow-sm container-fluid px-2 rounded-bottom-5">
@@ -199,14 +304,14 @@
 
                     <!-- logo -->
                     <a class="navbar-brand fw-bold fs-3" href="#">
-                        <i class="fa-solid fa-bag-shopping text-primary"></i> E-shop
+                        <i class="fa-solid fa-bag-shopping text-primary"></i> Neverada
                     </a>
 
 
                     <!-- Desktop Menu Links -->
                     <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Categories</a>
@@ -216,16 +321,16 @@
                                             <h6 class="fw-bold text-primary mb-3">Classic</h6>
                                             <ul class="list-unstyled">
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Shop Right
+                                                        href="products.html">Shop Right
                                                         Sidebar</a></li>
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Banner
+                                                        href="products.html">Banner
                                                         Right Sidebar</a></li>
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Shop Full
+                                                        href="products.html">Shop Full
                                                         Width</a></li>
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Banner
+                                                        href="products.html">Banner
                                                         Full Width</a></li>
                                             </ul>
                                         </div>
@@ -235,16 +340,16 @@
                                             <h6 class="fw-bold text-primary mb-3">List</h6>
                                             <ul class="list-unstyled">
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Shop Right
+                                                        href="products.html">Shop Right
                                                         Sidebar</a></li>
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Banner
+                                                        href="products.html">Banner
                                                         Right Sidebar</a></li>
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Shop Full
+                                                        href="products.html">Shop Full
                                                         Width</a></li>
                                                 <li><a class="dropdown-item text-muted px-0 py-1 small-link"
-                                                        href="#">Banner
+                                                        href="products.html">Banner
                                                         Full Width</a></li>
                                             </ul>
                                         </div>
@@ -254,16 +359,20 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Product</a>
                                 <ul class="dropdown-menu shadow border-0 p-4 rounded-4">
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="product-detail.html?id=10">Product
                                             Detail</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="product-detail.html?id=10">Product
                                             Accordian</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Product Full
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="product-detail.html?id=10">Product Full
                                             Width</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Accordian Full
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="product-detail.html?id=10">Accordian Full
                                             Width</a></li>
                                 </ul>
                             </li>
@@ -272,34 +381,45 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
                                 <ul class="dropdown-menu shadow border-0 p-4 rounded-4">
                                     <li>
-                                        <a class="dropdown-item dropdown-toggle text-muted px-0 py-1 small-link"
-                                            href="#">Blog</a>
+                                        <a
+                                            class="dropdown-item dropdown-toggle text-muted px-0 py-1 small-link">Blog</a>
                                         <ul class="submenu dropdown-menu shadow border-0 p-4 rounded-4">
-                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Right
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                    href="blog.html">Right
                                                     Side
                                                     Bar</a></li>
-                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Full
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                    href="blog.html">Full
                                                     Width</a>
                                             </li>
-                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Detail
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                    href="blog.html">Detail
                                                     Right
                                                     Side Bar</a></li>
-                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Detail
+                                            <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                                    href="blog.html">Detail
                                                     Full
                                                     Width</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">About Us</a>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="aboutus.html">About Us</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Contact Us</a>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="contact.html">Contact Us</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Car</a></li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Check Out</a>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#"
+                                            data-bs-toggle="offcanvas" data-bs-target="#cart-offcanvas">Cart</a></li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="checkout.html">Check Out</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Compare</a>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="compare.html">Compare</a>
                                     </li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">FAQ</a></li>
-                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="#">Log In</a>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link"
+                                            href="faqs.html">FAQ</a></li>
+                                    <li><a class="dropdown-item text-muted px-0 py-1 small-link" href="login.html">Log
+                                            In</a>
                                     </li>
 
                                 </ul>
@@ -307,27 +427,30 @@
                         </ul>
                     </div>
 
+
                     <!-- Desktop Right Icons -->
                     <div class="d-flex gap-4 align-items-center">
                         <a href="#" class="text-dark fs-5"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="#" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
-                        <a href="#" class="text-dark fs-5 position-relative">
+                        <a href="login.html" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
+                        <a href="#" class="text-dark fs-5 position-relative" data-bs-toggle="offcanvas"
+                            data-bs-target="#wish-offcanvas">
                             <i class="fa-regular fa-heart"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                style="font-size: 0.5em;">3</span>
+                            <span id="wish-count-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger animate__flash animate__animated animate__infinite	infinite animate__slower	3s"
+                                style="font-size: 0.5em;">0</span>
                         </a>
-                        <a href="#" class="text-dark fs-5 position-relative">
+
+                        <a href="#" class="text-dark fs-5 position-relative" data-bs-toggle="offcanvas"
+                            data-bs-target="#cart-offcanvas">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                style="font-size: 0.5em;">4</span>
+                            <span id="cart-count-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger animate__flash animate__animated animate__infinite	infinite animate__slower	3s"
+                                style="font-size: 0.5em;">0</span>
                         </a>
                     </div>
 
                 </div>
             </nav>
-
             <!--  TABLET TOP BAR  ( < 1200px ) -->
             <div class=" d-none d-sm-flex d-lg-none  bg-white shadow-sm py-3">
                 <div class="container-xxl d-flex justify-content-between align-items-center">
@@ -338,7 +461,7 @@
                     </button>
                     <!-- logo -->
                     <a class="navbar-brand fw-bold fs-3" href="#">
-                        <i class="fa-solid fa-bag-shopping text-primary"></i> E-shop
+                        <i class="fa-solid fa-bag-shopping text-primary"></i> Neverada
                     </a>
 
                     <!-- hamburger -->
@@ -349,23 +472,23 @@
                     <!-- Desktop Right Icons -->
                     <div class="d-flex gap-4 align-items-center">
                         <a href="#" class="text-dark fs-5"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="#" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
-                        <a href="#" class="text-dark fs-5 position-relative">
+                        <a href="login.html" class="text-dark fs-5"><i class="fa-regular fa-user"></i></a>
+                        <a href="#" class="text-dark fs-5 position-relative" data-bs-toggle="offcanvas"
+                            data-bs-target="#wish-offcanvas">
                             <i class="fa-regular fa-heart"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                style="font-size: 0.5em;">3</span>
+
                         </a>
-                        <a href="#" class="text-dark fs-5 position-relative">
+
+
+                        <a href="#" class="text-dark fs-5 position-relative" data-bs-toggle="offcanvas"
+                            data-bs-target="#cart-offcanvas">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                style="font-size: 0.5em;">4</span>
+
                         </a>
                     </div>
+
                 </div>
             </div>
-
             <!-- ③  OFF-CANVAS SIDEBAR  -->
             <div class="offcanvas offcanvas-start mantu-offcanvas" tabindex="-1" id="offcanvasMenu">
                 <div class="offcanvas-header border-0">
@@ -375,7 +498,7 @@
                 <div class="offcanvas-body">
                     <ul class="list-unstyled mb-4">
                         <li>
-                            <a href="#" class="mantu-menu-link">Home</a>
+                            <a href="index.html" class="mantu-menu-link">Home</a>
                         </li>
                         <li>
                             <button
@@ -393,10 +516,14 @@
                                         </button>
                                         <div class="collapse" id="classicCollapse">
                                             <ul class="list-unstyled ps-3">
-                                                <li><a href="#" class="mantu-menu-link">Shop Right Sidebar</a></li>
-                                                <li><a href="#" class="mantu-menu-link">Banner Right Sidebar</a></li>
-                                                <li><a href="#" class="mantu-menu-link">Shop Full Width</a></li>
-                                                <li><a href="#" class="mantu-menu-link">Banner Full Width</a></li>
+                                                <li><a href="products.html" class="mantu-menu-link">Shop Right
+                                                        Sidebar</a></li>
+                                                <li><a href="products.html" class="mantu-menu-link">Banner Right
+                                                        Sidebar</a></li>
+                                                <li><a href="products.html" class="mantu-menu-link">Shop Full Width</a>
+                                                </li>
+                                                <li><a href="products.html" class="mantu-menu-link">Banner Full
+                                                        Width</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -408,10 +535,14 @@
                                         </button>
                                         <div class="collapse" id="listCollapse">
                                             <ul class="list-unstyled ps-3">
-                                                <li><a href="#" class="mantu-menu-link">Shop Right Sidebar</a></li>
-                                                <li><a href="#" class="mantu-menu-link">Banner Right Sidebar</a></li>
-                                                <li><a href="#" class="mantu-menu-link">Shop Full Width</a></li>
-                                                <li><a href="#" class="mantu-menu-link">Banner Full Width</a></li>
+                                                <li><a href="products.html" class="mantu-menu-link">Shop Right
+                                                        Sidebar</a></li>
+                                                <li><a href="products.html" class="mantu-menu-link">Banner Right
+                                                        Sidebar</a></li>
+                                                <li><a href="products.html" class="mantu-menu-link">Shop Full Width</a>
+                                                </li>
+                                                <li><a href="products.html" class="mantu-menu-link">Banner Full
+                                                        Width</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -426,10 +557,14 @@
                             </button>
                             <div class="collapse" id="prodCollapse">
                                 <ul class="list-unstyled ps-3">
-                                    <li><a href="#" class="mantu-menu-link">Product Detail</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Product Accordion</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Product Full Width</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Accordion Full Width</a></li>
+                                    <li><a href="product-detail.html?id=19" class="mantu-menu-link">Product Detail</a>
+                                    </li>
+                                    <li><a href="product-detail.html?id=19" class="mantu-menu-link">Product
+                                            Accordion</a></li>
+                                    <li><a href="product-detail.html?id=19" class="mantu-menu-link">Product Full
+                                            Width</a></li>
+                                    <li><a href="product-detail.html?id=19" class="mantu-menu-link">Accordion Full
+                                            Width</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -441,13 +576,14 @@
                             </button>
                             <div class="collapse" id="pagesCollapse">
                                 <ul class="list-unstyled ps-3">
-                                    <li><a href="#" class="mantu-menu-link">About Us</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Contact Us</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Cart</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Check Out</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Compare</a></li>
-                                    <li><a href="#" class="mantu-menu-link">FAQ</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Log In</a></li>
+                                    <li><a href="aboutus.html" class="mantu-menu-link">About Us</a></li>
+                                    <li><a href="contact.html" class="mantu-menu-link">Contact Us</a></li>
+                                    <li><a href="#" class="mantu-menu-link" data-bs-toggle="offcanvas"
+                                            data-bs-target="#cart-offcanvas">Cart</a></li>
+                                    <li><a href="checkout.html" class="mantu-menu-link">Check Out</a></li>
+                                    <li><a href="compare.html" class="mantu-menu-link">Compare</a></li>
+                                    <li><a href="faqs.html" class="mantu-menu-link">FAQ</a></li>
+                                    <li><a href="login.html" class="mantu-menu-link">Log In</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -459,10 +595,10 @@
                             </button>
                             <div class="collapse" id="blogCollapse">
                                 <ul class="list-unstyled ps-3">
-                                    <li><a href="#" class="mantu-menu-link">Right Sidebar</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Full Width</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Detail Right Sidebar</a></li>
-                                    <li><a href="#" class="mantu-menu-link">Detail Full Width</a></li>
+                                    <li><a href="blog.html" class="mantu-menu-link">Right Sidebar</a></li>
+                                    <li><a href="blog.html" class="mantu-menu-link">Full Width</a></li>
+                                    <li><a href="blog.html" class="mantu-menu-link">Detail Right Sidebar</a></li>
+                                    <li><a href="blog.html" class="mantu-menu-link">Detail Full Width</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -476,8 +612,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- ==================== MOBILE TOP BAR (Hidden on Desktop) ==================== -->
             <div
                 class="mobile-top-bar d-xs-flex  d-flex d-lg-none d-md-none d-sm-none justify-content-between align-items-center">
@@ -491,7 +625,7 @@
 
                 <!-- Centered Logo -->
                 <a class="navbar-brand fw-bold fs-3" href="#">
-                    <i class="fa-solid fa-bag-shopping text-primary"></i> E-Shop
+                    <i class="fa-solid fa-bag-shopping text-primary"></i> Neverada
                 </a>
 
                 <!-- Hamburger Toggler -->
@@ -500,7 +634,6 @@
                     <i class="fa-solid fa-bars-staggered fs-3"></i>
                 </button>
             </div>
-
             <!-- ==================== MOBILE BOTTOM NAV (Fixed) ==================== -->
             <div class="mobile-bottom-nav d-lg-none d-md-none d-sm-none d-xs-block">
                 <ul class="nav justify-content-between">
@@ -508,27 +641,23 @@
                         <a href="#" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fa-regular fa-user"></i></a>
+                        <a href="login.html" class="nav-link"><i class="fa-regular fa-user"></i></a>
                     </li>
                     <!-- Home is highlighted and slightly bigger -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-primary fs-4"><i class="fa-solid fa-house"></i></a>
+                        <a href="index.html" class="nav-link text-primary fs-4"><i class="fa-solid fa-house"></i></a>
                     </li>
-                    <li class="nav-item position-relative">
-                        <a href="#" class="nav-link">
-                            <i class="fa-regular fa-heart"></i>
-                            <span class="badge bg-danger rounded-pill mobile-badge">3</span>
-                        </a>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#wish-offcanvas"><i
+                                class="fa-regular fa-heart"></i></a>
                     </li>
-                    <li class="nav-item position-relative">
-                        <a href="#" class="nav-link">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="badge bg-danger rounded-pill mobile-badge">4</span>
-                        </a>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#cart-offcanvas"><i
+                                class="fa-solid fa-cart-shopping"></i></a>
                     </li>
+
                 </ul>
             </div>
-
             <!-- Mobile/Tablet Category Offcanvas -->
             <div class="offcanvas offcanvas-start mantu-category-offcanvas d-lg-none" tabindex="-1"
                 id="categorySidebarMobile">
@@ -543,7 +672,41 @@
                 <div class="offcanvas-body p-0">
                     <ul class="list-unstyled">
                         <!-- Category Item 1: Clothes (Toggles Collapse) -->
-                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 px-5">Fashion</h5>
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 mt-2 ms-3">Electronics
+                        </h5>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mobilesCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-mobile  me-3" style="color:#f7f7f7;"></i> Mobiles
+
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
+                            </div>
+                            <div class="collapse" id="mobilesCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=smartphones">Mobiles</a></li>
+                                    <li><a href="products.html?category=mobile-accessories">Mobile Accessories</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#TLCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-laptop me-3" style="color:#dcf0f3;"></i> Tabs & Laptops
+
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
+                            </div>
+                            <div class="collapse" id="TLCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=laptops">Laptops</a></li>
+                                    <li><a href="products.html?category=tablets">Tablets</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 ms-3">Fashion</h5>
                         <li>
                             <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mClothesCollapse">
                                 <span class="d-flex align-items-center">
@@ -554,463 +717,590 @@
                             <!-- Subcategory Collapse Panel -->
                             <div class="collapse" id="mClothesCollapse">
                                 <ul class="subcategory-panel">
-                                    <li><a href="#">T-Shirts</a></li>
-                                    <li><a href="#">Shirts</a></li>
-                                    <li><a href="#">Gowns</a></li>
-                                    <li><a href="#">Dresses</a></li>
-                                    <li><a href="#">Sharees</a></li>
-                                    <li><a href="#">Jeans</a></li>
+                                    <li><a href="products.html?category=tops">Tops</a></li>
+                                    <li><a href="products.html?category=mens-shirts">Mens Shirts</a></li>
+                                    <li><a href="products.html?category=womens-dresses">Womens Dresses</a></li>
                                 </ul>
                             </div>
                         </li>
 
                         <!-- Category Item 2: Shoes -->
                         <li>
-                            <div class="category-toggle">
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#shoesCollapse">
                                 <span class="d-flex align-items-center">
                                     <i class="fa-solid fa-shoe-prints me-3" style="color:#F3735E;"></i> Shoes
                                 </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
 
+                            </div>
+                            <div class="collapse" id="shoesCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=womens-shoes">Womens</a></li>
+                                    <li><a href="products.html?category=mens-shoes">Mens</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#watchCollapse">
+                                <span class="d-flex align-items-center">
+                                    <i class="fa-solid fa-clock me-3" style="color:#da5ef3;"></i> Watches
+                                </span>
+                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
+                            </div>
+                            <div class="collapse" id="watchCollapse">
+                                <ul class="subcategory-panel">
+                                    <li><a href="products.html?category=womens-watches">Womens</a></li>
+                                    <li><a href="products.html?category=mens-watches">Mens</a></li>
+                                </ul>
                             </div>
                         </li>
 
                         <!-- Category Item 3: Bags (Complex Nested Collapse) -->
                         <li>
-                            <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBagsCollapse">
+                            <div class="category-toggle">
                                 <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-suitcase me-3" style="color:#FFAA55;"></i> Bags
+                                    <a class="text-decoration-none an" href="products.html?category=womens-bags"> <i
+                                            class="fa-solid fa-suitcase me-3" style="color:#FFAA55;"></i> <span
+                                            class="text-white">Bags</span></a>
                                 </span>
-                                <i class="fa-solid fa-chevron-down small chevron-icon"></i>
+
                             </div>
-                            <!-- Subcategory Collapse Panel -->
-                            <div class="collapse" id="mBagsCollapse">
-                                <!-- The collapse panel itself is highly styled in the screenshot -->
-                                <ul class="subcategory-panel bags-panel p-3">
-                                    <li><a href="#"></i> Purse</a></li>
-                                    <li><a href="#"></i> Bags</a></li>
-                                    <li><a href="#"></i> Wallet</a></li>
-                                </ul>
-                            </div>
+
                         </li>
-
-
-                        <!-- Repeat for Glasses, Hat, Makeup, etc. -->
-                        <!-- Category Item 4: Glasses -->
                         <li>
                             <div class="category-toggle">
                                 <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-glasses me-3" style="color:#34C3FF;"></i> Glasses
+                                    <a class="text-decoration-none an" href="products.html?category=sunglasses"> <i
+                                            class="fa-solid fa-glasses me-3" style="color:#34C3FF;"></i> <span
+                                            class="text-white">Sunglasses</span></a>
                                 </span>
 
                             </div>
+
                         </li>
-                        <!-- Category Item 5: Hat -->
-                        <li>
-                            <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-hat-cowboy me-3" style="color:#8D6EF1;"></i> Hat
-                                </span>
-                            </div>
-                        </li>
+
+
+
+
                         <!-- Category Item 6: Cosmetics (Toggles Collapse) -->
                         <li>
                             <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mCosmeticsCollapse">
                                 <span class="d-flex align-items-center">
                                     <i class="fa-solid fa-spray-can me-3" style="color:#ec4899;"></i>
-                                    Cosmetics
+                                    Cosmetics & Jewels
                                 </span>
                                 <i class="fa-solid fa-chevron-down small chevron-icon"></i>
                             </div>
                             <!-- Subcategory Collapse Panel -->
                             <div class="collapse" id="mCosmeticsCollapse">
                                 <ul class="subcategory-panel">
-                                    <li><a href="#">Skincare</a></li>
-                                    <li><a href="#">Haircare</a></li>
-                                    <li><a href="#">Fragrance</a></li>
+                                    <li><a href="products.html?category=skin-care">Skincare</a></li>
+                                    <li><a href="products.html?category=beauty">Make Up</a></li>
+                                    <li><a href="products.html?category=fragrances">Fragrance</a></li>
+                                    <li><a href="products.html?category=womens-jewellery">Jewels</a></li>
                                 </ul>
                             </div>
                         </li>
                         <!--  Bakery (Toggles Collapse) -->
-                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 px-5">Bakery</h5>
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 ms-3">Transportation</h5>
 
                         <li>
                             <div class="category-toggle" data-bs-toggle="collapse" data-bs-target="#mBakeryCollapse">
                                 <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-cake-candles me-3" style="color:#f59e0b;"></i>
-                                    Cake
+                                    <i class="fa-solid fa-car me-3" style="color:#f59e0b;"></i>
+                                    Vehicles
                                 </span>
                                 <i class="fa-solid fa-chevron-down small chevron-icon"></i>
                             </div>
                             <!-- Subcategory Collapse Panel -->
                             <div class="collapse" id="mBakeryCollapse">
                                 <ul class="subcategory-panel">
-                                    <li><a href="#">Cup Cake</a></li>
-                                    <li><a href="#">Cake</a></li>
-                                    <li><a href="#">Pastries</a></li>
+                                    <li><a href="products.html?category=vehicle">Cars</a></li>
+                                    <li><a href="products.html?category=motorcycle">Bikes</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li>
-                            <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    <i class="fa-solid fa-bread-slice me-3" style="color:#d97706;"></i>
-                                    Bread
-                                </span>
 
-                            </div>
-                        </li>
                         <!--  Vegetables -->
-                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 px-5">Vegetables</h5>
+                        <h5 class="offcanvas-title fw-bold text-uppercase small text-white-50 ms-3">House Goods</h5>
                         <li>
-                            <div class="category-toggle" data-bs-toggle="collapse"
-                                data-bs-target="#mVegetablesCollapse">
-                                <span class="d-flex align-items-center">
-                                    🍅
-                                    Tomato
-                                </span>
+                            <div class="category-toggle">
+                                <a class="text-decoration-none an" href="products.html?category=groceries">
+                                    <span class="d-flex align-items-center">
+                                        🍅
+                                        Groceries
+                                    </span>
+                                </a>
+
 
                             </div>
                         </li>
                         <li>
                             <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    🥬
-                                    Leafy Greens
-                                </span>
+                                <a class="text-decoration-none an" href="products.html?category=furniture">
+                                    <span class="d-flex align-items-center">
+                                        🛏️
+                                        Furniture
+                                    </span>
+                                </a>
+
 
                             </div>
                         </li>
                         <li>
                             <div class="category-toggle">
-                                <span class="d-flex align-items-center">
-                                    🥔
-                                    Tuber Root
-                                </span>
+                                <a class="text-decoration-none an" href="products.html?category=home-decoration">
+                                    <span class="d-flex align-items-center">
+                                        🏡
+                                        Home Decor
+                                    </span>
+                                </a>
+
 
                             </div>
                         </li>
+                        <li>
+                            <div class="category-toggle">
+                                <a class="text-decoration-none text-white"
+                                    href="products.html?category=kitchen-accessories">
+                                    <span class="d-flex align-items-center">
+                                        🍽️
+                                        Kitchen Items
+                                    </span>
+                                </a>
+
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-toggle">
+
+                                <span class="d-flex align-items-center">
+                                    ⚽
+                                    <a class="text-decoration-none an"
+                                        href="products.html?category=sports-accessories"></a>
+                                    Sports Items
+                                    </a>
+                                </span>
+
+
+
+                            </div>
+                        </li>
+
+
                     </ul>
+                </div>
+            </div>
+
+            <!-- add to cart of canvas -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-offcanvas"
+                aria-labelledby="cart-offcanvas-label">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title" id="cart-offcanvas-label">Your Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <!-- Cart items will be injected here by JavaScript -->
+                    <div id="cart-items-container">
+                        <!-- Example of an empty cart message -->
+                        <div class="text-center">Your cart is empty.</div>
+                    </div>
+                </div>
+                <div class="offcanvas-footer border-top p-3">
+                    <div class="d-flex justify-content-between fw-bold fs-5">
+                        <span>Total:</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="btn btn-primary w-100 mt-3">Proceed to Checkout</button>
+                </div>
+            </div>
+            <!-- wishlist -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="wish-offcanvas"
+                aria-labelledby="cart-offcanvas-label">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title" id="cart-offcanvas-label">My Wishlist</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <!-- Cart items will be injected here by JavaScript -->
+                    <div id="wishlist-items-container">
+                        <!-- Example of an empty cart message -->
+                        <div class="text-center">Your wishlist is empty.</div>
+                    </div>
                 </div>
             </div>
 
 
 
-            <main class="container-fluid px-4 py-4 ">
+
+
+            <main class="container-fluid px-4 py-4 flex-grow-1 ">
+                <div class="container">
 
 
 
+                    <!-- 1. Breadcrumb / Redirection Bar -->
+                    <nav aria-label="breadcrumb" class="mb-4">
+                        <ol class="breadcrumb bg-white p-3 rounded-3 shadow-sm">
+                            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                        </ol>
+                    </nav>
 
-                <!-- 1. Breadcrumb / Redirection Bar -->
-                <nav aria-label="breadcrumb" class="mb-4">
-                    <ol class="breadcrumb bg-white p-3 rounded-3 shadow-sm">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Registeration Page</li>
-                    </ol>
-                </nav>
+                    <div class="row">
+                        <div class="col-12 col-lg-6  d-grid gap-3">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-2.png"
+                                        alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                                </div>
+                                <div class="col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-3.png"
+                                        alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                                </div>
 
-                <div class="row">
-                    <div class="col-12 col-lg-6  d-grid gap-3">
-                        <div class="row">
-                            <div class="col">
-                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-2.png"
-                                    alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
                             </div>
-                            <div class="col">
-                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-3.png"
-                                    alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-4.png"
+                                        alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                                </div>
+                                <div class="col">
+                                    <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-1.png"
+                                        alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                                </div>
+
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-4.png"
-                                    alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                        <div class="col-12 col-lg-6 mx-auto mt-3 mt-lg-0">
+                            <h3 class=" mb-2"><span class="text-primary">Who We</span> Are?</h3>
+                            <h5 class="mb-3 text-uppercase"> Welcome to E-Shop, your number one source for all things
+                                fashion and lifestyle.
+                            </h5>
+                            <p class="card-text text-muted mb-3">
+                                We're dedicated to providing you the very best of products, with an emphasis on
+                                quality, customer service, and uniqueness. Discover who we are, our mission, and how
+                                we strive to provide the best shopping
+                                Welcome to E-Shop, your number one source for all things fashion and lifestyle.
+                                We're dedicated to providing you the very best of products, with an emphasis on
+                                quality, customer service, and uniqueness. Discover who we are, our mission, and how
+                                we strive to provide the best shopping
+                                experience for you.</p>
+                            <p class="card-text text-muted mb-3"> Lorem Ipsum has survived not only five centuries, but
+                                also
+                                the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p class="card-text text-muted mb-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, doloremque similique?
+                                Ipsam repudiandae excepturi expedita! Repellendus recusandae aperiam, impedit
+                                consequatur libero dolore? Iste reiciendis dolor excepturi magnam distinctio in quae!
+                            </p>
+
+
+
+                        </div>
+                    </div>
+                    <!-- Below Cards Section -->
+                    <div class="row mt-4 g-4">
+                        <!-- Card 1 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">Free Shipping</h5>
+                                <p class="text-muted small">Free shipping on all US order or order above $200</p>
                             </div>
-                            <div class="col">
-                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/common/about-1.png"
-                                    alt="About Us Image" class="img-fluid rounded-4 shadow-sm">
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-headset fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">24X7 Support</h5>
+                                <p class="text-muted small">Contact us 24 hours live support, 7 days in a week</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-rotate fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">30 Days Return</h5>
+                                <p class="text-muted small">Simply return it within 30 days for an exchange <br></p>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="feature-card p-4 rounded-4 shadow-sm text-center">
+                                <i class="fa-solid fa-shield-alt fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">Payment Secure</h5>
+                                <p class="text-muted small">Contact us 24 hours live support, 7 days in a week</p>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="testimonial-section py-5">
+                        <div class="container-fluid">
+                            <!-- Main wrapper with background and relative positioning -->
+                            <div id="testimonial-wrapper" class="position-relative rounded-4 p-5 text-center shadow-sm">
+
+                                <!-- Decorative Quote Images -->
+                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/icons/top-quotes.svg"
+                                    alt="quote" class="top-quote position-absolute">
+                                <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/icons/bottom-quotes.svg"
+                                    alt="quote" class="bottom-quote position-absolute">
+
+                                <!-- Content that will fade in and out -->
+                                <div id="testimonial-content" class="testimonial-content">
+                                    <!-- Image of the person -->
+                                    <img id="testimonial-img" src="" alt="Client"
+                                        class="rounded-circle mx-auto mb-4 border-none">
+
+                                    <!-- The quote text -->
+                                    <p id="testimonial-text" class="lead text-muted fst-italic mx-auto"> </p>
+
+                                    <!-- Author's name and title -->
+                                    <h5 id="testimonial-author" class="fw-bold mt-4 mb-1"></h5>
+                                    <small id="testimonial-title" class="text-uppercase text-secondary"></small>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </section>
+                    <!-- cards details -->
+                    <div class="container my-5">
+                        <div class="row g-4">
+
+                            <div class="col-12 col-md-6">
+                                <div class="border rounded-4 shadow-sm h-100 p-4 text-center bg-white">
+                                    <div class="fs-1 fw-bolder text-secondary opacity-50 mb-1">65K+</div>
+                                    <h5 class="fw-bold mb-2">Vendors</h5>
+                                    <p class="text-muted small mb-0">Contrary to popular belief, Lorem is not simply
+                                        random text.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="border rounded-4 shadow-sm h-100 p-4 text-center bg-white">
+                                    <div class="fs-1 fw-bolder text-secondary opacity-50 mb-1">$45B+</div>
+                                    <h5 class="fw-bold mb-2">Earnings</h5>
+                                    <p class="text-muted small mb-0">Contrary to popular belief, Lorem is not simply
+                                        random text.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="border rounded-4 shadow-sm h-100 p-4 text-center bg-white">
+                                    <div class="fs-1 fw-bolder text-secondary opacity-50 mb-1">25M+</div>
+                                    <h5 class="fw-bold mb-2">Sold</h5>
+                                    <p class="text-muted small mb-0">Contrary to popular belief, Lorem is not simply
+                                        random text.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="border rounded-4 shadow-sm h-100 p-4 text-center bg-white">
+                                    <div class="fs-1 fw-bolder text-secondary opacity-50 mb-1">70K+</div>
+                                    <h5 class="fw-bold mb-2">Products</h5>
+                                    <p class="text-muted small mb-0">Contrary to popular belief, Lorem is not simply
+                                        random text.</p>
+                                </div>
                             </div>
 
                         </div>
-
                     </div>
-                    <div class="col-12 col-lg-6 mx-auto mt-3 mt-lg-0">
-                        <h3 class=" mb-2"><span class="text-primary">Who We</span> Are?</h3>
-                        <h5 class="mb-3 text-uppercase"> Welcome to E-Shop, your number one source for all things
-                            fashion and lifestyle.
-                        </h5>
-                        <p class="card-text text-muted mb-3">
-                            We're dedicated to providing you the very best of products, with an emphasis on
-                            quality, customer service, and uniqueness. Discover who we are, our mission, and how
-                            we strive to provide the best shopping
-                            Welcome to E-Shop, your number one source for all things fashion and lifestyle.
-                            We're dedicated to providing you the very best of products, with an emphasis on
-                            quality, customer service, and uniqueness. Discover who we are, our mission, and how
-                            we strive to provide the best shopping
-                            experience for you.</p>
-                        <p class="card-text text-muted mb-3"> Lorem Ipsum has survived not only five centuries, but also
-                            the leap into electronic typesetting, remaining essentially unchanged.</p>
-                        <p class="card-text text-muted mb-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, doloremque similique?
-                            Ipsam repudiandae excepturi expedita! Repellendus recusandae aperiam, impedit
-                            consequatur libero dolore? Iste reiciendis dolor excepturi magnam distinctio in quae!
-                        </p>
+                    <section class="team-section pb-0 pt-4">
+                        <div class="container-fluid px-0">
+                            <!-- Heading -->
+                            <div class="d-flex justify-content-between align-items-center mb-4  border-bottom">
+                                <h3 class="mb-2 fw-bold">Our <span class="text-primary">Team</span></h3>
+                            </div>
+
+                            <!-- Bootstrap Carousel for Blog Posts -->
+                            <div id="teamCarousel" class="carousel slide" data-bs-interval="true">
+
+                                <!-- CAROUSEL CONTENT: JS will populate this -->
+                                <div class="carousel-inner row">
+                                    <!-- JS WILL GRP THE CARDS -->
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/2.jpg"
+                                                alt="Amelia Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Amelia Martin</h3>
+                                        <p class="member-designation">Leader</p>
+                                    </div>
+
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/3.jpg"
+                                                alt="Benjamin Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Benjamin Martin</h3>
+                                        <p class="member-designation">Manager</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/5.jpg"
+                                                alt="Amelia Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Amelia Martin</h3>
+                                        <p class="member-designation">Leader</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/4.jpg"
+                                                alt="Benjamin Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Benjamin Martin</h3>
+                                        <p class="member-designation">Manager</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/6.jpg"
+                                                alt="Amelia Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Amelia Martin</h3>
+                                        <p class="member-designation">Leader</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/3.jpg"
+                                                alt="Benjamin Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Benjamin Martin</h3>
+                                        <p class="member-designation">Manager</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/5.jpg"
+                                                alt="Benjamin Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Benjamin Martin</h3>
+                                        <p class="member-designation">Manager</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/7.jpg"
+                                                alt="Amelia Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Amelia Martin</h3>
+                                        <p class="member-designation">Leader</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/8.jpg"
+                                                alt="Amelia Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Amelia Martin</h3>
+                                        <p class="member-designation">Leader</p>
+                                    </div>
+                                    <div class="team-card col">
+                                        <div class="card-img-container">
+                                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/3.jpg"
+                                                alt="Benjamin Martin" class="team-member-img">
+
+                                            <div class="social-icons-overlay">
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="member-name">Benjamin Martin</h3>
+                                        <p class="member-designation">Manager</p>
+                                    </div>
 
 
 
-                    </div>
+
+                                    <!-- Add more blog cards as needed... -->
+
+                                </div>
+
+                                <!-- Indicators (The dots!) - JS will populate this -->
+                                <div class="carousel-indicators mt-4 justify-content-end position-static">
+                                    <!-- Indicators will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
                 </div>
-                <!-- Below Cards Section -->
-                <div class="row mt-4 g-4">
-                    <!-- Card 1 -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="feature-card p-4 rounded-4 shadow-sm text-center">
-                            <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
-                            <h5 class="mb-2">Free Shipping</h5>
-                            <p class="text-muted small">Free shipping on all US order or order above $200</p>
-                        </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="feature-card p-4 rounded-4 shadow-sm text-center">
-                            <i class="fa-solid fa-headset fa-3x text-primary mb-3"></i>
-                            <h5 class="mb-2">24X7 Support</h5>
-                            <p class="text-muted small">Contact us 24 hours live support, 7 days in a week</p>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="feature-card p-4 rounded-4 shadow-sm text-center">
-                            <i class="fa-solid fa-rotate fa-3x text-primary mb-3"></i>
-                            <h5 class="mb-2">30 Days Return</h5>
-                            <p class="text-muted small">Simply return it within 30 days for an exchange <br></p>
-                        </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="feature-card p-4 rounded-4 shadow-sm text-center">
-                            <i class="fa-solid fa-shield-alt fa-3x text-primary mb-3"></i>
-                            <h5 class="mb-2">Payment Secure</h5>
-                            <p class="text-muted small">Contact us 24 hours live support, 7 days in a week</p>
-                        </div>
-                    </div>
-                </div>
-                <section class="testimonial-section py-5">
-                    <div class="container-fluid">
-                        <!-- Main wrapper with background and relative positioning -->
-                        <div id="testimonial-wrapper" class="position-relative rounded-4 p-5 text-center shadow-sm">
-
-                            <!-- Decorative Quote Images -->
-                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/icons/top-quotes.svg"
-                                alt="quote" class="top-quote position-absolute">
-                            <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/icons/bottom-quotes.svg"
-                                alt="quote" class="bottom-quote position-absolute">
-
-                            <!-- Content that will fade in and out -->
-                            <div id="testimonial-content" class="testimonial-content">
-                                <!-- Image of the person -->
-                                <img id="testimonial-img" src="" alt="Client"
-                                    class="rounded-circle mx-auto mb-4 border-none">
-
-                                <!-- The quote text -->
-                                <p id="testimonial-text" class="lead text-muted fst-italic mx-auto"> </p>
-
-                                <!-- Author's name and title -->
-                                <h5 id="testimonial-author" class="fw-bold mt-4 mb-1"></h5>
-                                <small id="testimonial-title" class="text-uppercase text-secondary"></small>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                </section>
-                <section class="team-section pb-0 pt-4">
-                    <div class="container-fluid px-0">
-                        <!-- Heading -->
-                        <div class="d-flex justify-content-between align-items-center mb-4  border-bottom">
-                            <h3 class="mb-2 fw-bold">Our <span class="text-primary">Team</span></h3>
-                        </div>
-
-                        <!-- Bootstrap Carousel for Blog Posts -->
-                        <div id="teamCarousel" class="carousel slide" data-bs-interval="true"  >
-
-                            <!-- CAROUSEL CONTENT: JS will populate this -->
-                            <div class="carousel-inner row">
-                                <!-- JS WILL GRP THE CARDS -->
-                                <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/2.jpg"
-                                            alt="Amelia Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Amelia Martin</h3>
-                                    <p class="member-designation">Leader</p>
-                                </div>
-                              
-                                <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/3.jpg" alt="Benjamin Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Benjamin Martin</h3>
-                                    <p class="member-designation">Manager</p>
-                                </div>
-                                 <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/5.jpg"
-                                            alt="Amelia Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Amelia Martin</h3>
-                                    <p class="member-designation">Leader</p>
-                                </div>
-                                 <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/4.jpg" alt="Benjamin Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Benjamin Martin</h3>
-                                    <p class="member-designation">Manager</p>
-                                </div>
-                                 <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/6.jpg"
-                                            alt="Amelia Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Amelia Martin</h3>
-                                    <p class="member-designation">Leader</p>
-                                </div>
-                                <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/3.jpg" alt="Benjamin Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Benjamin Martin</h3>
-                                    <p class="member-designation">Manager</p>
-                                </div>
-                                <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/5.jpg" alt="Benjamin Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Benjamin Martin</h3>
-                                    <p class="member-designation">Manager</p>
-                                </div>
-                                 <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/7.jpg"
-                                            alt="Amelia Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Amelia Martin</h3>
-                                    <p class="member-designation">Leader</p>
-                                </div>
-                                 <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/8.jpg"
-                                            alt="Amelia Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Amelia Martin</h3>
-                                    <p class="member-designation">Leader</p>
-                                </div>
-                                <div class="team-card col">
-                                    <div class="card-img-container">
-                                        <img src="https://maraviyainfotech.com/projects/mantu-html/assets/img/user/3.jpg" alt="Benjamin Martin" class="team-member-img">
-
-                                        <div class="social-icons-overlay">
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="member-name">Benjamin Martin</h3>
-                                    <p class="member-designation">Manager</p>
-                                </div>
-
-
-
-
-                                <!-- Add more blog cards as needed... -->
-
-                            </div>
-
-                            <!-- Indicators (The dots!) - JS will populate this -->
-                            <div class="carousel-indicators mt-4 justify-content-end position-static">
-                                <!-- Indicators will be generated here -->
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
-
-
-
 
 
 
 
             </main>
-            <!-- =================== SITE FOOTER =================== -->
 
+            <!-- =================== SITE FOOTER =================== -->
             <footer class="site-footer mb-0 rounded-top-5">
                 <div class="container-fluid pb-0 mb-0">
                     <!-- Main Footer Content -->
@@ -1020,7 +1310,7 @@
                             <!-- Column 1: Brand and App Stores -->
                             <div class="col-lg-3 col-md-6 mb-4">
                                 <h4 class="footer-brand mb-3">
-                                    <i class="fa-solid fa-bag-shopping me-2 text-primary"></i>E-Shop
+                                    <i class="fa-solid fa-bag-shopping me-2 text-primary"></i>Neverada E-Shop
                                 </h4>
                                 <p class="text-white-50">
                                     The Mantu is the biggest market of grocery products. Get your daily needs from
@@ -1113,7 +1403,7 @@
                     <div class="footer-bottom py-3 px-2">
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <p class="mb-0 small">
-                                Copyright &copy; 2025 <a href="#" class="fw-bold  text-warning">E-Shop</a> all rights
+                                Copyright &copy; 2025 <a href="#" class="fw-bold  text-warning">Neverada</a> all rights
                                 reserved.
                             </p>
                             <div class="payment-icons">
@@ -1136,6 +1426,8 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="functionality.js"></script>
+    <script src="api.js"></script>
+    <script src="product-detail.js"></script>
 </body>
 
 </html>
