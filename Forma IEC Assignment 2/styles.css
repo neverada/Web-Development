@@ -214,10 +214,87 @@ heroright {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 heroright img {
-  width: 100%;
-  max-width: 100%;
+  width: 90%;
+  max-width: 95%;
+ 
+}
+.floating-card{
+  z-index: 10;
+  position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid
+ color-mix(in srgb, var(--default-color), transparent 90%);
+    min-width: 140px;
+    backdrop-filter: blur(10px);
+    animation: float-up-down 3s ease-in-out infinite;
+}
+.card-label{
+  font-size: 12px;
+    color: 
+ color-mix(in srgb, var(--default-color), transparent 40%);
+    margin-top: 2px;
+}
+.card-value{
+  font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--heading-color);
+}
+.card-1 .card-icon {
+    background: 
+ color-mix(in srgb, #10b981, transparent 90%);
+    color: #10b981;
+}
+.card-2 .card-icon {
+    background: 
+ color-mix(in srgb, var(--accent-color), transparent 90%);
+    color: var(--accent-color);
+}
+.card-3 .card-icon {
+    background: 
+ color-mix(in srgb, #f59e0b, transparent 90%);
+    color: #f59e0b;
+}
+.card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.card-1 {
+    top: 50;
+   left: 0;
+}
+.card-2 {
+    bottom: 10%;
+    right: 0;
+}
+.card-3 {
+    top: 10%;
+    right: 0;
+
+}
+@keyframes float-up-down {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
 }
 /* About Section */
 about {
@@ -252,7 +329,7 @@ aboutleft h1 {
 .abtbox {
   background-color: #101c2d;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 20px;
   border-radius: 10px;
