@@ -225,7 +225,7 @@ function initializeResponsiveCarousel(carouselId, cardsPerSlideConfig) {
         1200: 5, // xl
         992: 4,  // lg
         768: 3,  // md
-        0: 2     // sm and xs
+        0: 1     // sm and xs
     };
 
     function getCardsPerSlide() {
@@ -354,7 +354,7 @@ function createNewArrivalsCards(products, carouselId) {
         992: 4,
         1200: 5,
         768: 3,
-        0: 2
+        0: 1
     });
 }
 
@@ -365,14 +365,14 @@ document.addEventListener("DOMContentLoaded", function () {
         992: 4,
         1200: 5,
         768: 3,
-        0: 2
+        0: 1
     });
 
     initializeResponsiveCarousel('blogCarousel', {
         1200: 4,
         992: 4,
         768: 3,
-        0: 2
+        0: 1
     });
     
     initializeResponsiveCarousel('teamCarousel', {

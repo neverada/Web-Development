@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      :root {
+        --accent: #0a74da;
+        --muted: #6b7280;
+        --bg: #f7f9fb;
+        --card: #ffffff;
+        --radius: 8px;
+        --max-width: 900px;
+      }
+      body {
+        background: var(--bg);
+        font-family: "Times New Roman", Times, serif;
+        color: #111827;
+        line-height: 1.45;
+        padding: 28px;
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+        padding: 28px;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+        border-bottom: 1px solid #eef2f7;
+        padding-bottom: 16px;
+      }
+      .name {
+        margin: 0;
+        font-size: 1.6rem;
+        letter-spacing: 0.2px;
+      }
+      .title {
+        margin: 6px 0 0 0;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .contact {
+        text-align: right;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .contact a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 24px;
+        margin-top: 18px;
+      }
+
+      section {
+        background: transparent;
+      }
+      h2 {
+        font-size: 1.05rem;
+        margin: 0 0 8px 0;
+        color: #0f1724;
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
+      }
+      h3 {
+        margin: 0;
+        font-size: 0.98rem;
+      }
+      .meta {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      p {
+        margin: 6px 0 12px 0;
+        color: #111827;
+      }
+
+      .project-title {
+        text-decoration: none;
+        color: var(--accent);
+      }
+
+      .project-item {
+        margin-bottom: 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed #f1f5f9;
+      }
+      .project-item ul {
+        margin: 8px 0 0 20px;
+      }
+
+      aside {
+        background: #fbfdff;
+        border-radius: 8px;
+        padding: 14px;
+        height: fit-content;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+      .skills-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 6px 0 0 0;
+      }
+      .skills-list ul {
+        margin: 0;
+        padding-left: 18px;
+        color: #0b1220;
+      }
+      .badge {
+        display: inline-block;
+        background: #eef6ff;
+        color: var(--accent);
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-size: 0.82rem;
+        margin: 4px 6px 4px 0;
+      }
+
+      footer {
+        margin-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      @media (max-width: 880px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+        .contact {
+          text-align: left;
+        }
+      }
+    </style>
+
+    <div class="container">
+      <header>
+        <div>
+          <h1 class="name">Noorulain</h1>
+          <div class="title">Front End Developer • Open to opportunities</div>
+        </div>
+
+        <div class="contact">
+          <div>
+            Email:
+            <a href="mailto:noorulainjunaid.sp@gmail.com"
+              >noorulainjunaid.sp@gmail.com</a
+            >
+          </div>
+          <div>Phone: 0323 1392827</div>
+          <div>
+            Location: Karachi, Pakistan •
+            <a
+              href="https://linkedin.com/in/yourprofile"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section>
+          <h2>Summary</h2>
+          <p>
+            Web developer with hands-on experience in building responsive
+            websites using HTML, CSS, and JavaScript. Skilled in creating clean,
+            functional designs and improving user experience through responsive
+            layouts and animations. Currently expanding expertise in media
+            queries, web performance, and modern development practices, with a
+            strong drive to contribute to dynamic web projects and grow into a
+            full-stack developer role.
+          </p>
+
+          <h2>Projects</h2>
+
+          <div class="project-item">
+            <a
+              href="https://poetica-neverada.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              class="project-title"
+              ><h3>Poetica-Poetry Website</h3>
+            </a>
+            <div class="meta">Tech: HTML, CSS, JavaScript</div>
+
+            <p>
+              Interactive poetry website for reading, exploring, and submitting
+              poems.
+            </p>
+            <ul>
+              <li>
+                Implemented a fixed navbar, clean layout, and smooth scrolling
+                for better user experience.
+              </li>
+              <li>
+                Clean, minimalistic UI built with HTML, CSS, and JavaScript.
+              </li>
+              <li>Focus on readability, aesthetic appeal, and engagement.</li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <a
+              href="https://neverada-eshop-mantuclone.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              class="project-title"
+              > <h3>Ecommerce Site- Mantu Clone</h3>
+            </a>
+
+           
+            <div class="meta">Tech: HTML, CSS, JavaScript</div>
+            <p>
+              Responsive ecommerce site clone of Mantu with product listings,
+              filtering, and cart functionality.
+            </p>
+            <ul>
+              <li>Dynamic product filtering and sorting using JavaScript.</li>
+              <li>
+                Responsive design with CSS Flexbox and Grid for various screen
+                sizes.
+              </li>
+              <li>Client-side cart management with local storage.</li>
+              <li>Fetched product item using APIs.</li>
+            </ul>
+          </div>
+
+          <h2>Education</h2>
+          <ul>
+            <li>
+              <strong>Intermediate Student</strong>, APSACS COD — Present
+            </li>
+            
+            <li>
+              <strong>Matriculation</strong>, APSACS COD — 2024
+          </ul>
+        </section>
+
+        <aside>
+          <h2>Skills</h2>
+
+          <div class="skills-list">
+            <div>
+              <h3 style="font-size: 0.95rem; margin-bottom: 6px">Technical</h3>
+              <ul>
+                <li>HTML5, Semantic Markup</li>
+                <li>Modern CSS (Flexbox, Grid)</li>
+                <li>JavaScript (ES6+)</li>
+                <li>Bootstrap, tailwind css</li>
+                <li>Version control (Git)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-size: 0.95rem; margin-bottom: 6px">Other</h3>
+              <ul>
+                <li>Responsive & accessible design</li>
+                <li>Agile collaboration</li>
+                <li>Problem solving & communication</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 style="margin-top: 12px">Certifications</h2>
+          <div>
+            <span class="badge">CSF, Web development</span>
+          </div>
+        </aside>
+      </main>
+
+      <footer>
+        <small
+          >Available for freelance and part-time roles. References and full
+          portfolio available upon request.</small
+        >
+      </footer>
+    </div>
+  </body>
+</html>
