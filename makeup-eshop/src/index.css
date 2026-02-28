@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Custom Theme Colors */
+:root {
+  --color-primary: #6D3B07;
+  --color-secondary: #D3A48C;
+  --color-accent: #CD7F32;
+  --color-background: #FAF6F0;
+  --color-typography: #2D241B;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-typography);
+  min-height: 100vh;
+}
+
+/* Custom Utility Classes */
+@utility bg-primary {
+  background-color: var(--color-primary);
+}
+
+@utility bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+@utility bg-accent {
+  background-color: var(--color-accent);
+}
+
+@utility bg-background {
+  background-color: var(--color-background);
+}
+
+@utility text-primary {
+  color: var(--color-primary);
+}
+
+@utility text-secondary {
+  color: var(--color-secondary);
+}
+
+@utility text-accent {
+  color: var(--color-accent);
+}
+
+@utility text-typography {
+  color: var(--color-typography);
+}
+
+@utility border-primary {
+  border-color: var(--color-primary);
+}
+
+@utility border-secondary {
+  border-color: var(--color-secondary);
+}
+
+@utility border-accent {
+  border-color: var(--color-accent);
+}
+
+@utility hover-bg-primary {
+  &:hover {
+    background-color: var(--color-primary);
+  }
+}
+
+@utility hover-bg-secondary {
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+}
+
+@utility hover-text-primary {
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+/* Focus Ring Utilities */
+@utility focus-ring-primary {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 59, 7, 0.3);
+  }
+}
+
+@utility focus-ring-secondary {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(211, 164, 140, 0.5);
+  }
+}

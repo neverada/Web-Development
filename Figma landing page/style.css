@@ -1,0 +1,99 @@
+*{
+    overflow-y: hidden;
+}
+.btn-primary{
+   
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 9.74497px 22.2742px;
+gap: 5.57px;
+color: white;
+
+
+
+/* Brand/Primary */
+background: #4CAF4F;
+border-radius: 4px;
+border: none;
+
+
+}
+
+.btn-label{
+  
+
+/* Button_Link/Normal */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+display: flex;
+align-items: center;
+text-align: center;
+
+/* Neutral/White */
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+.hero-text{
+    /* Lessons and insights from 8 years */
+
+width: 457.32px;
+height: 106px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 44.5484px;
+line-height: 53px;
+/* or 119% */
+
+/* Neutral/D_Grey */
+color: #4D4D4D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+}
+.clr-primary{
+    /* Brand/Primary */
+
+    color: #4CAF4F;
+}
+.hero-section{
+background: #F5F7FA;
+}
+.subtext{
+width: 457.32px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 11.1371px;
+line-height: 17px;
+
+/* Neutral/Grey */
+color: #717171;
+
+}
+.logo{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+
+}
